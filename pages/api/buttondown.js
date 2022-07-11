@@ -5,6 +5,8 @@ export default async (req, res) => {
     return res.status(400).json({ error: 'Email is required' })
   }
 
+  console.log(process.env.BUTTONDOWN_API_KEY)
+
   try {
     const API_KEY = process.env.BUTTONDOWN_API_KEY
     const buttondownRoute = `${process.env.BUTTONDOWN_API_URL}subscribers`
