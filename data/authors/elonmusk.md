@@ -1,6 +1,6 @@
 ---
 name: Elon Musk
-avatar: /static/images/sparrowhawk-avatar.jpg
+avatar: /static/images/elonmusk.jpg
 occupation: Tesla nd SpaceX
 company: Earthsea
 twitter: https://twitter.com/elonmusk
