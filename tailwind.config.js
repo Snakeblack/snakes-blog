@@ -36,9 +36,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.600'),
               '&:hover': {
-                color: `${theme('colors.primary.600')} !important`,
+                color: `${theme('colors.primary.800')} !important`,
               },
               code: { color: theme('colors.primary.400') },
             },
@@ -60,11 +60,13 @@ module.exports = {
               color: theme('colors.gray.900'),
             },
             pre: {
-              backgroundColor: theme('colors.gray.800'),
+              color: theme('colors.gray.800'),
+              backgroundColor: theme('colors.gray.200'),
+              fontWeight: '600',
             },
             code: {
-              color: theme('colors.pink.500'),
-              backgroundColor: theme('colors.gray.100'),
+              color: theme('colors.gray.700'),
+              backgroundColor: theme('colors.gray.200'),
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '2px',
@@ -104,9 +106,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.400'),
               '&:hover': {
-                color: `${theme('colors.primary.400')} !important`,
+                color: `${theme('colors.primary.300')} !important`,
               },
               code: { color: theme('colors.primary.400') },
             },
@@ -132,6 +134,7 @@ module.exports = {
             },
             code: {
               backgroundColor: theme('colors.gray.800'),
+              color: theme('colors.gray.100'),
             },
             details: {
               backgroundColor: theme('colors.gray.800'),

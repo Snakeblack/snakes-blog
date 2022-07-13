@@ -6,12 +6,17 @@ import siteMetadata from '@/data/siteMetadata'
 const Giscus = () => {
   const [enableLoadComments, setEnabledLoadComments] = useState(true)
   const { theme, resolvedTheme } = useTheme()
-  const commentsTheme =
-    siteMetadata.comment.giscusConfig.themeURL === ''
-      ? theme === 'dark' || resolvedTheme === 'dark'
-        ? siteMetadata.comment.giscusConfig.darkTheme
-        : siteMetadata.comment.giscusConfig.theme
-      : siteMetadata.comment.giscusConfig.themeURL
+  let commentsTheme = 'transparent_dark'
+
+  if (theme === 'dark') {
+    commentsTheme = 'transparent_dark'
+  } else if (resolvedTheme === 'dark') {
+    commentsTheme = 'transparent_dark'
+  } else {
+    commentsTheme = 'light'
+  }
+
+  // theme === 'dark' ? 'transparent_dark' : resolvedTheme === 'dark' ? 'transparent_dark' : 'light'
 
   const COMMENTS_ID = 'comments-container'
 
@@ -28,7 +33,19 @@ const Giscus = () => {
       metadata,
       inputPosition,
       lang,
-    } = siteMetadata?.comment?.giscusConfig
+    } = siteMetadata?.comment?.giscusConfig || {}
+
+    // console.log(
+    //   repo,
+    //   repositoryId,
+    //   category,
+    //   categoryId,
+    //   mapping,
+    //   reactions,
+    //   metadata,
+    //   inputPosition,
+    //   lang
+    // )
 
     const script = document.createElement('script')
     script.src = 'https://giscus.app/client.js'
@@ -49,7 +66,6 @@ const Giscus = () => {
     if (comments) comments.appendChild(script)
 
     return () => {
-      const comments = document.getElementById(COMMENTS_ID)
       if (comments) comments.innerHTML = ''
     }
   }, [commentsTheme])
