@@ -2,10 +2,10 @@
 export default async (req, res) => {
   const { email } = req.body
   if (!email) {
-    return res.status(400).json({ error: 'Email is required' })
+    return res.status(400).json({ error: 'Se requiere un correo electrónico' })
   }
 
-  console.log(process.env.BUTTONDOWN_API_KEY)
+  //console.log(process.env.BUTTONDOWN_API_KEY)
 
   try {
     const API_KEY = process.env.BUTTONDOWN_API_KEY
@@ -22,7 +22,7 @@ export default async (req, res) => {
     })
 
     if (response.status >= 400) {
-      return res.status(500).json({ error: `There was an error subscribing to the list.` })
+      return res.status(500).json({ error: `Hubo un error al suscribirse a la lista.` })
     }
 
     return res.status(201).json({ error: '' })

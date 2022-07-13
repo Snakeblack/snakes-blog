@@ -2,7 +2,8 @@ const siteMetadata = {
   title: "Snake's Blog",
   author: 'Manuel Michael Retamozo García',
   headerTitle: "Snake's Blog",
-  description: 'Blog de desarrollo y programación, guias y tutoriales de Manuel Retamozo.',
+  description:
+    'Blog de informática y programación. Guías, tutoriales y demás cosas que te ayudaran a aprender.',
   language: 'es-ES',
   theme: 'system', // system, dark or light
   siteUrl: 'https://blog.mretamozo.com',
