@@ -2,7 +2,7 @@
 title: 'Primer post'
 date: '2022-07-13'
 tags: ['guía', 'post', 'blog', 'markdown']
-draft: true
+draft: false
 summary: 'En este primer post del blog enseñare como vosotros también podéis postear en este blog realizando una serie de pasos que indicare.'
 ---
 
