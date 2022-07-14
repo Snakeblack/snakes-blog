@@ -60,8 +60,8 @@ module.exports = {
               color: theme('colors.gray.900'),
             },
             pre: {
-              color: theme('colors.gray.800'),
-              backgroundColor: theme('colors.gray.200'),
+              color: theme('colors.gray.200'),
+              backgroundColor: theme('colors.zinc.700'),
               fontWeight: '600',
             },
             code: {
@@ -130,7 +130,7 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             pre: {
-              backgroundColor: theme('colors.gray.800'),
+              backgroundColor: theme('colors.neutral.800'),
             },
             code: {
               backgroundColor: theme('colors.gray.800'),
