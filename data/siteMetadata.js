@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://blog.mretamozo.com',
   siteRepo: 'https://github.com/Snakeblack/blog-nextjs-tailwind',
   siteLogo: '/static/images/logo.png',
-  image: '/static/images/avatar.png',
+  image: '/static/images/avatar-snake.jpg',
   socialBanner: '/static/images/twitter-card.png',
   email: 'hello@mretamozo.com',
   github: 'https://github.com/Snakeblack',
