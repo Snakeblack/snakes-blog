@@ -21,7 +21,7 @@ const getLayouts = () => {
 }
 
 const genFrontMatter = (answers) => {
-  let d = new Date()
+  const d = new Date()
   const date = [
     d.getFullYear(),
     ('0' + (d.getMonth() + 1)).slice(-2),
