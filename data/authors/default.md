@@ -1,6 +1,6 @@
 ---
 name: Manuel Retamozo
-avatar: /static/images/avatar.png
+avatar: /static/images/avatar-snake.jpg
 occupation: Programmer and student
 company: CEF - 42 Madrid
 email: hello@mretamozo.com
