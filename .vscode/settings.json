@@ -1,4 +1,7 @@
 {
   "cSpell.language": "es,es-ES",
-  "cSpell.words": ["ciberseguridad", "postear"]
+  "cSpell.words": ["ciberseguridad", "postear"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
