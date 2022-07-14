@@ -45,7 +45,7 @@ const NewsletterForm = ({ title = '' }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Suscribete la Newsletter de Snake's Blog
+            Suscribete a la Newsletter de Snake's Blog
           </a>
           {/* <label className="sr-only" htmlFor="email-input">
             Correo Electrónico
