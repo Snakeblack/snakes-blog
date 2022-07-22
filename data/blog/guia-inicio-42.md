@@ -23,6 +23,7 @@ Ademas deberas aprender a usar un editor de texto, como **vim**, para que puedas
 
 ## Comandos basicos de Shell
 
+
     ```Shell
     # cd: Cambiar de directorio
     # ls: Listar los archivos en el directorio actual
@@ -42,6 +43,8 @@ Ademas deberas aprender a usar un editor de texto, como **vim**, para que puedas
 
 ## Comandos basicos de Git
 
+Para poder empezar con un proyecto, tendras que clonar el repositorio que se da al iniciar cada proyecto, una vez finalizado, tendras que "pushear" el contenido al repositorio, ¿cómo se hace eso? te lo explicare en detalle.
+
     ```Shell
     # git init: Inicializar un repositorio
     # git add: Agregar un archivo al repositorio
@@ -50,7 +53,32 @@ Ademas deberas aprender a usar un editor de texto, como **vim**, para que puedas
     # git pull: Obtener los cambios del repositorio
     # git status: Ver el estado del repositorio
     # git log: Ver el historial de cambios
+    # git branch: ver todas las ramas del repositorio
     ```
+
+Estos son los comandos básicos, usarás alguno de ellos para poder completar los proyectos y entregarlos correctamente.
+
+1. Deberas clonar el repositorio, copiando el enlace que se encuentra al iniciar el proyecto.
+
+2. Abres tu terminal, y pondrás ```git clone [enlace del repositorio] [opcional: nombre del repositorio]```.
+
+3. Entras al repositorio con ```cd [nombre del repositorio]``` y haces el proyecto según las instrucciones.
+
+4. Para comprobar el estado de los archivos actualizados pondrás ```git status``` de esta forma sabras que archivos no estan trackeados o añadidos al staging.
+
+5. Tendrás que añadir al staging o trackear los archivos con el comando ```git add [nombre/s del archivo/s]``` o para añadir todo ```git add .```.
+
+6. (Opcional) Puedes comprobar con ```git status``` nuevamente el estado, veras que los archivos añadidos estan en estado staging.
+
+7. Para guardar los cambios y generar un log en el historial del repositorio tendras que commitear los cambios añadiendole un comentario breve pero descriptivo de los cambios, para hacer esto deberás usar el comando ```git commit -m "[texto descriptivo de la actualización]"```.
+
+8. (Opcional) Puedes comprobar los commits hechos con el comando ```git log```, este comando sirve para ver el historial de commits, es decir, podremos ver todas las actualizaciones a nuestro repositorios hechos desde el primer commit.
+
+9. Para poder saber como se llama la rama o branch del repositorio en el que estas tendras que usar ```git branch```, por defecto suele ser **master**, pero estos ultimos años ha ido cambiando a **main**.
+
+10. Una vez hecho los anteriores pasos tendras que subir los cambios al repositorio online, haciendo ```git push origin [nombre del branch]```, y ahora ya podras entregar tu proyecto.
+
+Estos son los pasos básicos para poder entregar un proyecto en 42 a través de GIT, pero si quieres aprender más, haré un post dedicado al uso de GIT, tambien podras encontrar documentación en su [pagina oficial](https://git-scm.com/docs).
 
 ## Vim
 
