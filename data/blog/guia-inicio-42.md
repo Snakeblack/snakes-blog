@@ -7,7 +7,7 @@ draft: false
 summary: 'Guía de inicio para piscineros en 42, donde podrás aprender lo necesario para empezar a programar, crear un repositorio en git, configurar vim, aprender a usarlo y mucho más.'
 ---
 
-# ¿Que es 42?
+# ¿Qué es 42?
 
 42 es un lugar donde aprendes a aprender, donde conseguirás habilidades y experiencias a través del peer to peer, es decir, tendrás que compartir y resolver los problemas con tus compañeros, habrá veces que os tendréis que reunir todos juntos para resolver un problema, hacer piña 🍍, ademas adquirirás métodos de búsqueda para la información, como documentaciones, manuales, guías... o blogs como este.
 
