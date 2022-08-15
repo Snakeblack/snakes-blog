@@ -1,12 +1,12 @@
 ---
 title: 'Personaliza tu terminal en Linux/Unix con zsh'
 date: '2022-08-11'
-tags: ['guia', 'terminal', 'shell', 'prompt', 'zsh', 'ohmyzsh', 'plugins', 'lsd', 'batcat', 'fzf']
+tags: ['guia', 'terminal', 'shell', 'zsh', 'ohmyzsh', 'plugins', 'lsd', 'batcat', 'fzf']
 draft: false
-summary: 'Guía para personalizar la terminal de Linux/Unix con ZSH, OhMyZSH, lsd, batcat y más'.
+summary: 'Guía para personalizar la terminal de Linux/Unix con ZSH, OhMyZSH, lsd, batcat y más.'
 ---
 
-# Personaliza tu terminal en Linux/Unix con zsh
+# Personaliza tu terminal en Linux / Unix con zsh
 
 Para personalizar la terminal de Linux/Unix con ZSH y OhMyZSH, debemos tener instalado zsh y ohmyzsh.
 
@@ -85,20 +85,64 @@ LSD es un plugin que sustituye a la funcionalidad de ls por una que muestra los 
 
 Para poder instalarlo podemos usar los siguientes comandos dependiendo del S.O.
 
-| OS/Distro                       | Command                                                                                                           |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Archlinux                       | `pacman -S lsd`                                                                                                   |
-| Fedora                          | `dnf install lsd`                                                                                                 |
-| Gentoo                          | `sudo emerge sys-apps/lsd`                                                                                        |
-| macOS                           | `brew install lsd` or `sudo port install lsd`                                                                     |
-| NixOS                           | `nix-env -iA nixos.lsd`                                                                                           |
-| FreeBSD                         | `pkg install lsd`                                                                                                 |
-| NetBSD or any `pkgsrc` platform | `pkgin install lsd` or `cd /usr/pkgsrc/sysutils/lsd && make install`                                              |
-| Windows                         | `scoop install lsd`                                                                                               |
-| Android (via Termux)            | `pkg install lsd`                                                                                                 |
-| Ubuntu/Debian based distro      | `sudo dpkg -i lsd_0.22.0_amd64.deb` get `.deb` file from [release page](https://github.com/Peltoche/lsd/releases) |
-| Solus                           | `eopkg it lsd`                                                                                                    |
-| Void Linux                      | `sudo xbps-install lsd`                                                                                           |
+<table>
+  <thead>
+    <tr>
+      <th>OS/Distro</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Archlinux</td>
+      <td><code>pacman -S lsd</code></td>
+    </tr>
+    <tr>
+      <td>Fedora</td>
+      <td><code>dnf install lsd</code></td>
+    </tr>
+    <tr>
+      <td>Gentoo</td>
+      <td><code>sudo emerge sys-apps/lsd</code></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><code>brew install lsd</code> o <code>sudo port install lsd</code></td>
+    </tr>
+    <tr>
+      <td>NixOS</td>
+      <td><code>nix-env -iA nixos.lsd</code></td>
+    </tr>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code>pkg install lsd</code></td>
+    </tr>
+    <tr>
+      <td>NetBSD or any <code>pkgsrc</code> platform</td>
+      <td><code>pkgin install lsd</code> o <code>cd /usr/pkgsrc/sysutils/lsd &amp;&amp; make install</code></td>
+    </tr>
+    <tr>
+      <td>Windows</td>
+      <td><code>scoop install lsd</code></td>
+    </tr>
+    <tr>
+      <td>Android (via Termux)</td>
+      <td><code>pkg install lsd</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu/Debian based distro</td>
+      <td><code>sudo dpkg -i lsd_0.22.0_amd64.deb</code> abtener el archivo <code>.deb</code> en su <a href="https://github.com/Peltoche/lsd/releases">github</a></td>
+    </tr>
+    <tr>
+      <td>Solus</td>
+      <td><code>eopkg it lsd</code></td>
+    </tr>
+    <tr>
+      <td>Void Linux</td>
+      <td><code>sudo xbps-install lsd</code></td>
+    </tr>
+  </tbody>
+</table>
 
 Para poder usarlo en sustitución de la funcionalidad de ls, debemos de añadir un alias en el archivo `.zshrc`:
 
@@ -114,17 +158,52 @@ Bat es un plugin que permite mostrar el contenido de un archivo de texto, como h
 
 Para instalarlo podemos usar los siguientes comandos dependiendo del S.O.
 
-| OS/Distro                  | Command                                                                                                   |
-| -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Ubuntu/Debian based distro | `sudo apt install bat` o `Shellsudo dpkg -i bat_0.18.3_amd64.deb # adapt version number and architecture` |
-| Arch Linux                 | `sudo pacman -S bat`                                                                                      |
-| Fedora                     | `dnf install bat`                                                                                         |
-| Gentoo                     | `sudo emerge sys-apps/bat`                                                                                |
-| macOS                      | `brew install bat` or `sudo port install bat`                                                             |
-| Void Linux                 | `sudo xbps-install bat`                                                                                   |
-| Termux                     | `pkg install bat`                                                                                         |
-| FreeBSD                    | `pkg install bat`                                                                                         |
-| Windows                    | `scoop install bat` o `choco install bat`                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>OS/Distro</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ubuntu/Debian based distro</td>
+      <td><code>sudo apt install bat</code> o <code>Shellsudo dpkg -i bat_0.18.3_amd64.deb</code></td>
+    </tr>
+    <tr>
+      <td>Arch Linux</td>
+      <td><code>sudo pacman -S bat</code></td>
+    </tr>
+    <tr>
+      <td>Fedora</td>
+      <td><code>dnf install bat</code></td>
+    </tr>
+    <tr>
+      <td>Gentoo</td>
+      <td><code>sudo emerge sys-apps/bat</code></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><code>brew install bat</code> o <code>sudo port install bat</code></td>
+    </tr>
+    <tr>
+      <td>Void Linux</td>
+      <td><code>sudo xbps-install bat</code></td>
+    </tr>
+    <tr>
+      <td>Termux</td>
+      <td><code>pkg install bat</code></td>
+    </tr>
+    <tr>
+      <td>FreeBSD</td>
+      <td><code>pkg install bat</code></td>
+    </tr>
+    <tr>
+      <td>Windows</td>
+      <td><code>scoop install bat</code> o <code>choco install bat</code></td>
+    </tr>
+  </tbody>
+</table>
 
 Para poder usarlo en sustitución de la funcionalidad de cat, debemos de añadir un alias en el archivo `.zshrc`:
 
@@ -140,16 +219,48 @@ Fzf, las siglas de Fast Zipper File Search, es un plugin que permite buscar arch
 
 Para instalarlo podemos usar los siguientes comandos dependiendo del S.O.
 
-| OS/Distro                  | Command                                       |
-| -------------------------- | --------------------------------------------- |
-| MacOS                      | `brew install fzf` or `sudo port install fzf` |
-| Ubuntu/Debian based distro | `sudo apt install fzf`                        |
-| Arch Linux                 | `sudo pacman -S fzf`                          |
-| Fedora                     | `dnf install fzf`                             |
-| Gentoo                     | `sudo emerge sys-apps/fzf`                    |
-| Void Linux                 | `sudo xbps-install fzf`                       |
-| Alpine Linux               | `sudo apk add fzf`                            |
-| Windows                    | `scoop install fzf` o `choco install fzf`     |
+<table>
+  <thead>
+    <tr>
+      <th>OS/Distro</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MacOS</td>
+      <td><code>brew install fzf</code> or <code>sudo port install fzf</code></td>
+    </tr>
+    <tr>
+      <td>Ubuntu/Debian based distro</td>
+      <td><code>sudo apt install fzf</code></td>
+    </tr>
+    <tr>
+      <td>Arch Linux</td>
+      <td><code>sudo pacman -S fzf</code></td>
+    </tr>
+    <tr>
+      <td>Fedora</td>
+      <td><code>dnf install fzf</code></td>
+    </tr>
+    <tr>
+      <td>Gentoo</td>
+      <td><code>sudo emerge sys-apps/fzf</code></td>
+    </tr>
+    <tr>
+      <td>Void Linux</td>
+      <td><code>sudo xbps-install fzf</code></td>
+    </tr>
+    <tr>
+      <td>Alpine Linux</td>
+      <td><code>sudo apk add fzf</code></td>
+    </tr>
+    <tr>
+      <td>Windows</td>
+      <td><code>scoop install fzf</code> o <code>choco install fzf</code></td>
+    </tr>
+  </tbody>
+</table>
 
 Para poder usarlo puedes ejecutar el comando `fzf`.
 
