@@ -332,3 +332,451 @@ public class EjemplosAsignacion {
   }
 }
 ```
+
+Como ya hemos indicado, estos valores también pueden asignarse después de la declaración, en cuyo caso ya no es
+necesario indicar el tipo. Asimismo, mientras que en el caso de las constantes los valores solo pueden asignarse una vez, en
+las variables estos pueden cambiar.
+
+**Ejemplo de asignación de variables y constantes después de la declaración:**
+
+```java
+public class EjemplosAsignacion2 {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    int dias;
+    int minutos, horas;
+    final double GRAVEDADTIERRA;
+    final int AÑO;
+
+    dias = 30;
+    minutos = 60; horas = 24;
+    GRAVEDADTIERRA = 9.807;
+    AÑO = 365;
+  }
+}
+```
+
+## Conversión de tipos (casting)
+
+Se denomina casting al proceso que consiste en transformar o convertir una variable de un tipo primitivo a otro. También se
+puede usar para convertir un objeto de una clase en otro objeto de otra clase, aunque, para ello, es necesario que exista una
+relación de herencia entre ellas (más adelante, nos adentraremos en el concepto de herencia y en sus implicaciones). No
+obstante, por el momento, solo vamos a tratar la conversión entre tipos primitivos.
+
+Dentro de la conversión de tipos, podemos distinguir dos clases: el **casting implícito** y el **casting explícito**. A
+continuación, nos ocuparemos de cada uno de ellos recurriendo a un ejemplo.
+
+El casting implícito se realiza de forma automática y se produce cuando una variable de un tipo ocupa un contenedor más
+grande del que le corresponde.
+
+```java
+public class CastingImplicito {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    int numero1 = 100;
+    long numero2 = numero1;
+  }
+}
+```
+
+En este ejemplo, observamos cómo la variable «numero1» es de tipo entero, así que el valor almacenado en un `int` se
+convertirá a `long` al asignarse «numero2», que es de tipo `long` y que, por tanto, es un contenedor más grande.
+
+Por otro lado, tenemos el casting explícito, donde tendremos que escribir código. Se produce cuando colocamos un valor
+grande en un contenedor pequeño. Debemos proceder con cuidado en este tipo de conversiones, ya que, al almacenarse en
+contenedores más pequeños, pueden ocasionar una pérdida de información.
+
+```java
+public class CastingExplicito {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    double numero1 = 30.501;
+    int numero2 = (int)numero1;
+    System.out.println(numero2);
+  }
+}
+```
+
+En el ejemplo anterior, disponemos de una variable «numero1» de tipo `double` que se refiere a un valor en decimales. La
+segunda variable, «numero2», es de tipo `int` y le asignamos el mismo valor que a la primera variable; no obstante, dado
+que a la primera variable le corresponde un contenedor más grande y queremos pasarla a un contenedor más pequeño,
+debemos convertirla, indicando entre paréntesis en qué tipo de variable queremos transformarla. Si imprimimos por
+pantalla el valor de la variable «numero2», comprobaremos que, durante la conversión, se ha perdido información, pues no
+se muestra su parte decimal.
+
+---
+
+# Comentarios
+
+Los comentarios son notas que se pueden añadir al código con el objetivo de facilitar su comprensión. Se trata de una
+**buena práctica**, ya que facilita el mantenimiento del código; además, si varias personas trabajan en un mismo proyecto,
+permite que todas ellas permanezcan al tanto de los cambios.
+
+**Tipos de comentarios en Java**
+
+> - **Comentario hasta final de línea.** Se trata de un comentario de una sola línea y comprende todo el texto que va a continuación de // hasta el final de línea.
+> - **Comentario multilínea.** Es un comentario que se extiende a lo largo de varias líneas y que comienza por /_ y termina en _/.
+> - **Comentario de documentación.** Similar al comentario multilínea, pero se usa para generar documentación de código.
+
+```java
+package unidad2;
+public class Comentarios {
+  public static void main(String[] args) {
+    //Esto es un comentario en una línea.
+    /*Esto es un comentario multilínea y,
+    * como se puede observar, cada línea adicional empieza con un
+    * asterisco y, para cerrar, asterisco y barra invertida.
+    */
+    /**Esto es un comentario de documentación,
+    * es muy similar al comentario multilínea,
+    * pero a diferencia de este será utilizado
+    * para generar documentación del código.
+    */
+  }
+}
+```
+
+---
+
+# Operadores
+
+## Operadores aritméticos
+
+Los operadores aritméticos permiten efectuar operaciones aritméticas con las variables y las constantes. En la siguiente
+tabla, se muestran los operadores aritméticos en Java, su función y un ejemplo de uso en el código:
+
+<table>
+  <thead>
+    <tr>
+      <th>Operador</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`+`</td>
+      <td>Suma o número positivo</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int suma = a + b;<br></br>
+        //suma tendrá el valor 5 + 2 = 7
+      </td>
+    </tr>
+    <tr>
+      <td>`-`</td>
+      <td>Resta o número negativo</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int resta = a - b;<br></br>
+        //resta tendrá el valor 5 - 2 = 3
+      </td>
+    </tr>
+    <tr>
+      <td>`*`</td>
+      <td>Producto</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int prod = a * b;<br></br>
+        //prod tendrá el valor 5 * 2 = 10
+      </td>
+    </tr>
+    <tr>
+      <td>`/`</td>
+      <td>División</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int div = a / b;<br></br>
+        //div tendrá el valor 5 / 2 = 2.5
+      </td>
+    </tr>
+    <tr>
+      <td>`%`</td>
+      <td>Módulo (resto de la división entera)</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int mod = a % b;<br></br>
+        //mod tendrá el valor 5 % 2 = 1
+      </td>
+    </tr>
+    <tr>
+      <td>`++`</td>
+      <td>Incrementar en uno</td>
+      <td>
+        int a = 5;<br></br>
+        int inc = a++;<br></br>
+        //inc tendrá el valor 5 + 1 = 6
+      </td>
+    </tr>
+    <tr>
+      <td>`--`</td>
+      <td>Decrementar en uno</td>
+      <td>
+        int a = 5;<br></br>
+        int dec = a--;<br></br>
+        //dec tendrá el valor 5 - 1 = 4
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Operadores de asignación
+
+El operador de asignación permite asignar valores a una variable. Así, si una variable posee un valor previo y se realiza una
+asignación, dicho valor será reemplazado por el nuevo. El más utilizado es el `=`, pero existen otros tipos.
+
+### Operadores de asignación compuestos
+
+Estos operadores solo se pueden utilizar cuando la variable a la que se le asigna el valor está implicada en la operación que
+se va a asignar.
+
+<table>
+  <thead>
+    <tr>
+      <th>Operador</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`+=`</td>
+      <td>Se asigna el valor actual de la variable más elvalor indicado.</td>
+      <td>
+        int a = 5;<br></br>
+        a+=2;<br></br>
+        //a tendrá el valor 5 + 2 = 7
+      </td>
+    </tr>
+    <tr>
+      <td>`-=`</td>
+      <td>Se asigna el valor actual de la variable menos el valor indicado</td>
+      <td>
+        int b = 5;<br></br>
+        b-=2;<br></br>
+        //b tendrá el valor 5 - 2 = 3
+      </td>
+    </tr>
+    <tr>
+      <td>`*=`</td>
+      <td>Se asigna el valor actual de la variable multiplicado por el valor indicado</td>
+      <td>
+        int c = 5;<br></br>
+        c*=2;<br></br>
+        //c tendrá el valor 5 * 2 = 10
+      </td>
+    </tr>
+    <tr>
+      <td>`/=`</td>
+      <td>Se asigna el valor actual de la variable más elvalor indicado.</td>
+      <td>
+        int a = 5;<br></br>
+        a+=2;<br></br>
+        //a tendrá el valor 5 + 2 = 7
+      </td>
+    </tr>
+    <tr>
+      <td>`%=`</td>
+      <td>
+        Se asigna el resto de la división del valor actual de la variable entre el valor indicado.
+      </td>
+      <td>
+        int d = 5;<br></br>
+        d% = 2;<br></br>
+        //d tendrá el valor 5 % 2 = 1
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Operadores condicionales
+
+Los operadores condicionales sirven para comparar valores y siempre devuelven valores booleanos. En la siguiente tabla, se
+muestran los operadores condicionales disponibles en Java, su función y un ejemplo de código para cada uno de ellos:
+
+<table>
+  <thead>
+    <tr>
+      <th>Operador</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        `<`
+      </td>
+      <td>
+        **«Menor que».** Devuelve `true` si el valor de la variable de la izquierda es menor que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a < b;<br></br>
+        //comp tendrá valor true porque 2 es menor que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `>`
+      </td>
+      <td>
+        **«Mayor que».** Devuelve `true` si el valor de la variable de la izquierda es mayor que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a \> b;<br></br>
+        //comp tendrá valor false porque 2 no es mayor que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `<=`
+      </td>
+      <td>
+        **«Menor o igual que».** Devuelve `true` si el valor de la variable de la izquierda es menor o igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a \<= b;<br></br>
+        //comp tendrá valor true porque 2 es menor o igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `>=`
+      </td>
+      <td>
+        **«Mayor o igual que».** Devuelve `true` si el valor de la variable de la izquierda es mayor o igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a \>= b;<br></br>
+        //comp tendrá valor false porque 2 no es mayor ni igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `==`
+      </td>
+      <td>
+        **«Igual».** Devuelve `true` si el valor de la variable de la izquierda es igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a == b;<br></br>
+        //comp tendrá valor false porque 2 no es igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `!=`
+      </td>
+      <td>
+        **«Distinto».** Devuelve `true` si el valor de la variable de la izquierda no es igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a != b;<br></br>
+        //comp tendrá valor true porque 2 no es igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `!`
+      </td>
+      <td>
+        **«Operador lógico NO».** Sirve para negar una condición. Se usa con booleanos.
+      </td>
+      <td>
+        boolean a = true;<br></br>
+        boolean b = !a;<br></br>
+        //b tendrá valor false porque es el contrario de a (true)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `&&`
+      </td>
+      <td>
+        **«Operador lógico AND».** Devuelve `true` si las dos condiciones evaluadas son verdaderas. Se usa con condiciones o valores booleanos.
+      </td>
+      <td>
+        boolean a = true, b = false;<br></br>
+        boolean comp = a && b;<br></br>
+        //comp tendrá el valor false porque a y b no son igual a true
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `||`
+      </td>
+      <td>
+        **«Operador lógico OR».** Devuelve `true` si al menos una de las condiciones evaluadas es verdadera. Se usa con condiciones o valores booleanos.
+      </td>
+      <td>
+        boolean a = true, b = false;<br></br>
+        boolean comp = a && b;<br></br>
+        //comp tendrá el valor false porque a y b no son igual a true
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Precedencia
+
+La precedencia permite determinar qué operadores se ejecutarán antes que otros. A igual precedencia, las operaciones se
+realizan en el mismo orden en el que se escriben: de izquierda a derecha. El orden de precedencia de las operaciones
+básicas en Java es el que se muestra en la siguiente tabla. Los operadores del mismo orden tienen la misma precedencia.
+Así, por ejemplo, la suma y la resta presentan la misma precedencia.
+
+<table>
+    <thead>
+    <tr>
+      <th>Orden</th>
+      <th>Operadores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        `()` `[]`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        `++` `--` `!`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        `*` `/` `%`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        `-`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        `>` `>=` `<` `<=`
+      </td>
+    </tr>
+  </tbody>
+</table>
