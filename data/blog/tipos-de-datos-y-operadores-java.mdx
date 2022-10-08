@@ -1,0 +1,782 @@
+---
+title: 'Tipos de datos y operadores en Java'
+date: '2022-10-5'
+tags:
+  [
+    'java',
+    'tipos',
+    'operadores',
+    'fundamentos',
+    'programación',
+    'variables',
+    'constantes',
+    'comentarios',
+  ]
+draft: false
+summary: 'En este artículo vamos a ver los tipos de datos y operadores que podemos utilizar en Java, ademas de los comentarios.'
+---
+
+# Variables y Constantes
+
+Una variable es una representación de un valor un identificador. Las constantes son un caso especial de variables donde, una vez asignado un valor, este no va a ser modificado durante el resto del programa.
+
+## Variables
+
+Una variable es **una representación de un valor mediante un identificador**, es decir, se trata de asociar un nombre a determinados datos. Por tanto, sirve para almacenar los datos que utiliza un programa. El valor que asignamos a una variable, como su propio nombre indica, es variable, lo que significa que puede cambiar durante la ejecución del programa.
+
+Cada dato almacenado en una variable ocupa un espacio en la memoria RAM del ordenador; así, cuando la usamos,
+estamos haciendo referencia a un dato almacenado en la memoria.
+
+En Java, podemos distinguir dos tipos de variables: por un lado, las **variables locales o de bloque**, que son aquellas declaradas dentro de un bloque de comandos y que, por tanto, solo podemos manipular dentro de ese bloque; y, por otro lado, las **variables globales**, que son aquellas declaradas fuera de cualquier función, generalmente al principio del
+programa.
+
+Codigo de ejemplo:
+
+```java
+int num = 3;
+```
+
+La variable num apunta en memoria al valor 3 almacenado en un espacio de memoria.
+
+## Constantes
+
+Las constantes son un caso especial de variables donde, una vez asignado un valor, este no va a ser modificado durante el resto del programa, al contrario de lo que sucede con las variables. Por consiguiente, cualquier dato que no vaya a ser cambiado, debe almacenarse en una constante y no en una variable; por ejemplo, el valor del número pi, el IVA, etc.
+
+Los identificadores de las constantes siguen las mismas reglas que los de las variables, aunque, por convención, se recomienda que su nombre se escriba siempre en **mayúsculas** para diferenciarlos de las variables y que el programa
+resulte más legible.
+
+Además, cuando se declara una constante, esta debe ir precedida de la palabra reservada `final`.
+
+## Palabras reservadas
+
+En Java, existen una serie de palabras con un significado especial llamadas palabras reservadas que no pueden utilizarse como identificadores de nuestras variables.  
+En la siguiente figura, se muestra, en orden alfabético, el conjunto de palabras reservadas en Java:
+
+`abstract` `assert` `boolean` `break` `byte` `case` `catch` `char` `class` `const` `continue` `default` `do`
+`double` `else` `enum` `extends` `final` `finally` `float` `for` `goto` `if` `implements` `import`
+`instanceof` `int` `interface` `long` `native` `new` `package` `private` `protected` `public` `return`
+`short` `static` `strictfp` `super` `switch` `synchronized` `this` `throw` `throws` `transient` `try` `void`
+`volatile` `while`
+
+## Identificadores
+
+En Java, el identificador de una variable puede contener cualquier carácter Unicode. En este sentido, conviene destacar que Java constituye lo que se denomina un lenguaje case sensitive, lo que significa que distingue entre mayúsculas y minúsculas. El identificador de la variable, además de tratarse de un carácter Unicode, debe ajustarse a las siguientes
+reglas:
+
+**Identificador de variable**
+
+> - No puede comenzar por un número ni incluir espacios. En cambio, sí puede empezar por una letra, por un subrayado ( `_` ) o por el símbolo del dólar `$`.
+> - No hay una longitud máxima establecida para el identificador, aunque se recomienda que sea breve y descriptivo.
+> - Se distingue entre mayúsculas y minúsculas.
+> - No puede usar ninguna palabra reservada del lenguaje Java.
+
+**Ejemplos de identificadores válidos en Java**
+
+```java
+package unidad2;
+public class IdentificadoresValidos {
+  public static void main(String[] args) {
+    String Edad, edad, _edad, eDaD, año, año_Nacimiento, año0;
+    String $edad, _$edad, edad_1_1, AñoNacimiento, num1, máx;
+  }
+}
+```
+
+**Ejemplos de identificadores no válidos en Java**
+
+```java
+public class IdentificadoresNoValidos {
+  public static void main(String[] args) {
+    String 4edad, "edad", año-maximo, public, _edad.maxima;
+  }
+}
+```
+
+Es recomendable ajustarnos a la **guia de estilos de Java** usando la notación **camelCase**.
+
+> - Si un identificador consta de varias palabras, las diferenciaremos entre sí escribiendo en mayúscula la primera letra de cada palabra.
+> - Si un identificador se compone de una sola palabra, se recomienda escribirla completamente en minúscula.
+
+**Ejemplos** de identificadores siguiendo la notación Camel:
+
+```java
+public class EjemplosCamel {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    String altura, alturaMaxima, nombre, nombrePersona, pesoCoche;
+  }
+}
+```
+
+---
+
+# Tipos de datos
+
+Cada variable requiere un tamaño concreto en memoria para almacenar sus valores. Si se usa un tamaño en memoria demasiado pequeño, no podrá almacenarse toda la información; asimismo, si usamos un tamaño demasiado grande, realizaremos un uso poco eficiente del programa, ya que ocupará más memoria de la que realmente necesita.
+
+En cualquier caso, en Java no es necesario establecer un tamaño específico para cada variable, sino un «tipo» de variable
+que ya define determinado tamaño de memoria, así como rangos de valores conocidos.
+
+Los tipos predefinidos en Java, también conocidos como **tipos primitivos**. Se trata de tipos de datos del lenguaje, es decir, no representan objetos. Son los siguientes:
+
+`byte` `short` `int` `long` `short` `float` `boolean` `char`
+
+A continuación, veremos qué clase de datos puede almacenarse en cada tipo primitivos de Java.
+
+## Enteros
+
+Son los tipos primitivos `byte`, `short`, y `long`. Los enteros son aquellos números que carecen de decimales. Se pueden asignar enteros normales, octales, anteponer un cero al número o hexadecimales anteponiendo un 0x.
+
+## Números en coma flotante
+
+Se denominan así por cómo los almacena el ordenador. Los decimales no se almacenan de forma exacta, por eso siempre existe la posibilidad de que se produzca un error. Los decimales de coma flotante, en cambio, proporcionan mayor precisión y se almacenan en los tipos `double` y `float` . La diferencia entre uno y otro reside en la exactitud con la que se almacenan, pues el tipo `double` es más preciso que el tipo `float` . Asimismo, el valor decimal permanece separado por un
+punto, no por una coma.
+
+`✱ No se pueden asignar números decimales a enteros.`
+
+Si no se indica nada, se entiende que un número decimal es, por defecto, de tipo `double` . Además, al declarar números (tanto enteros como decimales), si no se les asigna un valor, presentarán, por defecto, el **valor cero**.
+
+## Booleanos
+
+Los valores booleanos, de tipo `boolean` , indican si algo es verdadero ( `true` ) o falso ( `false` ). Si no se le asigna un valor
+inicial, presentarán, por defecto, el valor `false`.
+
+## Caracteres
+
+El tipo primitivo de caracteres es `char` y sirve para almacenar caracteres Unicode.
+
+En [este enlace](https://unicode-table.com/es/), se pueden consultar todos los caracteres Unicode disponibles:
+
+Dichos caracteres deben ir entre comillas simples. Paralelamente, hay una serie de caracteres especiales que deben
+declararse como se muestra en la siguiente tabla:
+
+<table>
+  <thead>
+    <tr>
+      <th>Caracter</th>
+      <th>Significado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\b</td>
+      <td>Retroceso</td>
+    </tr>
+    <tr>
+      <td>\t</td>
+      <td>Tabulador</td>
+    </tr>
+    <tr>
+      <td> \n </td>
+      <td>Salto de línea</td>
+    </tr>
+    <tr>
+      <td> \r </td>
+      <td>Retorno de carro</td>
+    </tr>
+    <tr>
+      <td> \ " </td>
+      <td>Comillas dobles</td>
+    </tr>
+    <tr>
+      <td> \ ' </td>
+      <td>Comillas simples</td>
+    </tr>
+    <tr>
+      <td> \ \ </td>
+      <td>Barra inclinada</td>
+    </tr>
+  </tbody>
+</table>
+
+## Tamaño y rango de datos almacenados en tipos primitivos
+
+En la siguiente tabla, se muestran los tipos de datos primitivos, el dato que almacenan, su tamaño (es decir, la memoria RAM que ocupan) y el rango de valores que pueden almacenar.
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Dato almacenado</th>
+      <th>Tamaño</th>
+      <th colspan="2">Rango (desde - hasta)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>byte</td>
+      <td>Entero corto</td>
+      <td>8 bits</td>
+      <td>-128</td>
+      <td>127</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>Entero</td>
+      <td>16 bits</td>
+      <td>-32768</td>
+      <td>32767</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>Entero</td>
+      <td>32 bits</td>
+      <td>-2³¹</td>
+      <td>2³¹ -1</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>Entero corto</td>
+      <td>64 bits</td>
+      <td>-2⁶³</td>
+      <td>2⁶³ -1</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>Decimales</td>
+      <td>32 bits</td>
+      <td>-10³²</td>
+      <td>10³²</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>Decimales</td>
+      <td>64 bits</td>
+      <td>-10³⁰⁰</td>
+      <td>10³⁰⁰</td>
+    </tr>
+    <tr>
+      <td>boolean</td>
+      <td>Booleanos</td>
+      <td>1 bit</td>
+      <td colspan="2">true or false</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>Carácter</td>
+      <td>16 bits</td>
+      <td colspan="2">Cualquier carácter Unicode entre comillas</td>
+    </tr>
+  </tbody>
+</table>
+
+## Lenguaje tipificado
+
+Java es un lenguaje muy tipificado, esto es, se trata de un lenguaje muy estricto a la hora de utilizar tipos de datos, motivo por el que las variables de datos distintos son incompatibles. Esto no ocurre en otros lenguajes de programación como C.  
+**Setrata, por tanto de una característica que dota a este lenguaje de una mayor seguridad y robustez**.
+
+Cuando un dato ocupa más espacio del que se le ha asignado, puede producirse un desbordamiento en memoria; así, puede ocurrir que, al necesitar más espacio, sobrescriba otro dato ya existente. Por suerte, al tratarse de un lenguaje altamente tipificado, Java no permite el desbordamiento de memoria. Además, si intentamos asignar un valor fuera de rango a una variable, Java nos devolverá un error de compilación, lo que no ocurre en todos los lenguajes.
+
+---
+
+# Declaración y asignación de variables y constantes
+
+## Declaración
+
+Al escribir un programa, siempre debemos «declarar la variable o la constante», es decir, indicar su identificador, así como el tipo al que pertenece, antes de utilizarlas. Una **variable** puede declararse de la siguiente forma (en pseudocódigo):
+
+```java
+  tipo identificador;
+```
+
+Donde **«tipo»** se refiere al tipo de datos que almacenará la variable —`int` (entero), `char` (carácter), `boolean` (booleano)...
+— mientras que **«identificador»** es el nombre asignado a esta.
+
+**Ejemplos de declaración de variables:**
+
+```java
+package unidad2;
+public class EjemplosDeclaracionVariables {
+  public static void main(String[] args) {
+    int num;
+    char nom1, nom2;
+    boolean test;
+  }
+}
+```
+
+Como podemos observar en el ejemplo anterior, una variable se puede declarar sola, pero también podemos declarar dosvariables del mismo tipo siempre que se encuentren separadas por comas. Además, podemos ver la declaración de una variable tipo `boolean` que ya presenta, por defecto, el valor `false` .
+
+Una **constante** se declara del mismo modo, pero añadiendo, además, la palabra reservada final al inicio (lo que implica que a esa variable solo se le puede asignar un valor una única vez y que este tampoco podrá ser modificado), quedando de este modo (psudocódigo):
+
+`final tipo identificador;`
+
+**Ejemplos de declaración de constantes:**
+
+```java
+package unidad2;
+public class EjemplosDeclaracionConstantes {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    final int NUM;
+    final char NOM1, NOM2;
+  }
+}
+```
+
+## Asignación
+
+A las variables y constantes declaradas, se les pueden asignar valores. Para ello, se utiliza el **operador de asignación `=`**.  
+Cuando asignamos un valor a una variable, esta se inicializa, de manera que iniciar una variable equivale a asignarle un valor. Estos valores podrán asignarse en el momento de la declaración de la variable o posteriormente, en otra línea de código. Además, se pueden asignar valores a variables y constantes del mismo tipo en una misma línea.
+
+**Ejemplos de asignación de variables y constantes:**
+
+```java
+public class EjemplosAsignacion {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    int dias = 30;
+    int minutos = 60, horas = 24;
+    final double GRAVEDADTIERRA = 9.807;
+    final int AÑO = 365;
+  }
+}
+```
+
+Como ya hemos indicado, estos valores también pueden asignarse después de la declaración, en cuyo caso ya no es
+necesario indicar el tipo. Asimismo, mientras que en el caso de las constantes los valores solo pueden asignarse una vez, en
+las variables estos pueden cambiar.
+
+**Ejemplo de asignación de variables y constantes después de la declaración:**
+
+```java
+public class EjemplosAsignacion2 {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    int dias;
+    int minutos, horas;
+    final double GRAVEDADTIERRA;
+    final int AÑO;
+
+    dias = 30;
+    minutos = 60; horas = 24;
+    GRAVEDADTIERRA = 9.807;
+    AÑO = 365;
+  }
+}
+```
+
+## Conversión de tipos (casting)
+
+Se denomina casting al proceso que consiste en transformar o convertir una variable de un tipo primitivo a otro. También se
+puede usar para convertir un objeto de una clase en otro objeto de otra clase, aunque, para ello, es necesario que exista una
+relación de herencia entre ellas (más adelante, nos adentraremos en el concepto de herencia y en sus implicaciones). No
+obstante, por el momento, solo vamos a tratar la conversión entre tipos primitivos.
+
+Dentro de la conversión de tipos, podemos distinguir dos clases: el **casting implícito** y el **casting explícito**. A
+continuación, nos ocuparemos de cada uno de ellos recurriendo a un ejemplo.
+
+El casting implícito se realiza de forma automática y se produce cuando una variable de un tipo ocupa un contenedor más
+grande del que le corresponde.
+
+```java
+public class CastingImplicito {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    int numero1 = 100;
+    long numero2 = numero1;
+  }
+}
+```
+
+En este ejemplo, observamos cómo la variable «numero1» es de tipo entero, así que el valor almacenado en un `int` se
+convertirá a `long` al asignarse «numero2», que es de tipo `long` y que, por tanto, es un contenedor más grande.
+
+Por otro lado, tenemos el casting explícito, donde tendremos que escribir código. Se produce cuando colocamos un valor
+grande en un contenedor pequeño. Debemos proceder con cuidado en este tipo de conversiones, ya que, al almacenarse en
+contenedores más pequeños, pueden ocasionar una pérdida de información.
+
+```java
+public class CastingExplicito {
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    double numero1 = 30.501;
+    int numero2 = (int)numero1;
+    System.out.println(numero2);
+  }
+}
+```
+
+En el ejemplo anterior, disponemos de una variable «numero1» de tipo `double` que se refiere a un valor en decimales. La
+segunda variable, «numero2», es de tipo `int` y le asignamos el mismo valor que a la primera variable; no obstante, dado
+que a la primera variable le corresponde un contenedor más grande y queremos pasarla a un contenedor más pequeño,
+debemos convertirla, indicando entre paréntesis en qué tipo de variable queremos transformarla. Si imprimimos por
+pantalla el valor de la variable «numero2», comprobaremos que, durante la conversión, se ha perdido información, pues no
+se muestra su parte decimal.
+
+---
+
+# Comentarios
+
+Los comentarios son notas que se pueden añadir al código con el objetivo de facilitar su comprensión. Se trata de una
+**buena práctica**, ya que facilita el mantenimiento del código; además, si varias personas trabajan en un mismo proyecto,
+permite que todas ellas permanezcan al tanto de los cambios.
+
+**Tipos de comentarios en Java**
+
+> - **Comentario hasta final de línea.** Se trata de un comentario de una sola línea y comprende todo el texto que va a continuación de // hasta el final de línea.
+> - **Comentario multilínea.** Es un comentario que se extiende a lo largo de varias líneas y que comienza por /_ y termina en _/.
+> - **Comentario de documentación.** Similar al comentario multilínea, pero se usa para generar documentación de código.
+
+```java
+package unidad2;
+public class Comentarios {
+  public static void main(String[] args) {
+    //Esto es un comentario en una línea.
+    /*Esto es un comentario multilínea y,
+    * como se puede observar, cada línea adicional empieza con un
+    * asterisco y, para cerrar, asterisco y barra invertida.
+    */
+    /**Esto es un comentario de documentación,
+    * es muy similar al comentario multilínea,
+    * pero a diferencia de este será utilizado
+    * para generar documentación del código.
+    */
+  }
+}
+```
+
+---
+
+# Operadores
+
+## Operadores aritméticos
+
+Los operadores aritméticos permiten efectuar operaciones aritméticas con las variables y las constantes. En la siguiente
+tabla, se muestran los operadores aritméticos en Java, su función y un ejemplo de uso en el código:
+
+<table>
+  <thead>
+    <tr>
+      <th>Operador</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`+`</td>
+      <td>Suma o número positivo</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int suma = a + b;<br></br>
+        //suma tendrá el valor 5 + 2 = 7
+      </td>
+    </tr>
+    <tr>
+      <td>`-`</td>
+      <td>Resta o número negativo</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int resta = a - b;<br></br>
+        //resta tendrá el valor 5 - 2 = 3
+      </td>
+    </tr>
+    <tr>
+      <td>`*`</td>
+      <td>Producto</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int prod = a * b;<br></br>
+        //prod tendrá el valor 5 * 2 = 10
+      </td>
+    </tr>
+    <tr>
+      <td>`/`</td>
+      <td>División</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int div = a / b;<br></br>
+        //div tendrá el valor 5 / 2 = 2.5
+      </td>
+    </tr>
+    <tr>
+      <td>`%`</td>
+      <td>Módulo (resto de la división entera)</td>
+      <td>
+        int a = 5, b = 2;<br></br>
+        int mod = a % b;<br></br>
+        //mod tendrá el valor 5 % 2 = 1
+      </td>
+    </tr>
+    <tr>
+      <td>`++`</td>
+      <td>Incrementar en uno</td>
+      <td>
+        int a = 5;<br></br>
+        int inc = a++;<br></br>
+        //inc tendrá el valor 5 + 1 = 6
+      </td>
+    </tr>
+    <tr>
+      <td>`--`</td>
+      <td>Decrementar en uno</td>
+      <td>
+        int a = 5;<br></br>
+        int dec = a--;<br></br>
+        //dec tendrá el valor 5 - 1 = 4
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Operadores de asignación
+
+El operador de asignación permite asignar valores a una variable. Así, si una variable posee un valor previo y se realiza una
+asignación, dicho valor será reemplazado por el nuevo. El más utilizado es el `=`, pero existen otros tipos.
+
+### Operadores de asignación compuestos
+
+Estos operadores solo se pueden utilizar cuando la variable a la que se le asigna el valor está implicada en la operación que
+se va a asignar.
+
+<table>
+  <thead>
+    <tr>
+      <th>Operador</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`+=`</td>
+      <td>Se asigna el valor actual de la variable más elvalor indicado.</td>
+      <td>
+        int a = 5;<br></br>
+        a+=2;<br></br>
+        //a tendrá el valor 5 + 2 = 7
+      </td>
+    </tr>
+    <tr>
+      <td>`-=`</td>
+      <td>Se asigna el valor actual de la variable menos el valor indicado</td>
+      <td>
+        int b = 5;<br></br>
+        b-=2;<br></br>
+        //b tendrá el valor 5 - 2 = 3
+      </td>
+    </tr>
+    <tr>
+      <td>`*=`</td>
+      <td>Se asigna el valor actual de la variable multiplicado por el valor indicado</td>
+      <td>
+        int c = 5;<br></br>
+        c*=2;<br></br>
+        //c tendrá el valor 5 * 2 = 10
+      </td>
+    </tr>
+    <tr>
+      <td>`/=`</td>
+      <td>Se asigna el valor actual de la variable más elvalor indicado.</td>
+      <td>
+        int a = 5;<br></br>
+        a+=2;<br></br>
+        //a tendrá el valor 5 + 2 = 7
+      </td>
+    </tr>
+    <tr>
+      <td>`%=`</td>
+      <td>
+        Se asigna el resto de la división del valor actual de la variable entre el valor indicado.
+      </td>
+      <td>
+        int d = 5;<br></br>
+        d% = 2;<br></br>
+        //d tendrá el valor 5 % 2 = 1
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Operadores condicionales
+
+Los operadores condicionales sirven para comparar valores y siempre devuelven valores booleanos. En la siguiente tabla, se
+muestran los operadores condicionales disponibles en Java, su función y un ejemplo de código para cada uno de ellos:
+
+<table>
+  <thead>
+    <tr>
+      <th>Operador</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        `<`
+      </td>
+      <td>
+        **«Menor que».** Devuelve `true` si el valor de la variable de la izquierda es menor que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a < b;<br></br>
+        //comp tendrá valor true porque 2 es menor que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `>`
+      </td>
+      <td>
+        **«Mayor que».** Devuelve `true` si el valor de la variable de la izquierda es mayor que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a \> b;<br></br>
+        //comp tendrá valor false porque 2 no es mayor que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `<=`
+      </td>
+      <td>
+        **«Menor o igual que».** Devuelve `true` si el valor de la variable de la izquierda es menor o igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a \<= b;<br></br>
+        //comp tendrá valor true porque 2 es menor o igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `>=`
+      </td>
+      <td>
+        **«Mayor o igual que».** Devuelve `true` si el valor de la variable de la izquierda es mayor o igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a \>= b;<br></br>
+        //comp tendrá valor false porque 2 no es mayor ni igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `==`
+      </td>
+      <td>
+        **«Igual».** Devuelve `true` si el valor de la variable de la izquierda es igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a == b;<br></br>
+        //comp tendrá valor false porque 2 no es igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `!=`
+      </td>
+      <td>
+        **«Distinto».** Devuelve `true` si el valor de la variable de la izquierda no es igual que el valor de la variable de la derecha.
+      </td>
+      <td>
+        int a = 2, b = 3;<br></br>
+        boolean comp = a != b;<br></br>
+        //comp tendrá valor true porque 2 no es igual que 3
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `!`
+      </td>
+      <td>
+        **«Operador lógico NO».** Sirve para negar una condición. Se usa con booleanos.
+      </td>
+      <td>
+        boolean a = true;<br></br>
+        boolean b = !a;<br></br>
+        //b tendrá valor false porque es el contrario de a (true)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `&&`
+      </td>
+      <td>
+        **«Operador lógico AND».** Devuelve `true` si las dos condiciones evaluadas son verdaderas. Se usa con condiciones o valores booleanos.
+      </td>
+      <td>
+        boolean a = true, b = false;<br></br>
+        boolean comp = a && b;<br></br>
+        //comp tendrá el valor false porque a y b no son igual a true
+      </td>
+    </tr>
+    <tr>
+      <td>
+        `||`
+      </td>
+      <td>
+        **«Operador lógico OR».** Devuelve `true` si al menos una de las condiciones evaluadas es verdadera. Se usa con condiciones o valores booleanos.
+      </td>
+      <td>
+        boolean a = true, b = false;<br></br>
+        boolean comp = a && b;<br></br>
+        //comp tendrá el valor false porque a y b no son igual a true
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Precedencia
+
+La precedencia permite determinar qué operadores se ejecutarán antes que otros. A igual precedencia, las operaciones se
+realizan en el mismo orden en el que se escriben: de izquierda a derecha. El orden de precedencia de las operaciones
+básicas en Java es el que se muestra en la siguiente tabla. Los operadores del mismo orden tienen la misma precedencia.
+Así, por ejemplo, la suma y la resta presentan la misma precedencia.
+
+<table>
+    <thead>
+    <tr>
+      <th>Orden</th>
+      <th>Operadores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        `()` `[]`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        `++` `--` `!`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        `*` `/` `%`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        `-`
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        `>` `>=` `<` `<=`
+      </td>
+    </tr>
+  </tbody>
+</table>
