@@ -318,7 +318,7 @@ En Java, las estructuras repetitivas se implementan mediante:
 
 Un ciclo o bucle `while` comienza con la comprobación de una condición para determinar si es cierta o falsa. Si la condición es cierta, se iniciaría la ejecución del bloque de instrucciones dentro del `while` , que seguiría ejecutándose continuamente hasta que la condición se convirtiese en falsa, momento en el que se abandonaría el bucle y el programa continuaría con su ejecución. Normalmente, cuando se ejecutan las instrucciones del bucle `while` , el valor de la variable va cambiando a cada vuelta de bucle hasta que la condición deje de cumplirse.
 
-En un ciclo `while`, **la condición se comprueba al principio del bucle**, de modo que las instrucciones que lo conforman se ejecutan **0 o más veces**, ya que si la condición no se cumpliera desde el principio, no entraría en el bucle. Un ciclo `while` se escribiría de la siguiente forma:
+En un bucle `while`, **la condición se comprueba al principio del bucle**, de modo que las instrucciones que lo conforman se ejecutan **0 o más veces**, ya que si la condición no se cumpliera desde el principio, no entraría en el bucle. Un bucle `while` se escribiría de la siguiente forma:
 
 ```java
 public class EjemploWhile {
@@ -356,7 +356,7 @@ public class EjemploWhile2 {
     int `i` = 0;
     int suma = 0;
 
-    //Inicio del ciclo while con su condición
+    //Inicio del bucle while con su condición
     while(i < 10) {
       suma = suma + i;
       `i` +=1;
@@ -371,11 +371,11 @@ En este ejemplo, mientras `i` presente un valor inferior a 10, la variable suma 
 
 ---
 
-## Ciclo `do-while`
+## Bucle `do-while`
 
 Se trata de un bucle muy similar al bucle `while` , con la diferencia de que, primero, se ejecutan las instrucciones, mientras que **la condición se comprueba al final**; de este modo, se consigue que el programa ejecute las instrucciones del bucle **al menos una vez**. A continuación, se ejecutarán las instrucciones mientras la condición sea **cierta**. Así, cuando la condición no se cumpla, se saldrá del bucle.
 
-Por tanto, la diferencia fundamental entre el bucle `while`y el bucle `do-while` consiste en que las instrucciones de un bucle `while` puede que no se ejecuten si la condicion es, inicialmente, falsa. De esta forma, un ciclo `do-while` quedaria expresado del siguiente modo:
+Por tanto, la diferencia fundamental entre el bucle `while`y el bucle `do-while` consiste en que las instrucciones de un bucle `while` puede que no se ejecuten si la condicion es, inicialmente, falsa. De esta forma, un bucle `do-while` quedaria expresado del siguiente modo:
 
 ```java
 public class EjemploDoWhile {
@@ -428,7 +428,7 @@ En este ejemplo, se muestran tres variables. El programa entrará en el bucle `d
 
 ---
 
-## Ciclo `for`
+## Bucle `for`
 
 Un `for` permite que una instrucción o un bloque de instrucciones **se repita un numero determinado de veces** mientras se cumple la condicon. Los bucles `for`son los más adecuados **cuando se conoce el número de veces que se van a repetir las instrucciones**.
 
