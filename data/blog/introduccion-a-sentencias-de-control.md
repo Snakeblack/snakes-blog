@@ -319,3 +319,287 @@ En Java, las estructuras repetitivas se implementan mediante:
 Un ciclo o bucle `while` comienza con la comprobación de una condición para determinar si es cierta o falsa. Si la condición es cierta, se iniciaría la ejecución del bloque de instrucciones dentro del `while` , que seguiría ejecutándose continuamente hasta que la condición se convirtiese en falsa, momento en el que se abandonaría el bucle y el programa continuaría con su ejecución. Normalmente, cuando se ejecutan las instrucciones del bucle `while` , el valor de la variable va cambiando a cada vuelta de bucle hasta que la condición deje de cumplirse.
 
 En un ciclo `while`, **la condición se comprueba al principio del bucle**, de modo que las instrucciones que lo conforman se ejecutan **0 o más veces**, ya que si la condición no se cumpliera desde el principio, no entraría en el bucle. Un ciclo `while` se escribiría de la siguiente forma:
+
+```java
+public class EjemploWhile {
+  public static void main(String[] args) {
+    instrucción1;
+    instrucción2;
+
+    while (condición) { //Inicio del bucle while
+      instrucción3;
+      instrucción4;
+
+    }//Fin del bucle while
+    instrucción5;
+    instrucción6;
+  }
+}
+```
+
+**Ejecución del bucle `while`:**
+
+> 1. El programa ejecuta las instrucciones hasta llegar al `while`.
+> 2. Se evalúa la condición del `while`.
+> 3. Si el resultado es `false`, las instrucciones no se ejecutan y el programa sigue ejecutandose por la siguiente instrucción a continuación del `while`.
+> 4. Si el resultado es `true`, se ejecutan las instrucciones que contiene el bucle y se vuelve al paso 2 hasta que la condicion se convierta en `false`.
+
+Esta técnica se conoce como lectura adelantada o anticipada y es la forma correcta de utilizar la estructura `while`. Se debe usar cuando **no sabemos el número de iteraciones que se van a realizar**, sino que esto depende de la condición.
+Las instrucciones se ejecutan mientras la condicion sea **cierta**.
+
+Ejemlo:
+
+```java
+public class EjemploWhile2 {
+  public static void main(String[] args) {
+    //Declaración de variables
+    int `i` = 0;
+    int suma = 0;
+
+    //Inicio del ciclo while con su condición
+    while(i < 10) {
+      suma = suma + i;
+      `i` +=1;
+    } //Fin del bucle while
+    System.out.println(suma);
+    System.out.println("Aqui termina el programa");
+  }
+}
+```
+
+En este ejemplo, mientras `i` presente un valor inferior a 10, la variable suma toma su valor, más el valor de esa variable i en ese momento. En la siguiente línea de código el valor de `i` se incrementa en uno a cada vuelta de bucle. En la primera vuelta, `i` presenta el valor 0; en la segunda, el valor 1; en la tercera, el valor 2; y así sucesivamente hasta que `i` valga 10, momento en el que la condición ya no se cumple y, por tanto, se abandonaría el bucle para continuar con la ejecución. El programa lo que ha hecho es un sumatorio de los valores que toma `i` desde el 0, hasta el 9, ya que cuando `i` vale 10 la condición deja de cumplirse como se ha dicho.
+
+---
+
+## Ciclo `do-while`
+
+Se trata de un bucle muy similar al bucle `while` , con la diferencia de que, primero, se ejecutan las instrucciones, mientras que **la condición se comprueba al final**; de este modo, se consigue que el programa ejecute las instrucciones del bucle **al menos una vez**. A continuación, se ejecutarán las instrucciones mientras la condición sea **cierta**. Así, cuando la condición no se cumpla, se saldrá del bucle.
+
+Por tanto, la diferencia fundamental entre el bucle `while`y el bucle `do-while` consiste en que las instrucciones de un bucle `while` puede que no se ejecuten si la condicion es, inicialmente, falsa. De esta forma, un ciclo `do-while` quedaria expresado del siguiente modo:
+
+```java
+public class EjemploDoWhile {
+  public static void main(String[] args) {
+    instrucción1;
+    instrucción2;
+
+    do { //Inicio del bucle do ... while
+      //Estas instrucciones se ejecutarían al menos una vez
+      instrucción3;
+      instrucción4;
+    } while(condición); //Fin do ... while
+  }
+}
+```
+
+**Ejecución de un bucle `do-while`**
+
+> 1. Se ejecutan las primeras instrucciones.
+> 2. Se ejecutan las instrucciones de la instruccion `do{...}`.
+> 3. Se evalúa la condición del `while`.
+> 4. Si el resultado es `false`, las instrucciones no se ejecutan y el programa sigue ejecutandose por la siguiente instrucción a continuación del `while`.
+> 5. Si el resultado es `true`, se ejecutan las instrucciones que contiene el bucle y se vuelve al paso 2 hasta que la condicion se convierta en `false`.
+
+La condición se comprueba al final del bucle, asi que el bloque de instrucciones se ejecutará al menos una vez.
+
+Ejemplo:
+
+```java
+package unidad3;
+public class EjemploDoWhile2 {
+  public static void main(String[] args) {
+    // Declaración de variables
+    int = 1;
+    int num2 = 2;
+    int res;
+
+    do {
+      // Inicio del bucle do ... while
+      res = + num2;
+      ++;
+    }while(<1);
+
+    /*La condición se comprueba al final, por lo que con el bucle do while, nos aseguramos de que las instrucciones se ejecuten al menos una vez. */
+  }
+}
+```
+
+En este ejemplo, se muestran tres variables. El programa entrará en el bucle `do-while` al menos una vez y ejecutará las instrucciones del bucle mientras se cumpla la condición que se indica en el `while`. Cuando la condición no se cumpla, se saldrá del bucle y se ejecutará la siguiente instrucción.
+
+---
+
+## Ciclo `for`
+
+Un `for` permite que una instrucción o un bloque de instrucciones **se repita un numero determinado de veces** mientras se cumple la condicon. Los bucles `for`son los más adecuados **cuando se conoce el número de veces que se van a repetir las instrucciones**.
+
+Sintaxis:
+
+```java
+package unidad3;
+public class EjemploFor {
+  public static void main(String[] args) {
+    instrucción1;
+    instrucción2;
+
+    for(inicialización; condición; incremento/decremento) {
+      //Inicio del bucle for
+      instrucción3;
+      instrucción4;
+    } //Fin del for
+    instrucción5;
+    instrucción6;
+  }
+}
+```
+
+Justo a continuación de la palabra reservada `for` y entre paréntesis, se encuentran tres partes separadas por punto y coma:
+
+- **Inicialización**
+
+  Es la parte donde la variable de control del bucle adopta un valor inicial. Enel caso de que contemos con más de una variable en el inicio, estas deben ir separadas por comas.
+
+- **Condición**
+
+  Se trata de una expresón booleana que se va a evaluar. En función de si el resutaldo es `true` o `false`, el codigo del `for` se ejecutará o no.
+
+- **Incremento/decremento**
+
+  Estra expresion modifica a variable o variables dela inicialización, dando, por tanto, una vuelta de ciclo. Como ocurre con la zona de inicialización, pueden existir varias expresiones para modificar las variables, en cuyo caso deben ir separadas por comas.
+
+Las tres zonas son **opcionales**, pero al menos una de ellas debe estar presente. Si en alguna ocasión no fuese necesario escribir alguna de ellas, se puede dejar el espacio en blanco, **pero los puntos y comas deben estar presentes**.
+
+**Ejecución de un bucle `for`**
+
+> 1. Se inicializa la variable o variables de control.
+> 2. Se evalúa la condición.
+> 3. Si el resultado es `false`, las instrucciones no se ejecutan y el programa sigue ejecutandose por la siguiente instrucción a continuación del `for`.
+> 4. Si el resultado es `true`, se ejecutan las instrucciones que contiene el `for`.
+> 5. Se ejecuta la expresión de incremento/decremento.
+> 6. Se vuelve al paso 2.
+
+Como ocurría con el bucle `while`, un bucle `for` se puede ejecutar **0 o más veces**. Lo que los diferencia es que el bucle `for` se debe utilizar cuando se conoce el número de veces que se va a ejecutar según la condición.
+
+---
+
+## ¿Qué secuencia repetitiva usar?
+
+Aunque un `for` se puede utilizar tambien cuando no se sabe a _priori_ el numero de iteraciones que se van a realizar, esta instrucción está especialmente indicada para bucles donde se conoce el número de pasadas.
+
+Como regla practica, podemos indicar:
+
+**¿Qué bucle usar?**
+
+> - La instrucción `for` se utiliza, generalmente, cuando se conoce el nùmero de iteraciones que se van a realizar.
+> - Las instrucciones `while` y `do-while` se utilizan cuando no se conoce el número de iteraciones que se van a realizar.
+> - La instrucción `do-while` será más adecuada que la instrucción `while` cuando el bloque de instrucciones se deba repetir al menos una vez.
+
+---
+
+## Bucles anidados
+
+Hablamos de bucles anidados cuando se incluyen instrucciones `for`, `while` o `do-while` dentro de otros bucles. Los bucles anidados se utilizan cuando se necesitan realizar varias iteraciones de un bucle dentro de otra iteración de otro bucle.
+
+**Sintaxis para anidar dos bucles `for`**
+
+```java
+package unidad3;
+public class EjemploForAnidado {
+  public static void main(String[] args) {
+    instrucción1;
+    instrucción2;
+
+    for(inicialización; condición; incremento/decremento) {
+      //For 1
+      instrucción3;
+      instrucción4;
+
+      for(inicialización; condición; incremento/decremento) {
+        //For 2
+        instrucción5;
+      } //Fin for 2
+
+    } //Fin for 1
+    instrucción6;
+    instrucción7;
+  }
+}
+```
+
+**Sintaxis para anidar dos bucles `while`**
+
+```java
+package unidad3;
+public class EjemploWhileAnidado {
+  public static void main(String[] args) {
+
+    instrucción1;
+    instrucción2;
+
+    while(condición1) { //While 1
+      instrucción3;
+
+      while(condición2) { //While 2
+        instrucción4;
+        instrucción5;
+
+      } //Fin while 2
+    } //Fin while 1
+    instrucción6;
+  }
+}
+```
+
+**Sintaxis para anidar dos bucles `do-while`**
+
+```java
+package unidad3;
+public class EjemploDoWhileAnidado {
+  public static void main(String[] args) {
+    instrucción1;
+    instrucción2;
+
+    do { //do while 1
+      instrucción3;
+
+      do { //do while 2
+        instrucción4;
+
+      } while(condición); //Fin do while 2
+      instrucción5;
+
+    } while(condición); //Fin do while 1
+
+    instrucción6;
+    instrucción7;
+  }
+}
+```
+
+Los bucles se pueden anidar aunque sean de tipos distintos. Así, por ejemplo, podriamos anidar un bucle `for` dentro de un bucle `while` o un bucle `do-while`, y viceversa.
+
+```java
+package unidad3;
+public class EjemploBuclesAnidados {
+  public static void main(String[] args) {
+    instrucción1;
+
+    while(condición) { //Inicio while
+      instrucción2;
+
+      do { //Inicio do while
+        instrucción3;
+
+        for(inicialización; condición; incremento/decremento) {
+          //Inicio for
+          instrucción4;
+
+        }//Fin del for
+
+      } while(condición); //Fin do while
+      instrucción5;
+
+    } //Fin del while
+    instrucción6;
+  }
+}
+```
