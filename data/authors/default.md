@@ -16,5 +16,3 @@ Actualmente el stack que más uso es **MERN**, con frameworks como **Nextjs** (e
 Estoy constantemente actualizando mis conocimientos para estar en la vanguardia del desarrollo web, actualmente estoy aprendiendo o interesado en **Svelte**, **Deno**, **Fresh**, **SolidJS** y Bun (alguno de ellos aun en fase muy temprana o BETA).
 
 Tengo **pasión por la tecnología y la informática**, es por esto que uno de **mis hobbys** es leer novedades, ver videos y/o estudiar de forma aficionada **ciberseguridad**, **Inteligencia artificial**, **sistemas y redes**.
-
-Para más información visita mi [portfolio.](https://mretamozo.com)
