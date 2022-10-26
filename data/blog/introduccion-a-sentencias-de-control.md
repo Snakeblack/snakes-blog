@@ -31,7 +31,7 @@ summary: 'En este artículo vamos a ver las sentencias de control más comunes e
 Las sentencias de control determinan la secuencia de ejecución de las sentencias de un programa,es decir, controlan el flujo de ejecución de un programa.
 
 Todos los programas contienen **instrucciones** que, generalmente, se ejecutan una a continuación de la otra según la
-secuencia en la que el programador o la programadora ha escrito el código. Sin embargo, en ciertas ocasiones, es necesario
+secuencia en la que el programador ha escrito el código. Sin embargo, en ciertas ocasiones, es necesario
 romper esa secuencia de ejecución para que una serie de instrucciones se ejecuten o no dependiendo de una determinada
 **condición** o bien para que se **repitan** un número determinado de veces.
 
@@ -54,7 +54,7 @@ Por consiguiente, la estructura secuencial constituye el **orden natural** de ej
 
 Un ejemplo de un programa Java con estructura secuencial sería aquel que lee dos números por teclado y los muestra por pantalla. Así, las instrucciones se ejecutan en el mismo orden en que aparecen escritas.
 
-En el siguiente ejemplo, podemos observar un pequeño programa donde se le pide al usuario o usuaria que introduzca dos números y, posteriormente, se muestran por pantalla.
+En el siguiente ejemplo, podemos observar un pequeño programa donde se le pide al usuario que introduzca dos números y, posteriormente, se muestran por pantalla.
 
 ```java
 import java.util.Scanner;
@@ -139,7 +139,7 @@ public class EjemploCondicionalSimple {
 }
 ```
 
-En este ejemplo, el programa pide al usuario o usuaria que introduzca los días del mes de febrero. El programa seguirá
+En este ejemplo, el programa pide al usuario que introduzca los días del mes de febrero. El programa seguirá
 ejecutándose y, cuando llegue a la condición, la evaluará, ejecutando el código que contiene si la condición se cumple y, si
 no es así, saltando ese bloque de código y continuando con su ejecución.
 
@@ -185,7 +185,7 @@ public class EjemploCondicionalDoble {
 }
 ```
 
-En este ejemplo, se solicita al usuario o usuaria que introduzca su edad por medio del teclado. A continuación, se abre la
+En este ejemplo, se solicita al usuario que introduzca su edad por medio del teclado. A continuación, se abre la
 condición y se evalúa. Si la condición se cumple, se ejecutarán las líneas de código correspondientes, el programa saltará
 aquella parte donde la condición no fuera cierta y seguirá ejecutándose. En cambio, si el programa llega a la condición y
 esta no se cumple, saltaría la parte de código correspondiente y ejecutaría aquella donde la condición no se cumple para,
@@ -234,9 +234,9 @@ public class EjemploIfAnidados {
 }
 ```
 
-En este ejemplo, vemos cómo al usuario o usuaria se le pide que introduzca un valor. Dicho valor saltará al bloque de
+En este ejemplo, vemos cómo al usuario se le pide que introduzca un valor. Dicho valor saltará al bloque de
 instrucciones que le corresponda según la condición que se cumpla, se ejecutará la condición y el programa continuará su
-ejecución saltando los bloques de instrucciones donde la condición no se cumpla. En este caso, si el usuario o la usuaria,
+ejecución saltando los bloques de instrucciones donde la condición no se cumpla. En este caso, si el usuario,
 introduce un número comprendido entre 18 y 40, el programa iría a la segunda condición, ejecutaría el código que contiene
 y, posteriormente, saltaría a la última instrucción.
 
@@ -300,7 +300,7 @@ public class EjemploSwitchCase {
 }
 ```
 
-En este ejemplo, el usuario o la usuaria introduce una opción del menú que se mostrará en pantalla. Según la opción elegida, el flujo del programa saltará directamente al bloque de instrucciones correspondiente y, después, obviará el resto de opciones disponibles y continuará la ejecución del programa.
+En este ejemplo, el usuario introduce una opción del menú que se mostrará en pantalla. Según la opción elegida, el flujo del programa saltará directamente al bloque de instrucciones correspondiente y, después, obviará el resto de opciones disponibles y continuará la ejecución del programa.
 
 ---
 
