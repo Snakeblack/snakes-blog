@@ -6,6 +6,12 @@ const projectsData = [
     imgSrc: '/static/images/portfolio.png',
     href: 'https://mretamozo.com',
   },
+  {
+    title: 'Device Manager [BETA]',
+    description: `Aplicacion para la gestion de dispositivos e incidencias. Actualmente en desarrollo`,
+    imgSrc: '/static/images/device-manager.png',
+    href: 'https://github.com/Snakeblack/device-manager',
+  },
 ]
 
 export default projectsData
