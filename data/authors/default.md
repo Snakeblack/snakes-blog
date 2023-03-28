@@ -9,13 +9,7 @@ linkedin: https://www.linkedin.com/in/mmretamozo
 github: https://github.com/snakeblack
 ---
 
-Soy un **programador fullstack** en el desarrollo web, actualmente trabajo en el [CEF (Centro de Estudios Financieros)](https://cef.es) como técnico informático, con experiencia en desarrollo de software vb.net y cursando para la certificación **OCP (Oracle Certified Professional JAVA)**.
-
-Actualmente el stack que más uso es **MERN**, con frameworks como **Nextjs** (el que usa esta web), como **React** - **Firebase**, **Mongo-Express**, etc... Tambien controlo Lenguajes backend como **PHP** y base de datos relacionales como **MySQL y SQL Server**.
-
-Estoy constantemente actualizando mis conocimientos para estar en la vanguardia del desarrollo web, actualmente estoy aprendiendo o interesado en **Svelte**, **Deno**, **Fresh**, **SolidJS** y Bun (alguno de ellos aun en fase muy temprana o BETA).
-
-Tengo **pasión por la tecnología y la informática**, es por esto que uno de **mis hobbys** es leer novedades, ver videos y/o estudiar de forma aficionada **ciberseguridad**, **Inteligencia artificial**, **sistemas y redes**.
+¡Hola! Soy un apasionado **programador fullstack** con experiencia en desarrollo web. Actualmente trabajo en el CEF y estoy cursando para obtener la certificación OCP de Java. Me encanta estar al tanto de las últimas tendencias en el desarrollo web, y estoy interesado en aprender nuevas tecnologías. Fuera del trabajo, disfruto explorando temas como la ciberseguridad, inteligencia artificial, sistemas y redes.
 
 Si quieres apoyar mi trabajo puedes hacerlo a través de:
 
