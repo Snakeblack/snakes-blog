@@ -1,0 +1,498 @@
+[33mcommit ed30cb7adf307e2f1431ae7c7d8eae7290fcb9a0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sun Feb 25 00:12:20 2024 +0100
+
+    yaml
+
+[33mcommit f5c75cd85933bc3256c2c02516dc329603fe6323[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sun Feb 25 00:00:46 2024 +0100
+
+    añadimos engines: node -> 20.x
+
+[33mcommit 689456e54457c4a003e16f3028cd4f22bbaad15f[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sat Feb 24 23:57:48 2024 +0100
+
+    pequeño cambio
+
+[33mcommit bb29fb3fdf04b0e40c85e45dbd53e000e8cd1b8a[m[33m ([m[1;32mmain[m[33m)[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sat Feb 24 23:51:37 2024 +0100
+
+    hotfix: quitamos import de Footnotes
+
+[33mcommit af83e9300e4bce4e55a6290f74d509b1323591d3[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sat Feb 24 23:50:43 2024 +0100
+
+    cambios en la configuración y nuevo articulo en el blog
+
+[33mcommit 67b42cacbf27b918d39971ad451dd4189c6caece[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sat Feb 24 14:14:44 2024 +0100
+
+    fix problems version
+
+[33mcommit 5b00d89d84cc49d817235801290d11e895d59372[m
+Author: Manuel Retamozo <michael.retamozo@gmail.com>
+Date:   Sat Feb 24 14:02:58 2024 +0100
+
+    new config vscode/settings.json
+
+[33mcommit 2e0f44cc0b13088abc0f5c12512d747a31ecd98f[m
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Tue Mar 28 10:15:50 2023 +0200
+
+    Update Perfil Snakeblack
+
+[33mcommit f8a066912b69a2316af32150386e3d9b60d5cc83[m
+Author: SN4KEBLACK <mretamozo@proton.me>
+Date:   Mon Jan 16 20:57:23 2023 +0100
+
+    subida de nuevo proyecto
+
+[33mcommit a63ab52f8f36621ee6d3a96e7b8354008cad8a98[m
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Wed Nov 2 19:57:08 2022 +0100
+
+    Update default.md
+
+[33mcommit dc262aa6ffdd1df43c3c7cffb38cdec6e1ccd8b9[m
+Merge: 6241ac9 912511b
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Wed Oct 26 18:58:14 2022 +0200
+
+    Merge pull request #24 from Snakeblack/dev
+    
+    update: correciones y añadimos buymecoffee al perfil
+
+[33mcommit 912511bcb538aa93bbf978bf2ba547200189f59b[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Oct 26 18:57:12 2022 +0200
+
+    update: correciones y añadimos buymecoffee al perfil
+
+[33mcommit 6241ac984cf013a25679f93969ea053c533beed9[m
+Merge: e1116fc be597d5
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 20:23:24 2022 +0200
+
+    Merge pull request #23 from Snakeblack/dev
+    
+    hotfix 🔥
+
+[33mcommit be597d5241ae168f6e32e2f1968bbf5145ab09e0[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 20:20:06 2022 +0200
+
+    hotfix 🔥
+
+[33mcommit e1116fca8e0a67f104b0b214a38a689e58fab752[m
+Merge: 5aa585e d367aa4
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 20:18:34 2022 +0200
+
+    Merge pull request #22 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit d367aa4d17e67bf688f40fb4fb7c618ae7ffe76e[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 20:18:05 2022 +0200
+
+    update: perfil
+
+[33mcommit 207f52dc405b11d315aff4ac1efa509014e06334[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 20:17:42 2022 +0200
+
+    update: correcciones del articulo
+
+[33mcommit 5aa585e9a36204938f7544a17a25fb2cadd58d7c[m
+Merge: 0192d2c 0e785df
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 18:56:49 2022 +0200
+
+    Merge pull request #21 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit 0e785df82538fb1f4d3b3a1bce6dca2f79103cda[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Oct 18 18:55:19 2022 +0200
+
+    update: terminamos el articulo. 🔥
+
+[33mcommit 8b90faa36a84ba02b5f992d193c2820ad4edb1a6[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Oct 17 20:54:29 2022 +0200
+
+    add: articulo de sentencias de control
+
+[33mcommit 0192d2c09e611a36a7d6f5f37794d78eb7c838b1[m
+Merge: 4acdc58 5132479
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Sat Oct 8 12:58:54 2022 +0200
+
+    Merge pull request #20 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit 51324796cf493274043310421b487f38b0223a3a[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Sat Oct 8 12:58:16 2022 +0200
+
+    update: articulo terminado
+
+[33mcommit d73ae0fa001e96596c1fda8e9c61f6ba092b05cd[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Fri Oct 7 20:43:36 2022 +0200
+
+    update: añadimos más al articulo 🗒️
+
+[33mcommit 4acdc583ac3299efdadefd24eb8c8553fef8b2fe[m
+Merge: 16bc1d8 0e9976c
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Fri Sep 16 17:57:29 2022 +0200
+
+    Merge pull request #19 from Snakeblack/dev
+    
+    add: articulo de introduccion a Java ☕
+
+[33mcommit 0e9976c1a56d4f8c2c978817c5e4d9d359205fb4[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Fri Sep 16 17:56:31 2022 +0200
+
+    add: articulo de introduccion a Java ☕
+
+[33mcommit 16bc1d877605011df0c6c16a08ff0e55c4a4ba8b[m
+Merge: b4007b9 2bc8ad9
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Mon Aug 15 16:49:34 2022 +0200
+
+    Merge pull request #18 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit 2bc8ad9eab37ddc8c06827babab48117de80c421[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Aug 15 16:48:36 2022 +0200
+
+    update: disable post guide md
+
+[33mcommit c15cadbe04a178a75acccca1b42017b87b0c3eb9[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Aug 15 16:11:13 2022 +0200
+
+    update: update: package.json test
+
+[33mcommit 2c21c6142ef53653407b02c00cb37d1949934c7e[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Aug 15 16:02:26 2022 +0200
+
+    update: fix last post
+
+[33mcommit b4007b9c479e282c93e792ba56729501c607cbdd[m
+Merge: 472f4b1 e1ce6a4
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Sat Aug 13 20:46:53 2022 +0200
+
+    Merge pull request #17 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit e1ce6a4b9df02e3c2ef2074f7797a772a33a41e7[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Sat Aug 13 20:45:42 2022 +0200
+
+    add: nuevo post, personaliza la terminal y plugins
+
+[33mcommit 9c9949f30c213ba6607b2c1511f790bf028645dd[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Fri Jul 22 18:55:46 2022 +0200
+
+    update: author description
+
+[33mcommit 5f133e128064dad2d1daedc1ed9cbc6ca66ce6ea[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Fri Jul 22 18:25:57 2022 +0200
+
+    update: fix ortography 🥸
+
+[33mcommit 472f4b1c200ebd474bf4f807a0bad2c176bf1e1e[m
+Merge: c824a38 1e33b49
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Fri Jul 22 17:46:44 2022 +0200
+
+    Merge pull request #16 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit 1e33b49472767ed5d8c2116b89d82286fcb71568[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Fri Jul 22 16:53:38 2022 +0200
+
+    update: cambios en el post 🔥
+
+[33mcommit 774bc5d4e16975b9f2c26ae276a58f8d0ab4385b[m
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Fri Jul 22 15:03:09 2022 +0200
+
+    update: pasos entrega con git 🗃️
+
+[33mcommit c824a38c8feceb2a48e98b50ae1dc6e6939eadd7[m
+Merge: 3d207af 5b8da9e
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Thu Jul 21 20:58:55 2022 +0200
+
+    Merge pull request #15 from Snakeblack/dev
+    
+    Dev
+
+[33mcommit 5b8da9ed26fe5150b2437ccd0266cd0f06c58652[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Thu Jul 21 20:55:32 2022 +0200
+
+    update: actualizacion del post 🗒️
+
+[33mcommit 18f684fd62e9d5949c773519500f115dca89aeea[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 20 20:56:09 2022 +0200
+
+    update: cambios, aun sin terminar 🤔
+
+[33mcommit 298a4c935b979a83870163ce5c68595b64346fa8[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 20 13:36:23 2022 +0200
+
+    add: nuevo post, aun por terminar 🗒️
+
+[33mcommit 3d207af66b0d18c6a339244949a739473f3a1540[m
+Merge: efbf3da dfaccae
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 18:34:36 2022 +0200
+
+    Merge pull request #13 from Snakeblack/dev
+    
+    update: resize avatar-snakeblack 🐍
+
+[33mcommit dfaccae3ad45a2371b30b42713daaecd4e334e84[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 18:33:37 2022 +0200
+
+    update: resize avatar-snakeblack 🐍
+
+[33mcommit efbf3da94c7a30f206de5e5f7456d4c44ec9ca6c[m
+Merge: 03b7d9d 8bc53be
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 18:21:58 2022 +0200
+
+    Merge pull request #12 from Snakeblack/dev
+    
+    update: avatar-snakeblack 🐍
+
+[33mcommit 8bc53be1a68cf259ec6e6fb6c10858cab9a21492[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 18:19:25 2022 +0200
+
+    update: avatar-snakeblack 🐍
+
+[33mcommit 03b7d9d8ef87dc37d70a57402e75138292e0d17f[m
+Merge: c9d0a43 7561a01
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 17:55:59 2022 +0200
+
+    Merge pull request #11 from Snakeblack/dev
+    
+    add: primer post - snakeblack 🐍
+
+[33mcommit 7561a016c1c6bc307d91ca6e812433279f7780dc[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 17:54:19 2022 +0200
+
+    add: primer post - snakeblack 🐍
+
+[33mcommit c9d0a434d69bd61e6893876a8a33cea3e627ca35[m
+Merge: 8bbf76f 5582a78
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 16:16:32 2022 +0200
+
+    Merge pull request #10 from Snakeblack/dev
+    
+    🗒️
+
+[33mcommit 5582a78efcefec7c5a7db5b5eca46702720d07af[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 16:12:19 2022 +0200
+
+    🗒️
+
+[33mcommit 8bbf76fc996698cf990faed351b9014adf75f89b[m
+Merge: 7ae69f1 baa4bbb
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 05:00:48 2022 +0200
+
+    Merge pull request #9 from Snakeblack/dev
+    
+    Dev hotfixs
+
+[33mcommit baa4bbba6a51c8309cb6261af48d12c7400d49c5[m
+Author: sn4ke-desktop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 04:58:10 2022 +0200
+
+    update: hotfixs 🔥🔧
+
+[33mcommit c76c57693598c4def30771b6f68eb8d36e1d7b2c[m
+Author: sn4ke-desktop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 04:53:41 2022 +0200
+
+    update: hotfixs 🔥🔧
+
+[33mcommit 3b8564d02a6f659bfde04145b6a6225b29938d64[m
+Merge: 866f84c 7ae69f1
+Author: sn4ke-desktop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 03:18:37 2022 +0200
+
+    Merge branch 'main' into dev
+
+[33mcommit 7ae69f1fffa9a9a31017d4a4ee20e0644a17f974[m
+Author: sn4ke-desktop <michael.retamozo@gmail.com>
+Date:   Thu Jul 14 03:17:57 2022 +0200
+
+    update: fix tags and change banner
+
+[33mcommit 866f84cbc9a5b5f09b8a54bda1ca50bc49fc241a[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 20:35:38 2022 +0200
+
+    test: disable primer-post
+
+[33mcommit 768e9fdd47e89ecf2c1e812dda13b6da1826854a[m
+Merge: 0f4d084 65eaab4
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 20:26:30 2022 +0200
+
+    Merge pull request #8 from Snakeblack/master
+    
+    add: primer-post 📒
+
+[33mcommit 65eaab4cbf29f123769265de7e18ca111ffe13ae[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 20:24:14 2022 +0200
+
+    add: primer-post 📒
+
+[33mcommit 0f4d084cc747ab2615266e1901fc7afd3cdccb3d[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 19:31:08 2022 +0200
+
+    update: hotfix 🔥🔧
+
+[33mcommit c0b875ca02e510313e976b1761e448192d66294f[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 19:21:49 2022 +0200
+
+    update: blog a punto (UI) 👾
+
+[33mcommit 18aecfb9559104de3450468f995bada8259770f7[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 13:44:55 2022 +0200
+
+    full fix dependencies 🔧
+
+[33mcommit 0ffabdbeb9bdaf688d1302ae68d8f2edf0b5bf03[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 13:25:46 2022 +0200
+
+    hotfix 🔥🔧
+
+[33mcommit 95b65c87fa0ada235d1de540746b55faf0be0e79[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 13:16:50 2022 +0200
+
+    update: analytics fix 🔧
+
+[33mcommit b19082fef1a9b33917dab1e80530acab696a22c4[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Wed Jul 13 13:06:43 2022 +0200
+
+    update: giscus lint fix 🔧
+
+[33mcommit cbe4c945b0c2d13c284e0555b63436d0c05ac665[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Jul 12 17:58:48 2022 +0200
+
+    test: customCSS giscus 🤔
+
+[33mcommit 4db43011b3b09c1eca384b6e3fab7dd7db79189b[m
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Tue Jul 12 17:54:34 2022 +0200
+
+    test: customCSS giscus 🤔
+
+[33mcommit 85baefbb670200db05da533828f1951be0e85b70[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Jul 12 17:49:13 2022 +0200
+
+    test: customCSS giscus 🤔
+
+[33mcommit bdd6ef43e64f0aa1f22df01d3e076ca9625ce8fb[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Jul 12 17:40:39 2022 +0200
+
+    test: customCSS giscus 2
+
+[33mcommit a1a605e94dea8bfe75008c30b217ee06e5d7a2b8[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Tue Jul 12 17:28:12 2022 +0200
+
+    test: customCSS giscus
+
+[33mcommit 02e3b5ffec3668322510b509004d2aec30ac1654[m
+Merge: 9211b1c 224c98c
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 20:54:19 2022 +0200
+
+    Merge pull request #4 from Snakeblack/main
+    
+    update: fixing build
+
+[33mcommit 224c98c7ea3c34d618466a28b771f4310e64e0df[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 20:51:59 2022 +0200
+
+    update: fixing build 2
+
+[33mcommit 4f4e69e5669a08ae2839603b88185513853f4d48[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 20:47:34 2022 +0200
+
+    update: fixing build
+
+[33mcommit 9211b1ca0be87e904296e3a8b76501bc635add42[m
+Merge: 239c60f f36a3c6
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 19:02:46 2022 +0200
+
+    Merge pull request #2 from Snakeblack/main
+    
+    add: añadiendo logo y metadatos 🪙
+
+[33mcommit f36a3c60ea51611cc7e060515dc70e089541d777[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 19:01:20 2022 +0200
+
+    add: añadiendo logo y metadatos 🪙
+
+[33mcommit 239c60f5884082f91c0b7b963559021e60410246[m
+Author: sn4ke-laptop <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 13:44:25 2022 +0200
+
+    update: mod author name nd rrss
+
+[33mcommit c040dcab937afa461815e5289dde26eae61571b0[m
+Author: Michael Snake <michael.retamozo@gmail.com>
+Date:   Mon Jul 11 13:22:26 2022 +0200
+
+    Initial commit
