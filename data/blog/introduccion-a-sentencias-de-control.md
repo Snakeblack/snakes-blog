@@ -5,7 +5,7 @@ tags:
   [
     'java',
     'programación',
-    'teoria',
+    'teoría',
     'fundamentos',
     'introduccion',
     'sentencias',

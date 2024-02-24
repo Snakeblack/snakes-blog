@@ -1,0 +1,1393 @@
+---
+title: 'Guia rápida de Angular'
+date: '2024-02-24'
+tags: ['angular', 'guia', 'desarrollo web', 'programación', 'teoría', 'comandos', 'atajos']
+draft: false
+summary: 'Explora la última versión de Angular con esta guía rápida. Desde los conceptos básicos hasta las últimas actualizaciones. Descubre cómo aprovechar mejoras de rendimiento, nuevas características y cambios en la sintaxis para potenciar tus proyectos con Angular.'
+layout: PostSimple
+bibliography: references-data.bib
+---
+
+## Indice
+
+- [Comandos básicos ](#comandos-básicos)
+  - [Angular CLI ](#angular-cli)
+- [Template Syntax ](#template-syntax)
+- [Directivas incluídas ](#directivas-incluídas)
+  - [Decoradores de clase para componentes](#decoradores-de-clase-para-componentes)
+- [Ciclo de vida (Lifecycle Hooks) ](#ciclo-de-vida-lifecycle-hooks)
+- [Configuración de rutas y Router ](#configuración-de-rutas-y-router)
+  - [LazyLoad](#lazyload)
+  - [Routerlink](#routerlink)
+  - [RouterLinkActive](#routerlinkactive)
+- [Protección de rutas ](#protección-de-rutas)
+- [Guards con clases](#guards-con-clases)
+- [Pipes](#pipes)
+- [Rxjs](#rxjs)
+- [Signals (Angular 17+)](#signals)
+  - [Writable Signals](#writable-signals)
+    - [Set](#set)
+    - [Update](#update)
+    - [Mutar estado](#mutar-estado)
+    - [Computed signals](#computed-signals)
+  - [Effects](#effects)
+    - [Usos Comunes de efectos](#usos-comunes-de-efectos)
+    - [Cuando NO usar efectos](#cuando-no-usar-efectos)
+    - [Effect Injection Context](#effect-injection-context)
+    - [Effect cleanup functions](#effect-cleanup-functions)
+- [Nuevo flujo de control](#nuevo-flujo-de-control)
+  - [@if](#if)
+  - [@else](#else)
+  - [@for](#for)
+  - [@Empty](#empty)
+  - [@switch](#switch)
+  - [@defer y @placeholder](#defer-y-placeholder)
+  - [@loading](#loading)
+  - [@error](#error)
+- [Defers Triggers](#defers-triggers)
+  - [when &lt;condition&gt;](#when)
+  - [Posibles opciones "on"](#posibles-opciones-on)
+  - [On Interaction - formas](#on-interaction---formas)
+  - [Prefetching](#prefetching)
+- [Glosario de Términos](#glosario-de-términos)
+
+---
+
+# Comandos básicos <a name="comandos-básicos"></a>
+
+Instalar Angular CLI:
+
+<small>Ejecutar esto como administrador</small>
+
+```bash
+npm install -g @angular/cli
+```
+
+Iniciar un proyecto nuevo:
+
+<small>Dos formas</small>
+
+```bash
+npm init @angular my-app
+ng new my-app
+```
+
+## Angular CLI <a name="angular-cli"></a>
+
+Estos son unos de los comandos comunes para usarlos en Angular CLI:
+
+- Comandos de ayuda:
+
+```bash
+ng --help
+ng generate --help
+ng build --help
+```
+
+- Comandos para generar componentes:
+
+<table>
+  <thead>
+    <tr>
+      <th>Comando</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>ng g component [name]</code> <code>ng g c [name]</code>
+      </td>
+      <td>Genera un nuevo componente en el [name], que puede ser también [path/name]</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g directive [name]</code> <code>ng g d [name]</code>
+      </td>
+      <td>Genera una nueva directiva</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g guard [name]</code> <code>ng g g [name]</code>
+      </td>
+      <td>Genera un nuevo guard para protección de rutas</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g interceptor [name]</code>
+      </td>
+      <td>Genera un nuevo interceptor para observables</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g module [name]</code> <code>ng g m [name]</code>
+      </td>
+      <td>Genera un módulo que sirve como agrupador de diferentes componentes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g pipe [name]</code> <code>ng g p [name]</code>
+      </td>
+      <td>Genera un pipe que sirve para transformar visualmente un dato</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g service [name]</code> <code>ng g s [name]</code>
+      </td>
+      <td>Genera un servicio que sirve para compartir información enntre la aplicación.</td>
+    </tr>
+  </tbody>
+</table>
+
+- Banderas útiles a los comandos de generación:
+
+<table>
+  <thead>
+    <tr>
+      <th>Banderas</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>ng g c --help</code>
+      </td>
+      <td>Muestra las opciones disponibles para el comando</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g c --dry-run</code>
+      </td>
+      <td>Muestra el resultado del comando sin ejecutarlo</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g c --flat</code>
+      </td>
+      <td>Genera el componente en el directorio actual, sin crear un subdirectorio</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ng g c --inline-style</code>
+      </td>
+      <td>Genera el componente con el estilo en línea</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+# Template Syntax <a name="template-syntax"></a>
+
+Enlaza la propiedad **"value"**, al valor de lo que contenga **"fisrtName"**:
+
+```html
+<input [value]="firstName" />
+```
+
+Lo mismo se puede enlazar **(bind)** con muchos otros atributos de los elementos HTML y componentes personalizados
+
+```html
+Añade el "role" igual al valor de myAriaRole
+<div [attr.role]="myAriaRole">
+  Añade la clase "extra-sparkle" si isDelightful es true
+  <div [class.extra-sparkle]="isDelightful">
+    Incrementa el ancho en pixeles igual al valor de mySize
+    <div [style.width.px]="mySize">
+      Añade el listener click y dispara readRainbow()
+      <button (click)="readRainbow($event)"></button>
+    </div>
+  </div>
+</div>
+```
+
+Enlaza el valor de la expresión al valor que vemos dentro del párrafo
+
+```html
+<p>Hola {{nombre}}</p>
+<p>La suma de 1 + 1 es {{1 + 1}}</p>
+```
+
+Configura el enlace de datos **bidireccional**
+
+```html
+<my-cmp [(title)]="titulo" />
+```
+
+Que sería el equivalente a esto:
+
+```html
+<my-cmp [title]="titulo" (titleChange)="titulo=$event" />
+```
+
+Uso de pipes:
+
+```html
+<p>Nombre: {{ 'fernando' | uppercase }}</p>
+<p>Fecha: {{ fecha | date:'dd/MM/yyyy' }}</p>
+```
+
+Operador de navegación segura:
+
+```html
+<p>Empleado: {{employer?.name}}</p>
+```
+
+Referencias locales en el html:
+
+```html
+<input #phone placeholder="phone number" />
+
+<video #movieplayer ...></video>
+<button (click)="movieplayer.play()">Play</button>
+```
+
+---
+
+# Directivas incluídas <a name="directivas-incluídas"></a>
+
+Las siguientes directivas vienen inclusidas dentro del módulo "CommonModule" de @angular/common:
+
+[**Ver las nuevas formas de @if, @for, @switch y más aquí**](#nuevo-flujo-de-control)
+
+- **\*ngIf**: Muestra o esconde un elemento del DOM dependiendo del valor de la expresión **"showSection**.
+
+  ```html
+  <section *ngIf="showSection"></section>
+  ```
+
+- **\*ngFor**: Itera sobre una lista de elementos y muestra un elemento por cada uno.
+
+  ```html
+  <li *ngFor="let item of items"></li>
+  ```
+
+- **ngSwitch**: Muestra un elemento dependiendo del valor de la expresión **"choice"**.
+
+  ```html
+  <div [ngSwitch]="choice">
+    <p [ngSwitchCase]="'case1Exp'">Escogiste el caso 1</p>
+    <p ngSwitchCase="'case2LiteralString'">Escogiste el caso 2</p>
+    <p ngSwitchDefault>Escogiste el caso por defecto</p>
+  </div>
+  ```
+
+- **ngClass**: Añade o quita clases dependiendo del valor de la expresión **"isActive"** o **"isDisabled"**.
+
+  ```html
+  <div
+    [ngClass]="{
+      active: isActive,
+      disabled: isDisabled
+  }"
+  ></div>
+  ```
+
+- **ngStyle**: Permite asignar estilos a los elementos html utilizando CSS.
+
+  ```html
+  <div
+    [ngStyle]="{
+      'font-style': canSave ? 'italic' : 'normal',
+      'font-weight': !isUnchanged ? 'bold' : 'normal'
+  }"
+  >
+    <div [ngStyle]="currentStyles()"></div>
+  </div>
+  ```
+
+- **FormsModule** de **@angular/forms**: Permite trabajar con formularios en Angular.
+
+  ```html
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <input [(ngModel)]="userName" />
+    ...
+  </form>
+  ```
+
+- **ReactiveFormsModule** de **@angular/forms**: Permite trabajar con formularios reactivos en Angular.
+
+  ```html
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input formControlName="name" />
+    ...
+  </form>
+  ```
+
+## Decoradores de clase para componentes <a name="decoradores-de-clase-para-componentes"></a>
+
+- **@Input**: Define una propiedad que puede ser enviada desde el padre hacie el componente hijo.
+
+  ```typescript
+  @Input() nombre: string;
+  ```
+
+  ```html
+  <app-hijo [nombre]="nombrePadre"></app-hijo>
+  ```
+
+- **@Output**: Define un evento que puede ser enviado desde el componente hijo hacia el padre.
+
+  ```typescript
+  @Output() nombreCambiado = new EventEmitter<string>();
+  ```
+
+  ```html
+  <app-hijo (nombreCambiado)="nombrePadre = $event"></app-hijo>
+  ```
+
+- **@HostBinding**: Enlaza el elemento anfitrioón (host) con una propiedad de la clase.
+
+  ```typescript
+  @HostBinding('class.valid') isValid: boolean;
+  ```
+
+- **@HostListener**: Se suscribe al evento click del anfitrión (host), opcionalmente se puede recibir el evento.
+
+  ```typescript
+  @HostListener('click', ['$event'])
+  onClick(event: Event) {
+      ...
+  }
+  ```
+
+- **@ViewChild y @ViewChildren**: Enlaza el resultado final de la vista del componente basado en el predicado a la propiedad de la clase (no es valido para directivas).
+
+  ```typescript
+  @ViewChild(myChild) myChildComponent: ElementRef;
+  ```
+
+  ```typescript
+  @ViewChildren(myChild) myChildComponents: QueryList<ElementRef>;
+  ```
+
+---
+
+# Ciclo de vida (Lifecycle Hooks) <a name="ciclo-de-vida-lifecycle-hooks"></a>
+
+Estos son los pasos de ejecución cuando un componente o directiva entra en pantalla:
+
+<table>
+  <thead>
+    <tr>
+      <th>Hook/Class Method</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>constructor</code>
+      </td>
+      <td>
+        Se ejecuta al instanciar el componente o directiva (Se llama antes que cualquier ciclo de
+        vida).
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngOnChanges</code>
+      </td>
+      <td>Se ejecuta antes de cualquier cambio a una propiedad.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngOnInit</code>
+      </td>
+      <td>Se ejecuta justo despues del constructor.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngDoCheck</code>
+      </td>
+      <td>Se ejecuta cada vez que una propiedad del componente o directiva es revisada.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngAfterContentInit</code>
+      </td>
+      <td>Se ejecuta despues de ngOnInit, cuando el componente es inicializado.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngAfterContentChecked</code>
+      </td>
+      <td>Se ejecuta despues de ngDoCheck, cuando el contenido del componente es revisado.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngAfterViewInit</code>
+      </td>
+      <td>
+        Se ejecuta despues de ngAfterContentInit, cuando la vista del componente es inicializada.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngAfterViewChecked</code>
+      </td>
+      <td>
+        Se ejecuta despues de ngAfterContentChecked, cuando la vista del componente es revisada.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>ngOnDestroy</code>
+      </td>
+      <td>Se ejecuta justo antes de que el componente o directiva sea destruido.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+# Configuración de rutas y Router <a name="configuración-de-rutas-y-router"></a>
+
+Este es un ejemplo de rutas comunes en Angular:
+
+```typescript
+const routes: Routes = [
+    { path: '', component: HomeComponent },
+    { path: 'staticPath', component: ... },
+    { path: 'path/:routeParam', component: ... },
+    { path: '**', component: PageNotFoundComponent },
+    { path: 'oldPath', redirectTo: '/staticPath' }
+    { path: ..., component: ..., canActivate: [AuthGuard] }
+    { path: ..., component: ...,
+        data: { message: 'Custom message' }
+    }
+];
+
+const routing = RouterModule.forRoot(routes);
+```
+
+En el HTML:
+
+```html
+<router-outlet></router-outlet>
+
+tambien se puede usar:
+
+<router-outlet />
+```
+
+## LazyLoad <a name="lazyload"></a>
+
+Permite de manera perezosa, cargar un módulo. Esto significa cargarlo bajo demanda (cuando un usuario lo solicita) y luego queda en memoria.
+
+```typescript
+import { Routes } from '@angular/router'
+
+const routes: Routes = [
+  {
+    path: 'home',
+    loadComponent: () => import('./home/home.component').then((c) => c.HomeComponent),
+  },
+]
+```
+
+O también:
+
+```typescript
+import { Routes } from '@angular/router'
+
+const routes: Routes = [
+  {
+    path: 'home',
+    loadComponent: () => import('./home/home.module'),
+  },
+]
+```
+
+Pero para que funcione correctamente el componente tiene que exportarse en **default.**
+
+```typescript
+export default class HomeComponent{
+    ...
+}
+```
+
+## Routerlink <a name="routerlink"></a>
+
+Diferentes anchor tags soportados para nagevación:
+
+```html
+<a routerLink="/path">
+  <a [routerLink]="[ '/path', routeParam ]">
+    <a [routerLink]="[ '/path', { matrixParam: 'value' } ]">
+      <a [routerLink]="[ '/path' ]" [queryParams]="{ page: 1 }">
+        <a [routerLink]="[ '/path' ]" fragment="anchor"></a></a></a></a
+></a>
+```
+
+## RouterLinkActive <a name="routerlinkactive"></a>
+
+Mostrar anchor tag con una clase si nos encontramos en la respectiva ruta:
+
+```html
+<a [routerLink]="[ '/path' ]" routerLinkActive="active"></a>
+```
+
+---
+
+# Protección de rutas <a name="protección-de-rutas"></a>
+
+- **CanActivateFn**: Una interfaz que nos permite definir una función para validar si una ruta se puede activar
+
+  ```typescript
+  import {
+      CanActivateFn,
+      ActivatedRouteSnapshot,
+      RouterStateSnapshot
+  } from "@angular/router"
+
+  function canActivateGuard: CanActivateFn =
+  (
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot
+  ) => { … }
+
+  # Definición de la ruta
+  { path: …, canActivate: [canActivateGuard] }
+  ```
+
+- **CanDeactivateFn**: Interface para definir una función que permite indicarle a Angular si el usuario puede salir de una ruta, útil si hay cambios pendientes de guardar por parte del client
+
+  ```typescript
+  import {
+      CanDeactivateFn,
+      ActivatedRouteSnapshot,
+      RouterStateSnapshot
+  } from "@angular/router"
+
+  function canDeactivateGuard: CanDeactivateFn<T> =
+  (
+      component: T,
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot,
+  ) => { … }
+
+  # Definición de la ruta
+  { path: …, canDeactivate: [canDeactivateGuard] }
+  ```
+
+El mismo concepto se puede aplicar a las siguientes funciones:
+
+<table>
+  <thead>
+    <tr>
+      <th>Función</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>CanActivateChildFn</code>
+      </td>
+      <td>El router determina si la ruta hija se puede activa</td>
+    </tr>
+    <tr>
+      <td>
+        <code>CanLoadFn</code>
+      </td>
+      <td>El router determina si puede cargar mediante lazy load un módulo</td>
+    </tr>
+    <tr>
+      <td>
+        <code>ResolveFn</code>
+      </td>
+      <td>El router determina si puede o no mostrar una ruta.</td>
+    </tr>
+  </tbody>
+</table>
+
+La forma común de protección de rutas en Angular es utilizar clases inyectables que implementan los métodos mencionados: CanActivate, CanLoad, CanDeactivate.
+
+---
+
+# Guards con clases <a name="guards-con-clases"></a>
+
+Debes de implementar la interfaz de “CanActivate” para que Angular lo considere un pipe para proteger una ruta a la hora de activarla.
+
+```typescript
+class UserToken {}
+class Permissions {
+  canActivate(): boolean {
+    return true
+  }
+}
+@Injectable()
+class CanActivateTeam implements CanActivate {
+  constructor(private permissions: Permissions, private currentUser: UserToken) {}
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return
+    this.permissions.canActivate(this.currentUser, route.params.id)
+  }
+}
+```
+
+Y se utiliza de la siguiente manera en la definición de las rutas:
+
+```typescript
+@NgModule({
+  imports: [
+    RouterModule.forRoot([
+      {
+        path: 'team/:id',
+        component: TeamComponent,
+        # AQUI!!! <——
+        canActivate: [CanActivateTeam]
+      }
+    ])
+  ],
+  providers: [CanActivateTeam, UserToken, Permissions]
+})
+class AppModule {}
+```
+
+Pero también se puede definir en línea con la siguiente función:
+
+```typescript
+@NgModule({
+  imports: [
+    RouterModule.forRoot([
+      {
+        path: 'team/:id',
+        component: TeamComponent,
+        canActivate: [(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => true],
+      },
+    ]),
+  ],
+})
+class AppModule {}
+```
+
+La clave de los Guards, es que deben de retornar un valor **Boolean** si quieren dejar pasar la petición. También puede ser una promesa que resuelva un boolean o un observable que emita un boolean.
+
+---
+
+# Pipes <a name="pipes"></a>
+
+Este es un listado de los pipes Propios de angular
+
+<table>
+  <thead>
+    <tr>
+      <th>Pipe</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/DatePipe">DatePipe</a>
+      </td>
+      <td>Realizar formateos a una fecha</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/UpperCasePipe">UpperCasePipe</a>
+      </td>
+      <td>Convierte un texto a mayúsculas</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/LowerCasePipe">LowerCasePipe</a>
+      </td>
+      <td>Convierte un texto a minúsculas</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/TitleCasePipe">TitleCasePipe</a>
+      </td>
+      <td>Capitaliza cada palabra del string que este separado por espacios</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/CurrencyPipe">CurrencyPipe</a>
+      </td>
+      <td>Formatea el número a un formato de moneda</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/DecimalPipe">DecimalPipe</a>
+      </td>
+      <td>Transforma un número a un string con formato especificado</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/PercentPipe">PercentPipe</a>
+      </td>
+      <td>Transforma el número a un porcentaje string, formateado basado en las reglas locales</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/AsyncPipe">AsyncPipe</a>
+      </td>
+      <td>
+        Espera el resultado de una tarea asíncrona (Promise u Observable) e imprime la resolución o
+        emisión
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/JsonPipe">JsonPipe</a>
+      </td>
+      <td>Convierte un valor en una representación con formato JSON</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/SlicePipe">SlicePipe</a>
+      </td>
+      <td>
+        Crea un nuevo arreglo o string que contiene el subset (slice o corte) de los elementos
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/I18nPluralPipe">I18nPluralPipe</a>
+      </td>
+      <td>Es una mapa de valores para ayudar con la localización de palabras</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/I18nSelectPipe">I18nSelectPipe</a>
+      </td>
+      <td>Similar al anterior, pero para singulares</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://angular.io/api/common/KeyValuePipe">KeyValuePipe</a>
+      </td>
+      <td>Transforma un objeto o mapa, en un arreglo de pares de valores</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+# Rxjs <a name="rxjs"></a>
+
+RxJS, es una librería incluida en Angular para poder trabajar con observables y en sí, la programación reactiva.
+
+Hay muchos operadores y funciones para generar observables que se usan en Angular, considera estudiar RxJS para poder reducir la cantidad de código de los observables y hacer el trabajo más simple.
+
+Hare un articulo sobre RxJS en Angular, pero por ahora te dejo un ejemplo de como se usa un observable en Angular:
+
+```typescript
+import { Observable, of } from 'rxjs';
+
+...
+
+const observable = new Observable(subscriber => {
+  subscriber.next(1);
+  subscriber.next(2);
+  subscriber.next(3);
+  setTimeout(() => {
+    subscriber.next(4);
+    subscriber.complete();
+  }, 1000);
+});
+
+```
+
+Y un ejemplo de BehaviorSubject:
+
+```typescript
+import { BehaviorSubject } from 'rxjs';
+
+...
+
+private nameUserObservablePrivate: BehaviorSubject<string> =
+  new BehaviorSubject<string>("");
+
+get nameUserObservable() {
+  return this.nameUserObservablePrivate;
+}
+
+set nameUserObservableData(data: string) {
+  this.nameUserObservablePrivate.next(data);
+}
+
+```
+
+---
+
+# Signals (Angular 17+) <a name="signals"></a>
+
+Son un sistema que granularmente sigue cómo y dónde cambia un valor a lo largo de la aplicación. Esto optimiza la velocidad de renderización.
+
+Las señales permiten con precisión quirúrgica, saber en dónde necesita Angular cambiar el valor de una variable, calcular un nuevo valor, disparar un efecto secundario, etc.
+
+## Writable Signals <a name="writable-signals"></a>
+
+Son señales que pueden cambiarse manualmente, se pueden usar como simples variables reactivas:
+
+```typescript
+import { signal } from '@angular/core'
+const count = signal(0)
+console.log('Count es: ' + count())
+```
+
+Se usan los paréntesis para obtener el valor actual de la señal.
+
+O como propiedades de clase **(preferido)** (se pueden usar en servicios, componentes, directivas, funciones, etc)
+
+```typescript
+export class AppComponent {
+  public count = signal(0)
+}
+```
+
+Para actualizar el valor de una señal, hay 3 formas
+
+### Set <a name="set"></a>
+
+Para establecer un valor a la señal sin importar el valor que tuviera anteriormente. **Si el valor es el mismo** que antes, los efectos y señales computadas no se vuelven a disparar
+
+```typescript
+public count = signal(0);
+
+changeSignal() {
+  this.count.set(10);
+}
+```
+
+### Update <a name="update"></a>
+
+Si se desea cambiar el valor de la señal dependiendo del valor que tenga anteriormente, se puede utilizar el método **update**.
+
+```typescript
+public count = signal(0);
+
+changeSignal() {
+  this.count.update( value => value + 1 );
+}
+```
+
+### Mutar estado <a name="mutar-estado"></a>
+
+Si se desea cambiar el valor de la señal dependiendo del valor que tenga anteriormente pero mutando el estado, se puede usar el método update de esta manera.
+
+```typescript
+const todos = signal([{ title: 'Aprender Signals', done: false }])
+todos.update((value) => {
+  value[0].done = true
+  return value
+}) // [{title: 'Aprender Signals', done: true}]
+```
+
+### Computed signals <a name="computed-signals"></a>
+
+Básicamente son señales de sólo lectura, pero es un valor que puede cambiar únicamente si una señal usada para crearlo cambia.
+
+```typescript
+const count = signal<number>(2)
+const double = signal(() => count() * 2)
+console.log('Double es: ' + double()) // 4
+```
+
+En este caso, doubleCount sólo cambiará, si count cambia. Esto sucede automáticamente.
+
+Tanto las señales computadas como los efectos (ver siguiente tema), pueden tener tantas señales internas como sea necesario
+
+```typescript
+const showCount = signal(false)
+const count = signal(0)
+const conditionalCount = computed(() => {
+  if (showCount()) {
+    return `La cuenta es ${count()}.`
+  } else {
+    return '¡Aquí no hay nada!'
+  }
+})
+```
+
+**Referencias:**
+
+[Guia oficial de Angular](https://angular.io/guide/signals#advanced-topics)
+
+---
+
+## Effects <a name="effects"></a>
+
+Un efecto es una operación que se ejecuta al menos una vez (similar al ngOnInit), pero si usa alguna señal, y esa señal cambia, el efecto se vuelve a ejecutar
+
+```typescript
+effect(() => {
+  console.log(`The current count is: ${count()}`)
+})
+```
+
+El efecto retorna un **EffectRef**, que a su vez tiene un método **destroy**, en el caso que quieras destruir el efecto manualmente. Los efectos a menos de especificar lo contrario, se limpian a si mismos cuando no son necesarios.
+
+### Usos Comunes de efectos <a name="usos-comunes-de-efectos"></a>
+
+- Mostrar logs, cuando la data cambia, ya sea para analytics o depuración.
+- Mantener la data en sincronía (window.localStorage)
+- Añadir comportamiento al DOM cuando la sintaxis de template no pueda hacerlo.
+- Realizar renderizado personalizado a un canvas, gráficos o librerías de terceros
+- Disparar efectos secundarios necesarios basados en señales.
+
+### Cuando NO usar efectos <a name="cuando-no-usar-efectos"></a>
+
+Evitar efectos para propagar cambios de estado, esto puede resultar en el error **ExpressionChangedAfterItHasBeenChecked**, actualizaciones circulares infinitas o cambios no deseados.
+
+Debido a esto, las señales por defecto marcan warnings o errores si quieres cambiar el valor de una señal en un efecto. (Se puede pero no se debe), para este tipo de casos, usar computed.
+
+### Effect Injection Context <a name="effect-injection-context"></a>
+
+Registar un efecto requiere un “injection context” básicamente acceso a la función inject <small>(usada para inyectar dependencias desde Angular 14+)</small>
+
+La forma más fácil es registrarlos en el constructor, pero puedes colocarlos como propiedades de clase también.
+
+**En constructor:**
+
+```typescript
+@Component({...})
+export class EffectiveCounterCmp {
+  readonly count = signal(0);
+  constructor() {
+    // Registrar el efecto
+    effect(() => {
+      console.log(`La cuenta es: ${this.count()})`);
+    });
+  }
+}
+```
+
+**Como propiedad de clase:**
+
+```typescript
+@Component({...})
+export class EffectiveCounterCmp {
+  readonly count = signal(0);
+
+  private logginEffect = effect(() => {
+    console.log(`La cuenta es: ${this.count()})`);
+  });
+}
+```
+
+Si se necesita crear un efecto fuera de esos lugares, se puede mediante opciones y un servicio de inyección **(Injector)**, [más información aquí](https://angular.io/guide/signals#injection-context).
+
+### Effect cleanup functions <a name="effect-cleanup-functions"></a>
+
+Los efectos pueden correr tareas largas o bien ser ejecutados por largos periodos de tiempo, a veces el efecto debe o será destruido y/o regenerado, si se necesita un procedimiento especial que deben de ejecutar cuando se destruyen, puedes mandar una función de limpieza.
+
+```typescript
+effect((onCleanup) => {
+  const user = currentUser()
+
+  const timer = setTimeout(() => {
+    console.log(`El usuario ${user} ha estado inactivo por 5 minutos`)
+  }, 5 * 60 * 1000)
+
+  onCleanup(() => {
+    clearTimeout(timer)
+  })
+})
+```
+
+**Referencia:**
+
+[Guia oficial de Angular](https://angular.io/guide/signals)
+
+---
+
+# Nuevo flujo de control <a name="nuevo-flujo-de-control"></a>
+
+## @if <a name="if"></a>
+
+Similar al \*ngIf, ahora tenemos un @if mucho más poderoso.
+
+```typescript
+// user-controls.component.ts
+@Component({
+  standalone: true,
+  selector: 'app-user-controls',
+  template: `
+    @if (isAdmin) {
+    <button>Eliminar usuario</button>
+    }
+  `,
+})
+export class UserControlsComponent {
+  isAdmin = true
+}
+```
+
+## @else <a name="else"></a>
+
+```typescript
+// user-controls.component.ts
+@Component({
+  standalone: true,
+  selector: 'app-user-controls',
+  template: `
+    @if (isAdmin) {
+    <button>Eliminar usuario</button>
+    } @else {
+    <p>No tienes permisos para eliminar usuarios</p>
+    }
+  `,
+})
+export class UserControlsComponent {
+  isAdmin = false
+}
+```
+
+## @for <a name="for"></a>
+
+Similar al \*ngFor, ahora tenemos una nueva forma de realizar ciclos en nuestra data, que también es combinable con el @if (que no se podía hacer antes).
+
+```html
+<!-- ingredient-list.component.html -->
+<ul>
+  @for (let ingredient of ingredients; track ingredient.name) {
+  <li>{{ ingredient.quantity }} - {{ ingredient.name }}</li>
+  }
+</ul>
+```
+
+La propiedad **"track"** le permite a angular poder seguir el elemento en caso de que el listado cambie.
+
+**[Variables disponibles dentro del @for](https://angular.dev/guide/templates/control-flow#index-and-other-contextual-variables)**
+
+<table>
+  <thead>
+    <tr>
+      <th>Pipe</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>$count</strong>
+      </td>
+      <td>Numero total de elementos del listado</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>$index</strong>
+      </td>
+      <td>Posición index del elemento actual</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>$first</strong>
+      </td>
+      <td>Valor boolean que determina si es el primer elemento del listado</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>$last</strong>
+      </td>
+      <td>Valor boolean que determina si es el último elemento del listado</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>$even</strong>
+      </td>
+      <td>Determina si el índice actual es par</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>$odd</strong>
+      </td>
+      <td>Determina si el índice es impar</td>
+    </tr>
+  </tbody>
+</table>
+
+```html
+@for (let item of items; track item.id; let idx = $index, e = $even) { Item #{{ idx }}: {{ item.name
+}} }
+```
+
+## @empty <a name="empty"></a>
+
+Si el arreglo no tiene elementos, puedes usarlo para mostrar un elemento.
+
+```html
+@for (let item of items; track item.name) {
+<li>{{ item.name }}</li>
+} @empty {
+<li>No hay elementos</li>
+}
+```
+
+## @switch <a name="switch"></a>
+
+Similar al @if, tenemos una forma inspirada en el Switch de Javascript.
+
+```html
+@switch (condition) { @case 1 {
+<p>El valor es 1</p>
+} @case 2 {
+<p>El valor es 2</p>
+} @default {
+<p>El valor no es 1 ni 2</p>
+} }
+```
+
+## @defer y @placeholder <a name="defer-y-placeholder"></a>
+
+### Vistas Aplazables - Deferrable Views
+
+Es un mecanismo que tenemos para poder controlar de forma granular, la manera cómo queremos que nuestros componentes se carguen en pantalla y atrasar su ejecución.
+
+Permite definir que el bloque de código será cargado de forma perezosa y no renderizado de forma inicial, permitiéndonos especificar el momento en el cual cargarlo.
+
+```html
+@defer {
+<large-component />
+} @placeholder (minimum 500ms){
+<p>Contenido del placeholder</p>
+}
+```
+
+## @loading <a name="loading"></a>
+
+Es un bloque opcional de código que permite declarar el contenido a mostrar durante la carga de cualquier dependencia aplazable.
+
+```html
+@defer {
+<large-component />
+} @loading (after 100ms; minimum 1s) {
+<p>Cargando...</p>
+}
+```
+
+## @error <a name="error"></a>
+
+Permite mostrar un contenido en caso de que la carga diferida falle.
+
+```html
+@defer {
+<large-component />
+} @error {
+<p>Error al cargar el componente</p>
+}
+```
+
+# Defer Triggers <a name="defer-triggers"></a>
+
+Hay dos opciones que tenemos para controlar cuando un componente será cargado de forma aplazable, y es el **“on”** y **“when”**. También se pueden mezclar.
+
+```html
+@defer (on interaction; on timer(5s)) {
+<large-component />
+} @placeholder {
+<img src="placeholder.png" />
+}
+```
+
+Este código significa que el bloque será disparado cuando el usuario interactúe con el placeholder o después de 5 segundos.
+
+## When &lt;condition&gt; <a name="when"></a>
+
+Similar a una condición aplicable a un @if, puedes añadir la condición de carga.
+
+```html
+@defer (when condition) {
+<calendar-cmp />
+}
+```
+
+Recuerda que se pueden mezclar.
+
+```html
+@defer (on viewport; when condition) {
+<calendar-cmp />
+} @placeholder {
+<img src="placeholder.png" />
+}
+```
+
+Aquí se cargará cuando cualquiera de las dos condiciones se cumpla.
+
+## Posibles opciones "on" <a name="posibles-opciones-on"></a>
+
+Estas son las posibles opciones en el defer con "on"
+
+<table>
+  <thead>
+    <tr>
+      <th>Pipe</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>on idle</strong>
+      </td>
+      <td>Se dispara cuando el navegador llega a un estado inactivo &quot;idle&quot;</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>on viewport</strong>
+      </td>
+      <td>
+        Se dispara cuando el bloque entra al punto de vista del usuario. Por defecto se puede
+        conectar el placeholder y otro elemento
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>on interaction</strong>
+      </td>
+      <td>
+        Se dispara cuando el usuario interactúa con un elemento específico mediante un click o
+        keydown
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>on hover</strong>
+      </td>
+      <td>Se dispara cuando el mouse pasa sobre el elemento o la referencia.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>on immediate</strong>
+      </td>
+      <td>Se dispara tan pronto el cliente termina de renderizar la pantalla.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>on timer</strong>
+      </td>
+      <td>
+        Se dispara después de cierta duración de tiempo en <strong>MS</strong> milliseconds.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## On Interaction - formas <a name="on-interaction---formas"></a>
+
+```html
+@defer (on interaction) {
+<large-component />
+} @placeholder {
+<img src="placeholder.png" />
+}
+```
+
+**Otra interesante**
+
+```html
+<button type="button" #greeting>Hola!</button>
+
+@defer (on interaction(greeting)) {
+<calendar-cmp>
+  } @placeholder {
+  <div>...</div>
+  }</calendar-cmp
+>
+```
+
+## Prefetching <a name="prefetching"></a>
+
+**@defer** permite precargar el código componente (no lo ejecuta, carga el código) y así tenerlo listo tan pronto sea el momento de llamarlo.
+
+```html
+@defer (on interaction; prefetch on idle) {
+<calendar-cmp>
+  } @placeholder {
+  <img src="placeholder.png" />
+  }</calendar-cmp
+>
+```
+
+**Referencias:**
+
+[Guia oficial de Angular](https://angular.io/guide/defer)
+
+---
+
+# Glosario de Términos <a name="glosario-de-términos"></a>
+
+#### Angular y AngularJS
+
+Angular es el framework de Google, es el sucesor de la librería AngularJS, la cual ya está obsoleta.
+
+**Angular y AngularJS** son dos cosas distintas.
+
+#### Inyección de dependencias - DI
+
+También conocido como DI, es un patrón de diseño en la cual una clase requiere una o más dependencias para poder inicializarse.
+
+Usualmente esas dependencias ya están inicializadas en otro lugar y el componente utiliza esa misma instancia.
+
+#### Observable
+
+Es un objeto en el cual a lo largo del tiempo, puede estar emitiendo diferentes valores.
+
+Usualmente cuando hablamos de “suscribimos a los observables”, significa estar escuchando las emisiones que ese objeto estará emitiendo a lo largo de su vida.
+
+#### Components
+
+Usualmente es un archivo que está compuesto por una clase controladora escrita en TypeScript, un template HTML que puede estar separado y un archivo de CSS opcional. También se puede juntar con los archivos de pruebas.
+
+#### Directives - Directivas
+
+Hay varios tipos de directivas, pero en sí, nos permiten cambiar el comportamiento de elementos HTML o componentes personalizados.
+
+Adicionalmente Angular cuenta con varias directivas propias como ngSwitch, \*ngFor y ngIf.
+
+#### Guard
+
+Es un tipo de middleware, middleman, o guardia de acceso. Es un objeto que está pendiente si alguien puede entrar, cargar o salir de una ruta.
+
+#### Interceptor
+
+Es un objeto que brinda un mecanismo para interceptar y/o mutar las solicitudes y respuestas HTTP.
+
+#### RXJS
+
+Es una librería pre-cargada en Angular para trabajar con programación reactiva. Básicamente todo lo relacionado a Observables, es de rxjs.
+
+#### Pipe
+
+Objeto que permite transformar de manera visual la información que mostraremos en pantalla sin mutar la data real.
+
+#### Module
+
+Son contenedores para realizar la cohesion de código que tiene funcionamiento en común. Este funcionamiento común puede ser un flujo de trabajo, conjunto de capacidades o código dedicado a un dominio de la aplicación.
+
+#### camelCase
+
+Usarlo para variables, métodos, propiedades.
+
+#### UpperCamelCase
+
+Usarlo para nombres de clases e interfaces.
+
+#### dash-case / kebab-case
+
+Usarlo para describir nombres de archivos y selectores de componentes.
+
+#### UPPER_UNDERSCORE_CASE
+
+UPPER_SNAKE_CASE: Usarlo tradicionalmente para constantes de compilación.
+
+#### Change Detection
+
+Es el mecanismo en el cual Angular sincroniza el estado del UI con el estado de la aplicación.
+
+#### Decorator
+
+Es una simple función que modifica una clase o propiedad. Básicamente añade una funcionalidad o comportamiento específico.
+
+#### Polyfill
+
+Usualmente es una forma en la cual podemos expandir el soporte a plataformas que no cuentan con lo que necesitamos para correr un proceso.

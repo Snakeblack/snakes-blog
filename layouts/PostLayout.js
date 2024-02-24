@@ -47,7 +47,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
             </div>
           </header>
           <div
-            className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
+            className="pb-8 divide-y divide-gray-200 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
@@ -59,13 +59,13 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       {author.avatar && (
                         <Image
                           src={author.avatar}
-                          width="38px"
-                          height="38px"
+                          width="38"
+                          height="38"
                           alt="avatar"
-                          className="h-10 w-10 rounded-full"
+                          className="w-10 h-10 rounded-full"
                         />
                       )}
-                      <dl className="whitespace-nowrap text-sm font-medium leading-5">
+                      <dl className="text-sm font-medium leading-5 whitespace-nowrap">
                         <dt className="sr-only">nombre</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                         <dt className="sr-only">Github</dt>
@@ -86,7 +86,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
+              <div className="pt-10 pb-8 prose max-w-none dark:prose-dark">{children}</div>
               {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(slug)} rel="nofollow">
                   {'Discuss on Twitter'}
@@ -97,10 +97,10 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <Comments frontMatter={frontMatter} />
             </div>
             <footer>
-              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
+              <div className="text-sm font-medium leading-5 divide-gray-200 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
                 {tags && (
                   <div className="py-4 xl:py-8">
-                    <h2 className="mb-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                    <h2 className="mb-2 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
                       Tags
                     </h2>
                     <div className="flex flex-wrap">
@@ -114,7 +114,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
                     {prev && (
                       <div>
-                        <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
                           Articulo anterior
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -124,7 +124,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     )}
                     {next && (
                       <div>
-                        <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
                           Siguiente Articulo
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">

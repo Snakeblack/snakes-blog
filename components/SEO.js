@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 
@@ -71,6 +72,20 @@ export const TagSEO = ({ title, description }) => {
   )
 }
 
+/**
+ * Component for generating SEO metadata for a blog post.
+ *
+ * @param {Object} props - The props object.
+ * @param {Array} props.authorDetails - The details of the author(s) of the blog post.
+ * @param {string} props.title - The title of the blog post.
+ * @param {string} props.summary - A summary of the blog post.
+ * @param {string} props.date - The date the blog post was published.
+ * @param {string} props.lastmod - The date the blog post was last modified.
+ * @param {string} props.url - The URL of the blog post.
+ * @param {Array} [props.images=[]] - An array of images associated with the blog post.
+ * @param {string} props.canonicalUrl - The canonical URL of the blog post.
+ * @returns {JSX.Element} The rendered component.
+ */
 export const BlogSEO = ({
   authorDetails,
   title,
@@ -151,13 +166,14 @@ export const BlogSEO = ({
       <Head>
         {date && <meta property="article:published_time" content={publishedAt} />}
         {lastmod && <meta property="article:modified_time" content={modifiedAt} />}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData, null, 2),
-          }}
-        />
       </Head>
+      <Script
+        id="structured-data-blog"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData, null, 2),
+        }}
+      />
     </>
   )
 }
