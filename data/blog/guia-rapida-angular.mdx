@@ -401,7 +401,7 @@ Estos son los pasos de ejecución cuando un componente o directiva entra en pant
       <td>
         <code>ngDoCheck</code>
       </td>
-      <td>Se ejecuta cada vez que una propiedad del componente o directiva es revisada.</td>
+      <td>Se ejecuta cada vez que una propiedad del componente o directiva esta cargada y revisada.</td>
     </tr>
     <tr>
       <td>
@@ -413,14 +413,14 @@ Estos son los pasos de ejecución cuando un componente o directiva entra en pant
       <td>
         <code>ngAfterContentChecked</code>
       </td>
-      <td>Se ejecuta despues de ngDoCheck, cuando el contenido del componente es revisado.</td>
+      <td>Se ejecuta despues de ngDoCheck, cuando el contenido del componente ha cargado y revisado.</td>
     </tr>
     <tr>
       <td>
         <code>ngAfterViewInit</code>
       </td>
       <td>
-        Se ejecuta despues de ngAfterContentInit, cuando la vista del componente es inicializada.
+        Se ejecuta despues de ngAfterContentInit, cuando la vista del componente esta inicializada.
       </td>
     </tr>
     <tr>
