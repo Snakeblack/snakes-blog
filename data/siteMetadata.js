@@ -7,7 +7,7 @@ const siteMetadata = {
   language: 'es-ES',
   theme: 'system', // system, dark or light
   siteUrl: 'https://blog.mretamozo.com',
-  siteRepo: 'https://github.com/Snakeblack/blog-nextjs-tailwind',
+  siteRepo: 'https://github.com/Snakeblack/snakes-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar-snake.jpg',
   socialBanner: '/static/images/twitter-card.png',
