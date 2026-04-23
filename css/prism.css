@@ -7,36 +7,74 @@
 
 /* Code title styles */
 .remark-code-title {
-  @apply rounded-t bg-gray-700 px-5 py-3 font-mono text-sm font-bold text-gray-200;
+  margin-bottom: 0;
+  margin-top: 2.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(15, 15, 15, 0.8);
+  padding: 0.8rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #888;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .remark-code-title + div > pre {
-  @apply mt-0 rounded-t-none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-width: 0;
+  margin-top: 0;
 }
 
 /* Code block styles */
 .code-highlight {
-  @apply float-left min-w-full;
+  float: left;
+  min-width: 100%;
 }
 
 .code-line {
-  @apply -mx-4 block border-l-4 border-transparent pl-4 pr-4;
+  display: block;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-left-width: 4px;
+  border-left-color: transparent;
 }
 
 .code-line.inserted {
-  @apply bg-green-500 bg-opacity-20;
+  background-color: rgba(16, 185, 129, 0.2); /* bg-green-500/20 */
 }
 
 .code-line.deleted {
-  @apply bg-red-500 bg-opacity-20;
+  background-color: rgba(239, 68, 68, 0.2); /* bg-red-500/20 */
 }
 
 .highlight-line {
-  @apply -mx-4 border-l-4 border-primary-500  bg-gray-700 bg-opacity-50;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  background-color: rgba(55, 65, 81, 0.5); /* bg-gray-700/50 */
+  border-left-width: 4px;
+  border-left-color: var(--color-primary-500, #14b8a6);
 }
 
 .line-number::before {
-  @apply mr-4 -ml-2 inline-block w-4 text-right text-gray-400;
+  margin-right: 1rem;
+  margin-left: -0.5rem;
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  color: var(--color-gray-400, #a3a3a3);
   content: attr(line);
 }
 

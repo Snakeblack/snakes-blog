@@ -1,10 +1,10 @@
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '../../blog'
 
 export async function getStaticPaths() {
+  const { getAllFilesFrontMatter } = await import('@/lib/mdx')
   const totalPosts = await getAllFilesFrontMatter('blog')
   const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+  const { getAllFilesFrontMatter } = await import('@/lib/mdx')
   const {
     params: { page },
   } = context

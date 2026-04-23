@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@plugin "@tailwindcss/typography";
+
 
 .task-list-item::before {
   @apply hidden;
@@ -11,15 +12,36 @@
 }
 
 .footnotes {
-  @apply pt-8 mt-12 border-t border-gray-200 dark:border-gray-700;
+  @apply mt-12 border-t border-gray-200 dark:border-gray-700;
 }
 
 .csl-entry {
   @apply my-5;
 }
 
+/* Fix double background in code blocks and ensure transparency */
+.prose pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border-width: 0 !important;
+}
+
+/* Fix rounded corners and margins when a code title is present */
+.remark-code-title + .group .my-8 {
+  margin-top: 0 !important;
+}
+
+.remark-code-title + .group .my-8 pre {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-width: 0 !important;
+}
+
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
 }

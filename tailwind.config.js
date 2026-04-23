@@ -1,12 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.js',
-    './components/**/*.js',
-    './layouts/**/*.js',
-    './lib/**/*.js',
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './layouts/**/*.{js,jsx,ts,tsx}',
+    './lib/**/*.{js,jsx,ts,tsx}',
     './data/**/*.mdx',
   ],
   darkMode: 'class',
@@ -33,11 +34,17 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.primary.600'),
+              color: theme('colors.primary.800'),
               '&:hover': {
-                color: `${theme('colors.primary.800')} !important`,
+                color: `${theme('colors.primary.900')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.primary.800') },
+            },
+            'pre code': {
+              backgroundColor: 'transparent !important',
+              padding: '0 !important',
+              borderRadius: '0 !important',
+              color: 'inherit',
             },
             h1: {
               fontWeight: '700',
@@ -57,18 +64,17 @@ module.exports = {
               color: theme('colors.gray.900'),
             },
             pre: {
+              backgroundColor: theme('colors.gray.950'),
               color: theme('colors.gray.200'),
-              backgroundColor: theme('colors.zinc.700'),
-              fontWeight: '600',
             },
             code: {
-              color: theme('colors.gray.700'),
-              backgroundColor: theme('colors.gray.200'),
+              backgroundColor: theme('colors.gray.100'),
+              color: theme('colors.gray.900'),
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '2px',
               paddingBottom: '2px',
-              borderRadius: '0.25rem',
+              borderRadius: '0.2rem',
             },
             'code::before': {
               content: 'none',
@@ -76,26 +82,18 @@ module.exports = {
             'code::after': {
               content: 'none',
             },
-            details: {
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
-            },
             hr: { borderColor: theme('colors.gray.200') },
             'ol li::marker': {
               fontWeight: '600',
-              color: theme('colors.gray.500'),
+              color: theme('colors.gray.600'),
             },
             'ul li::marker': {
-              backgroundColor: theme('colors.gray.500'),
+              backgroundColor: theme('colors.gray.600'),
             },
-            strong: { color: theme('colors.gray.600') },
+            strong: { color: theme('colors.gray.900') },
             blockquote: {
               color: theme('colors.gray.900'),
-              borderLeftColor: theme('colors.gray.200'),
+              borderLeftColor: theme('colors.gray.300'),
             },
           },
         },
@@ -127,14 +125,18 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             pre: {
-              backgroundColor: theme('colors.neutral.800'),
+              backgroundColor: theme('colors.gray.950'),
+              color: theme('colors.gray.200'),
+            },
+            'pre code': {
+              backgroundColor: 'transparent !important',
+              padding: '0 !important',
+              borderRadius: '0 !important',
+              color: 'inherit',
             },
             code: {
               backgroundColor: theme('colors.gray.800'),
-              color: theme('colors.gray.100'),
-            },
-            details: {
-              backgroundColor: theme('colors.gray.800'),
+              color: theme('colors.gray.200'),
             },
             hr: { borderColor: theme('colors.gray.700') },
             'ol li::marker': {
@@ -159,10 +161,11 @@ module.exports = {
               color: theme('colors.gray.100'),
               borderLeftColor: theme('colors.gray.700'),
             },
+
           },
         },
       }),
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography')],
 }

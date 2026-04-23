@@ -1,11 +1,19 @@
-/* eslint-disable react/display-name */
-import { useMemo } from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
+import { MDXRemote } from 'next-mdx-remote'
 import Image from './Image'
 import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
+
+import AuthorLayout from '../layouts/AuthorLayout'
+import PostLayout from '../layouts/PostLayout'
+import PostSimple from '../layouts/PostSimple'
+
+const layouts = {
+  AuthorLayout,
+  PostLayout,
+  PostSimple,
+}
 
 export const MDXComponents = {
   Image,
@@ -13,14 +21,18 @@ export const MDXComponents = {
   a: CustomLink,
   pre: Pre,
   BlogNewsletterForm: BlogNewsletterForm,
-  wrapper: ({ components, layout, ...rest }) => {
-    const Layout = require(`../layouts/${layout}`).default
-    return <Layout {...rest} />
-  },
 }
 
 export const MDXLayoutRenderer = ({ layout, mdxSource, ...rest }) => {
-  const MDXLayout = useMemo(() => getMDXComponent(mdxSource), [mdxSource])
+  const Layout = layouts[layout]
+  if (!Layout) {
+    return <MDXRemote {...mdxSource} components={MDXComponents} {...rest} />
+  }
 
-  return <MDXLayout layout={layout} components={MDXComponents} {...rest} />
+  return (
+    <Layout {...rest}>
+      <MDXRemote {...mdxSource} components={MDXComponents} />
+    </Layout>
+  )
 }
+

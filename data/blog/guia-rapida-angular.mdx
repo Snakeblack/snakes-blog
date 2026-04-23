@@ -401,7 +401,9 @@ Estos son los pasos de ejecución cuando un componente o directiva entra en pant
       <td>
         <code>ngDoCheck</code>
       </td>
-      <td>Se ejecuta cada vez que una propiedad del componente o directiva esta cargada y revisada.</td>
+      <td>
+        Se ejecuta cada vez que una propiedad del componente o directiva esta cargada y revisada.
+      </td>
     </tr>
     <tr>
       <td>
@@ -413,7 +415,9 @@ Estos son los pasos de ejecución cuando un componente o directiva entra en pant
       <td>
         <code>ngAfterContentChecked</code>
       </td>
-      <td>Se ejecuta despues de ngDoCheck, cuando el contenido del componente ha cargado y revisado.</td>
+      <td>
+        Se ejecuta despues de ngDoCheck, cuando el contenido del componente ha cargado y revisado.
+      </td>
     </tr>
     <tr>
       <td>
@@ -620,7 +624,10 @@ class Permissions {
 }
 @Injectable()
 class CanActivateTeam implements CanActivate {
-  constructor(private permissions: Permissions, private currentUser: UserToken) {}
+  constructor(
+    private permissions: Permissions,
+    private currentUser: UserToken
+  ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -984,9 +991,12 @@ Los efectos pueden correr tareas largas o bien ser ejecutados por largos periodo
 effect((onCleanup) => {
   const user = currentUser()
 
-  const timer = setTimeout(() => {
-    console.log(`El usuario ${user} ha estado inactivo por 5 minutos`)
-  }, 5 * 60 * 1000)
+  const timer = setTimeout(
+    () => {
+      console.log(`El usuario ${user} ha estado inactivo por 5 minutos`)
+    },
+    5 * 60 * 1000
+  )
 
   onCleanup(() => {
     clearTimeout(timer)
@@ -1013,7 +1023,7 @@ Similar al \*ngIf, ahora tenemos un @if mucho más poderoso.
   selector: 'app-user-controls',
   template: `
     @if (isAdmin) {
-    <button>Eliminar usuario</button>
+      <button>Eliminar usuario</button>
     }
   `,
 })
@@ -1031,9 +1041,9 @@ export class UserControlsComponent {
   selector: 'app-user-controls',
   template: `
     @if (isAdmin) {
-    <button>Eliminar usuario</button>
+      <button>Eliminar usuario</button>
     } @else {
-    <p>No tienes permisos para eliminar usuarios</p>
+      <p>No tienes permisos para eliminar usuarios</p>
     }
   `,
 })

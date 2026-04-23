@@ -4,67 +4,67 @@
   "private": true,
   "scripts": {
     "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",
-    "dev": "next dev",
-    "build": "next build && node ./scripts/generate-sitemap",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack && node ./scripts/generate-sitemap",
     "serve": "next start",
-    "analyze": "cross-env ANALYZE=true next build",
+    "analyze": "cross-env ANALYZE=true next build --turbopack",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky install"
-  },
-  "engines": {
-    "node": "20.x"
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "@fontsource/inter": "4.5.2",
-    "@tailwindcss/forms": "^0.5.2",
-    "@tailwindcss/typography": "^0.5.4",
-    "autoprefixer": "^10.4.0",
-    "esbuild": "^0.13.13",
-    "github-slugger": "^1.4.0",
-    "gray-matter": "^4.0.2",
-    "image-size": "^1.0.2",
-    "mdx-bundler": "^9.0.1",
-    "next": "12.1.4",
-    "next-themes": "^0.0.14",
-    "postcss": "^8.4.14",
-    "preact": "^10.6.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "reading-time": "1.3.0",
+    "@fontsource-variable/inter": "^5.2.5",
+    "github-slugger": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "image-size": "^2.0.2",
+    "js-yaml": "^4.1.1",
+    "mdast-util-to-string": "^4.0.0",
+    "next": "^16.2.4",
+    "next-mdx-remote": "^6.0.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "reading-time": "1.5.0",
     "rehype-autolink-headings": "^7.1.0",
-    "rehype-citation": "^2.0.0",
-    "rehype-katex": "^7.0.0",
-    "rehype-preset-minify": "7.0.0",
-    "rehype-prism-plus": "^2.0.0",
+    "rehype-citation": "^2.3.2",
+    "rehype-katex": "^7.0.1",
+    "rehype-preset-minify": "7.0.1",
+    "rehype-prism-plus": "^2.0.2",
     "rehype-slug": "^6.0.0",
-    "remark-footnotes": "^4.0.1",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
-    "sharp": "^0.28.3",
-    "tailwindcss": "^3.0.23",
-    "typescript": "^4.7.4",
-    "unist-util-visit": "^4.0.0",
-    "webpack": "^5.74.0"
+    "server-only": "^0.0.1",
+    "sharp": "^0.34.5",
+    "typescript": "^5.8.3",
+    "unist-util-visit": "^5.1.0",
+    "webpack": "^5.106.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "12.1.4",
-    "@svgr/webpack": "^6.1.2",
+    "@next/bundle-analyzer": "15.3.0",
+    "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@tailwindcss/typography": "^0.5.19",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
+    "autoprefixer": "^10.5.0",
     "cross-env": "^7.0.3",
     "dedent": "^0.7.0",
-    "eslint": "^7.29.0",
-    "eslint-config-next": "12.1.4",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "15.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "file-loader": "^6.0.0",
     "globby": "11.0.3",
-    "husky": "^8.0.1",
+    "husky": "^9.1.7",
     "inquirer": "^8.1.1",
-    "lint-staged": "^13.0.3",
-    "next-remote-watch": "^1.0.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.12",
-    "socket.io": "^4.4.0",
-    "socket.io-client": "^4.4.0"
+    "lint-staged": "^15.5.2",
+    "next-remote-watch": "^2.0.0",
+    "postcss": "^8.5.10",
+    "postcss-import": "^16.1.1",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "tailwindcss": "^4.2.4"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
@@ -75,11 +75,10 @@
     ]
   },
   "pnpm": {
-    "overrides": {
-      "sharp@<0.30.5": ">=0.30.5",
-      "postcss@<8.4.31": ">=8.4.31",
-      "next@>=0.9.9 <13.4.20-canary.13": ">=13.4.20-canary.13",
-      "sharp@<0.32.6": ">=0.32.6"
-    }
-  }
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
 }

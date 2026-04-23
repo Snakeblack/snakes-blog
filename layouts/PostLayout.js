@@ -34,7 +34,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <dl className="space-y-10">
                 <div>
                   <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                  <dd className="text-base font-medium leading-6 text-gray-600 dark:text-gray-400">
                     <time dateTime={date}>
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>
@@ -73,7 +73,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                           {author.github && (
                             <Link
                               href={author.github}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                              className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400"
                             >
                               {author.github.replace('https://github.com/', '@')}
                             </Link>
@@ -100,7 +100,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="text-sm font-medium leading-5 divide-gray-200 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
                 {tags && (
                   <div className="py-4 xl:py-8">
-                    <h2 className="mb-2 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                    <h2 className="mb-2 text-xs tracking-wide text-gray-600 uppercase dark:text-gray-400">
                       Tags
                     </h2>
                     <div className="flex flex-wrap">
@@ -114,20 +114,20 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
                     {prev && (
                       <div>
-                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                        <h2 className="text-xs tracking-wide text-gray-600 uppercase dark:text-gray-400">
                           Articulo anterior
                         </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        <div className="text-primary-700 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300">
                           <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
                     {next && (
                       <div>
-                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                        <h2 className="text-xs tracking-wide text-gray-600 uppercase dark:text-gray-400">
                           Siguiente Articulo
                         </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        <div className="text-primary-700 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300">
                           <Link href={`/blog/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
@@ -138,7 +138,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="pt-4 xl:pt-8">
                 <Link
                   href="/blog"
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                  className="text-primary-700 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300"
                 >
                   &larr; Volver al blog
                 </Link>
