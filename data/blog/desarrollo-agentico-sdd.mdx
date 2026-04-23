@@ -1,0 +1,729 @@
+---
+title: 'El Fin del "Vibe Coding": Ingeniería Agéntica y Spec-Driven Development (SDD)'
+date: '2026-04-23'
+tags: ['agentic-engineering', 'sdd', 'tdd', 'ia', 'architecture', 'openspec']
+draft: false
+summary: 'Escribir prompts a ciegas no es ingeniería. Descubre cómo el Spec-Driven Development (SDD), combinado con herramientas como Engram y Gentle-AI, transforma el caos del "vibe coding" en flujos de trabajo predecibles, seguros y validados.'
+layout: PostSimple
+---
+
+## Tabla de Contenido
+
+- [El mito del "Vibe Coding"](#el-mito-del-vibe-coding)
+- [Spec-Driven Development (SDD): Arquitectura primero](#spec-driven-development-sdd-arquitectura-primero)
+- [El Stack Definitivo: Openspec, Engram y Gentle-AI](#el-stack-definitivo-openspec-engram-y-gentle-ai)
+- [Ejecución por Fases y TDD Estricto](#ejecución-por-fases-y-tdd-estricto)
+- [Skills y Orquestación: El cerebro de la operación](#skills-y-orquestación-el-cerebro-de-la-operación)
+
+---
+
+## El mito del "Vibe Coding"
+
+Durante el último año, se popularizó el término _"vibe coding"_: la idea de tirarle instrucciones vagas a una Inteligencia Artificial y dejar que, casi por arte de magia, construya un sistema completo. La realidad nos golpeó rápido. El resultado de programar "por vibras" es un código espagueti, con graves fallas de seguridad, arquitecturas acopladas y una deuda técnica inmanejable.
+
+La Inteligencia Artificial no lee mentes. Es una herramienta de ejecución brillante, pero requiere una **dirección humana precisa**. Aquí es donde nace la verdadera **Ingeniería Agéntica** (_Agentic Engineering_).
+
+## Spec-Driven Development (SDD): Arquitectura primero
+
+Antes de escribir una sola línea de código, necesitas un mapa. El **Spec-Driven Development (SDD)** es la metodología que pone las especificaciones en el centro del desarrollo.
+
+El flujo correcto con IA no es pedirle que "haga una app". El flujo es:
+
+1. **Definir el Funcional**: Trazar el alcance, límites y flujos.
+2. **Mejorar con IA**: Usar al agente para expandir escenarios edge o buscar dependencias óptimas.
+3. **Establecer la Arquitectura**: Definir el Design System, la seguridad y la estructura de datos.
+4. **Validación Humana**: **Tú** eres el arquitecto. Nada avanza sin tu validación.
+
+Solo cuando tienes documentos técnicos claros y un _roadmap_ sin ambigüedades, le das luz verde al agente para codificar.
+
+## El Stack Definitivo: Openspec, Engram y Gentle-AI
+
+Existen varias formas de implementar SDD, pero mi recomendación personal (y la que utilizo a diario) es la combinación de **Openspec** y **Engram**.
+
+- [**Engram**](https://github.com/Gentleman-Programming/engram): Un proyecto Open Source revolucionario que dota a los agentes de "memoria persistente". En lugar de olvidar el contexto entre sesiones, el agente recuerda las decisiones arquitectónicas, los bugs resueltos y los patrones del proyecto.
+- [**Gentle-AI**](https://github.com/Gentleman-Programming/gentle-ai): Es el ecosistema que lo orquestra todo. No es un simple instalador, es un **configurador de arquitectura agéntica** que prepara tu entorno de forma atómica.
+- [**GGA (Gentleman Guardian Angel)**](https://github.com/Gentleman-Programming/gentleman-guardian-angel): Es el "revisor senior" del equipo. Es una herramienta agnóstica para realizar code reviews con IA (Claude, Gemini, Ollama, etc.). Sin dependencias, escrito en Bash puro y funciona en cualquier parte. Como alguien que ha tenido el placer de contribuir activamente a este proyecto Open Source, puedo dar fe de que está diseñado para garantizar que se cumplan tus estándares en cada commit, llevando la calidad del código a un nivel estratosférico.
+
+## Ejecución por Fases y TDD Estricto
+
+Una vez que las especificaciones están validadas por ti, no lanzamos al agente a codificar todo de golpe. El SDD requiere trabajar en **fases de tareas**.
+
+Cada tarea se ejecuta bajo un régimen de **Test-Driven Development (TDD) estricto**.
+
+1. El agente escribe la prueba basada en la especificación.
+2. Se verifica que la prueba falle.
+3. Se escribe el código de producción.
+4. Se valida la solución.
+
+Cada fase termina con una revisión tuya. No hay código fantasma ni comportamientos inesperados. Cero sorpresas.
+
+## Skills y Orquestación: El cerebro de la operación
+
+Para que un agente no alucine, necesita límites y reglas claras. Esto se logra mediante **Skills** (habilidades inyectadas como contexto) y un **Orquestador**.
+
+### El Orquestador de Skills
+
+El corazón del trabajo agéntico es un orquestador que divide el problema en fases lógicas (Exploración, Propuesta, Diseño, Especificación, Tareas, Implementación y Verificación). El orquestador asegura que el agente use el contexto adecuado en el momento adecuado, pasando el conocimiento de una fase a otra sin saturar la ventana de contexto.
+
+### Skills Globales Recomendadas
+
+Si estás configurando tu entorno local, te recomiendo encarecidamente instalar las siguientes skills globales (independientes del framework que uses) para garantizar calidad de nivel empresarial:
+
+- **`clean-code-principles`**: Obliga al agente a respetar patrones de diseño, nombres limpios y reducción de deuda técnica en cada línea que genera.
+- **`test-driven-development`**: Fuerza el ciclo _Red-Green-Refactor_ de manera estricta. Nada se programa sin su prueba correspondiente.
+- **`owasp-security-testing`**: Mantiene al agente alerta sobre vulnerabilidades del _Top 10 de OWASP_, previniendo inyecciones o fugas de datos desde el momento cero.
+- **`judgment-day`**: Un protocolo de revisión adversarial donde dos sub-agentes independientes revisan el código generado antes de dártelo por válido. Es como tener a dos arquitectos senior debatiendo sobre tu PR.
+- **`skill-vetter`**: Una barrera de seguridad que audita cualquier nueva skill que instales, previniendo comportamientos sospechosos.
+
+---
+
+_El desarrollo agéntico no reemplaza al ingeniero; lo eleva a la posición de Arquitecto de Software. Las herramientas están listas, el método está probado. Es hora de dejar atrás las vibras y empezar a hacer ingeniería._
+
+---
+
+## Repositorio de Skills (Copy & Paste)
+
+Para que tu orquestador funcione con estándares de nivel senior, acá tenés los contratos (Skills) originales listos para copiar y pegar en tu configuración. Estos son los archivos `SKILL.md` tal cual están en la fuente.
+
+### Índice de Skills
+
+1. [**clean-code-principles**](#skill-clean-code)
+2. [**test-driven-development**](#skill-tdd)
+3. [**owasp-security-testing**](#skill-security)
+4. [**judgment-day**](#skill-judgment)
+5. [**skill-vetter**](#skill-vetter)
+
+<a name="skill-clean-code"></a>
+### 1. clean-code-principles
+
+```markdown
+---
+name: clean-code-principles
+author: manuel-michael-retamozo
+description: Activar incondicionalmente al generar, modificar, refactorizar o revisar código fuente en cualquier lenguaje. Define los estándares obligatorios para garantizar legibilidad, mantenibilidad y reducción de deuda técnica.
+---
+
+# Contexto y Activación
+
+- **Gatillos de Activación**: Tareas de escritura de código, revisión de Pull Requests/Merge Requests, análisis estático delegado y refactorización de código heredado (legacy code).
+- **Prioridad**: Crítica. Estas reglas sobrescriben cualquier preferencia de generación por defecto, a menos que el entorno del proyecto exija estrictamente seguir una convención diferente ya existente.
+
+# Reglas y Convenciones Core
+
+- **Nomenclatura (Naming)**:
+  - Nombres que revelan intención: Usar `elapsed_time_in_days` en lugar de `d` o `days`.
+  - Vocabulario del Dominio: Usar el lenguaje ubicuo (Ubiquitous Language) del problema que se está resolviendo.
+  - Clases/Interfaces: Sustantivos o frases sustantivadas (ej. `UserAuthenticator`).
+  - Funciones/Métodos: Verbos o frases verbales (ej. `calculate_taxes`).
+  - Evitar desinformación, ruido (`Manager`, `Processor`, `Data`) y notación húngara.
+- **Funciones (Functions)**:
+  - **Tamaño**: Deben ser extremadamente cortas.
+  - **Responsabilidad Única (SRP)**: Deben hacer solo una cosa, hacerla bien y hacer solo eso.
+  - **Aridad (Argumentos)**: Preferir 0 (Níladicas), máximo 2 (Diádicas). Para 3 o más parámetros, encapsularlos en un objeto/DTO (Parameter Object).
+  - **Stepdown Rule**: El código debe leerse como una narrativa de arriba hacia abajo; cada función debe ser seguida por las funciones del siguiente nivel de abstracción.
+- **Formato y Estructura**:
+  - Declarar las dependencias e inicializaciones en la parte superior.
+  - Agrupar conceptos afines verticalmente (densidad vertical).
+- **Manejo de Errores (Error Handling)**:
+  - Usar Excepciones en lugar de devolver códigos de error (ej. evitar devolver `-1`, `false` o `null` como señal de fallo).
+  - Proveer contexto con las excepciones generadas.
+  - Extraer los bloques `try/catch` a sus propias funciones para separar el manejo de errores de la lógica de negocio.
+
+# Instrucciones de Ejecución (Workflows)
+
+1. **Evaluar el Requerimiento**: Identificar las entidades del dominio y las operaciones atómicas requeridas.
+2. **Generar Lógica Principal**: Escribir la implementación funcional asegurando la correcta resolución del problema.
+3. **Paso de Refactorización Autónoma (Obligatorio)**:
+   - Analizar si existen bloques `if/else` o `switch` que puedan abstraerse usando polimorfismo o diccionarios.
+   - Extraer lógica anidada en métodos privados descriptivos.
+   - Reemplazar valores literales directos por constantes tipadas.
+4. **Verificación de Comentarios**:
+   - Eliminar cualquier comentario que explique "qué" hace el código.
+   - Mantener/Añadir únicamente comentarios que expliquen el "por qué" (decisiones de negocio inusuales, workarounds por bugs de terceros).
+5. **Comprobación Final de Retorno**: Asegurar el uso de cláusulas de guarda (_Guard Clauses_) para abortar la ejecución tempranamente si las precondiciones fallan, evitando anidamientos profundos.
+
+# Anti-patrones
+
+- **ESTRICTAMENTE PROHIBIDO**:
+  - **Números o Strings Mágicos**: Valores literales incrustados directamente en la lógica sin una constante descriptiva que explique su significado.
+  - **Arrow Code (Anidamiento Profundo)**: Más de dos niveles de indentación (bucles dentro de condicionales dentro de bucles).
+  - **Efectos Secundarios Ocultos (Side Effects)**: Funciones que modifican variables de estado globales o parámetros pasados por referencia sin que su nombre lo indique claramente.
+  - **Código Duplicado (Violación de DRY)**: Copiar y pegar bloques de lógica; debe ser abstraído a funciones puras o métodos base.
+  - **Código Muerto y Comentarios de Código**: Dejar funciones sin usar, importaciones huérfanas o bloques de código comentados en la salida final.
+```
+
+<a name="skill-tdd"></a>
+### 2. test-driven-development
+
+```markdown
+---
+name: test-driven-development
+author: manuel-michael-retamozo
+description: Aplica la metodología Test-Driven Development (TDD). Activa este skill cuando el usuario indique usar TDD, desarrollo guiado por pruebas, al iniciar una nueva funcionalidad que requiera alta fiabilidad, o cuando se requiera escribir pruebas antes del código de producción. Fuerza el ciclo estricto Red-Green-Refactor.
+---
+
+## Contexto y Activación
+
+- **Condición de activación:** Solicitudes explícitas del usuario que mencionen "TDD", "Test-Driven Development", "desarrollo guiado por pruebas" o "tests primero".
+- **Condición de activación:** Inicio de desarrollo de algoritmos críticos, parsers, o lógica de negocio compleja donde los casos de borde deben controlarse desde el inicio.
+- **Condición de activación:** Entornos de trabajo donde el framework de pruebas (Jest, PyTest, JUnit, RSpec, etc.) ya está inicializado y el usuario solicita una nueva feature.
+- **Propósito:** Asegurar que el diseño arquitectónico y las interfaces del código emerjan de las necesidades de las pruebas, garantizando un código modular y testeable.
+
+## Reglas y Convenciones Core
+
+- **Ciclo Estricto:** Obligatorio seguir la secuencia inmutable: Red (Escribir test que falla) -> Green (Escribir código mínimo que pasa) -> Refactor (Limpiar código).
+- **Patrón Estructural:** Utilizar `AAA` (Arrange, Act, Assert) o `Given-When-Then` para la legibilidad de cada bloque de prueba.
+- **Unidad y Aislamiento:** Cada prueba debe verificar un único comportamiento. Aislar dependencias externas (bases de datos, red, I/O) utilizando Mocks, Stubs o Fakes apropiados según el lenguaje.
+- **Código Mínimo Viable:** En la fase Green, la implementación debe ser lo más tonta y directa posible. Si devolver un hardcode (`return true`) hace pasar el test inicial, es la respuesta correcta hasta que un nuevo test (triangulación) obligue a generalizar la lógica.
+
+## Instrucciones de Ejecución (Workflows)
+
+1. **Fase 1: RED (Escribir la prueba)**
+   - Leer los requerimientos de la funcionalidad a implementar.
+   - Identificar el caso de uso más simple o el "happy path" inicial.
+   - Generar/editar el archivo de test correspondiente (ej. `modulo.test.ts` o `test_modulo.py`).
+   - Escribir una única prueba para ese caso de uso asumiendo que la interfaz/clase ya existe.
+   - Ejecutar la suite de pruebas mediante comando de terminal.
+   - **Validación obligatoria:** Confirmar que la prueba falla EXACTAMENTE porque la funcionalidad no existe o no retorna lo esperado.
+
+2. **Fase 2: GREEN (Hacer que pase)**
+   - Cambiar al archivo del código de producción.
+   - Implementar el código estrictamente necesario para resolver el error del test.
+   - Ejecutar la suite de pruebas nuevamente.
+   - **Validación obligatoria:** Confirmar que el nuevo test pasa (junto con todos los anteriores) sin romper nada más.
+
+3. **Fase 3: REFACTOR (Mejorar el diseño)**
+   - Revisar el código de producción y de pruebas buscando duplicación, nombres confusos o violaciones a principios Clean Code/SOLID.
+   - Refactorizar el código de forma incremental.
+   - Tras cada pequeña modificación, ejecutar los tests. Si un test falla, hacer rollback del último cambio.
+   - **Validación obligatoria:** Al finalizar, el código es limpio y todos los tests siguen en verde.
+
+4. **Iteración y Triangulación**
+   - Repetir los pasos 1 al 3 para cubrir los siguientes escenarios: mutaciones de estado, casos de error, límites de datos (edge cases) y excepciones.
+
+## Anti-patrones
+
+- **NUNCA** escribir código de producción anticipando futuras necesidades si no hay un test escrito que lo demande (Violación de YAGNI en TDD).
+- **NUNCA** escribir el código de producción primero y las pruebas después asumiendo que es "TDD inverso".
+- **NUNCA** modificar el código de producción durante la fase RED.
+- **NUNCA** escribir más de una prueba que falla al mismo tiempo; el flujo debe ser unitario e incremental.
+- **NUNCA** testear detalles privados de implementación; testear siempre las interfaces y comportamientos públicos.
+- **NUNCA** omitir la fase de Refactor bajo la excusa de "el código ya funciona".
+```
+
+<a name="skill-security"></a>
+### 3. owasp-security-testing
+
+```markdown
+---
+name: owasp-security-testing
+author: manuel-michael-retamozo
+description: Checklist OWASP Top 10 aplicado a SaaS multi-tenant. Configuración de ZAP, Burp, ESLint security. Tests de aislamiento de datos.
+---
+
+# OWASP Security Testing Patterns
+
+Guía de seguridad para validación de Noema contra ataques críticos en su ecosistema SaaS (Supabase + Angular + Edge Functions).
+
+## 1. Contexto
+
+Tratar con datos de nivel Enterprise requiere pasar auditorías de seguridad (VAPT) por lo que el código en PRs debe venir libre de vulnerabilidades endémicas tipo XSS, IDOR y SQLi. Toda falla de Isolation tenant implica un incidente GDPR Severity 1.
+
+## 2. Reglas Core
+
+- **Authentication / Auth Bypass:** Usar flujos estrictos de validación del JWT de Supabase `supabase.auth.getSession()` en lugar de leer el `localStorage`.
+- **IDOR (BOLA - Broken Object Level Authorization):** El IDOR de APIs tradicionales se mitiga delegándolo a RLS en PostgreSQL, donde la variable `request.jwt.claim.org_id` y `auth.uid()` fuerzan la propiedad del objeto. Nunca pasar el tenant como variable vulnerable: ej. `update('docs').eq('org_id', body.orgId)`. El RLS debe sobrescribirlo.
+- **XSS (Cross-Site Scripting):** Angular provee mitigación nativa a través de DOMSanitizer, pero hay que desactivar _Dangerous bypass_ (uso indiscriminado de `DomSanitizer.bypassSecurityTrustHtml`). Todo Markdown generado por Gemini será renderizado via librería segura o limpiado con DOMPurify.
+- **CSRF (Cross-Site Request Forgery):** Los endpoints en Supabase Edge Functions usan cabecera `Authorization: Bearer <token>` para validar (stateful tokens o cookies samesite estricto si se implementara SSR). Las APIs no evalúan credenciales implícitas del nav.
+- **SQLi (SQL Injection):** El acceso de Supabase Client JS escapa automáticamente las variables usando bind params. ¡Si escribes RPCs (PlpgSQL), NUNCA concatenes consultas dinámicas! Manda siempre Parámetros formales ($1, $2).
+
+## 3. Workflows
+
+### Validar Content-Security Policy (CSP)
+
+El header de CSP HTTP en el Host (Vercel/NGINX) es vital. La app requerirá excepciones como:
+
+`Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com; img-src 'self' data: https://*supabase.co; connect-src 'self' wss://*supabase.co https://\*supabase.co;`
+
+> Nota: `'wasm-unsafe-eval'` es mandatorio para cargar WebGPU / LiteRT.js sin bloquearse.
+
+### Escaneo Dinámico (DAST) y Estático (SAST)
+
+- SAST: Instalar `@typescript-eslint/eslint-plugin-security` para que arroje warnings localmente al escribir un eval o un RegEx super lineal (ReDoS).
+
+```
+
+<a name="skill-judgment"></a>
+### 4. judgment-day
+
+```markdown
+---
+name: judgment-day
+author: manuel-michael-retamozo
+description: >
+  Protocolo de revisión adversarial en paralelo que lanza dos sub-agentes jueces independientes
+  simultáneamente para revisar el mismo objetivo, sintetiza sus hallazgos, aplica correcciones
+  y vuelve a juzgar hasta que ambos pasan o se escala después de 2 iteraciones.
+  Disparador: Cuando el usuario dice "judgment day", "judgment-day", "review adversarial", "dual review",
+  "doble review", "juzgar", "que lo juzguen".
+license: Apache-2.0
+metadata:
+  version: '1.4'
+---
+
+## Cuándo usarlo
+
+- El usuario pide explícitamente "judgment day", "judgment-day" o frases equivalentes.
+- Después de implementaciones significativas antes de mergear.
+- Cuando se necesita una revisión de alta confianza del código, las features o la arquitectura.
+- Cuando un solo revisor podría pasar por alto casos de borde o tener puntos ciegos.
+- Cuando el costo de un bug en producción es mayor que el costo de dos rondas de revisión.
+
+## Patrones Críticos
+
+### Patrón 0: Resolución de Skills (ANTES de lanzar jueces)
+
+Seguí el **Protocolo de Resolución de Skills** (`_shared/skill-resolver.md`) antes de lanzar CUALQUIER sub-agente:
+
+1. Obtené el registro de skills: buscá en engram (`mem_search(query: "skill-registry", project: "{project}")`) → fallback a `.atl/skill-registry.md` desde la raíz del proyecto → omitir si no hay nada.
+2. Identificá los archivos/alcance objetivo —¿qué código van a revisar los jueces?
+3. Coincidí las skills relevantes de las **Compact Rules** del registro por:
+   - **Contexto de código**: extensiones/rutas de archivos del objetivo (ej. `.go` → go-testing; `.tsx` → react-19, typescript)
+   - **Contexto de tarea**: "review code" → skills de framework/lenguaje; "create PR" → skill de branch-pr
+4. Construí un bloque `## Project Standards (auto-resolved)` con los bloques de reglas compactas que coincidan.
+5. Inyectá este bloque TANTO en los prompts de los Jueces COMO en el prompt del Agente de Corrección (idéntico para todos).
+
+Esto asegura que los jueces redunden contra los estándares específicos del proyecto, no solo contra mejores prácticas genéricas.
+
+**Si no existe un registro**: advertí al usuario ("No se encontró el registro de skills — los jueces revisarán sin estándares específicos del proyecto. Ejecutá `skill-registry` para solucionar esto.") y procedé con la revisión genérica únicamente.
+
+### Patrón 1: Revisión Ciega en Paralelo
+
+- Lanzá **DOS** sub-agentes vía `delegate` (async, paralelo — nunca secuencial).
+- Cada agente recibe el **mismo objetivo** pero trabaja de forma **independiente**.
+- **Ningún agente sabe del otro** — sin contaminación cruzada.
+- Ambos usan criterios de revisión idénticos pero pueden encontrar problemas diferentes.
+- NUNCA hagas la revisión vos mismo como orquestador — tu trabajo es solo coordinación.
+
+### Patrón 2: Síntesis de Veredicto
+
+El **orquestador** (NO un sub-agente) compara los resultados después de que ambas llamadas a `delegation_read` retornan:
+
+
+> Confirmado    → encontrado por AMBOS agentes          → alta confianza, corregir inmediatamente
+> Sospechoso A  → encontrado SOLO por el Juez A         → requiere triaje
+> Sospechoso B  → encontrado SOLO por el Juez B         → requiere triaje
+> Contradicción → los agentes NO COINCIDEN en lo mismo → marcar para decisión manual
+
+
+
+Presentá los hallazgos como una tabla de veredicto estructurada (ver Formato de Salida).
+
+### Patrón 3: Clasificación de Advertencias
+
+Los Jueces DEBEN clasificar cada ADVERTENCIA (WARNING) en uno de dos sub-tipos:
+
+```text
+WARNING (real)        → Causa un bug, pérdida de datos, brecha de seguridad o comportamiento incorrecto
+                         en un escenario de producción realista. Corrección requerida.
+WARNING (teórico)     → Requiere un escenario forzado, entrada corrupta o condiciones
+                         que no pueden surgir mediante el uso normal. Informar pero NO bloquear.
+```text
+
+**Cómo clasificar**: preguntá "¿Puede un usuario normal, usando la herramienta como se espera, disparar esto?". Si la respuesta es SÍ → real. Si requiere un manifiesto malicioso, renombrar el directorio home, dos clics en menos de 1ms, o un caso de borde de raíz de volumen de Windows → teórico.
+
+**Las advertencias teóricas se informan como INFO** en la tabla de veredicto. NO se corrigen, NO disparan un nuevo juicio y NO cuentan para el umbral de convergencia. El orquestador las incluye en el informe final para conocimiento.
+
+### Patrón 4: Corregir y Volver a Juzgar
+
+1. Si existen CRITICALs confirmados o WARNINGs reales → delegá un **Agente de Corrección** (delegación separada).
+2. Una vez que el Agente de Corrección termina → volvé a lanzar **ambos jueces en paralelo** (mismo protocolo ciego, nuevos delegados).
+3. **Después de 2 iteraciones de corrección**, si los problemas persisten → presentá los hallazgos al usuario y PREGUNTÁ: "¿Querés que siga iterando?". Si SÍ → continuar el ciclo de corrección+juicio. Si NO → VEREDICTO: ESCALADO.
+4. Si ambos jueces retornan limpio → VEREDICTO: APROBADO ✅
+
+### Patrón 5: Umbral de Convergencia
+
+**Ronda 1**: Presentá la tabla de veredicto al usuario. PREGUNTÁ: "Estos son los problemas confirmados. ¿Querés que los arregle?". Solo corregí después de que el usuario confirme. Luego volvé a juzgar con todo el alcance.
+
+**Ronda 2+**: Solo volvé a juzgar si hay **CRITICALs confirmados**. Para cualquier otra cosa:
+
+- **WARNINGs reales** (confirmados): Corregir inline, NO volver a lanzar jueces. Informar como "corregido sin re-juicio" en el veredicto.
+- **WARNINGs teóricos**: Informar como INFO. NO corregir, NO volver a juzgar.
+- **SUGGESTIONs**: Corregir inline si es trivial (código muerto, estilo). NO volver a juzgar.
+
+**Criterios de APROBADO después de la Ronda 1**: 0 CRITICALs confirmados + 0 WARNINGs reales confirmados = APROBADO. Las advertencias teóricas y sugerencias pueden permanecer.
+
+Esto evita el ciclo de rendimientos decrecientes donde cada ronda de corrección introduce artefactos menores que disparan otra ronda de críticas quisquillosas.
+
+---
+
+## Árbol de Decisión
+
+```text
+El usuario pide "judgment day"
+│
+├── ¿El objetivo son archivos/feature/componente específicos?
+│   ├── SÍ → continuar
+│   └── NO → pedir al usuario que especifique el alcance antes de proceder
+│
+▼
+Resolver skills (Patrón 0): leer registro → coincidir por contexto de código + tarea → construir bloque de Estándares del Proyecto
+▼
+Lanzar Juez A + Juez B en paralelo (delegate, async) — con Estándares del Proyecto inyectados
+▼
+Esperar a que ambos completen (delegation_read de ambos)
+▼
+Sintetizar veredicto
+│
+├── ¿No se encontraron problemas?
+│   └── VEREDICTO: APROBADO ✅ (parar acá)
+│
+├── ¿Se encontraron problemas (confirmados, sospechosos o contradicciones)?
+│   └── Presentar tabla de veredicto al usuario
+│       ▼
+│       PREGUNTAR: "¿Arreglo los problemas confirmados?"
+│       ▼
+│       ├── El usuario dice SÍ → Delegar Agente de Corrección con la lista de problemas confirmados
+│       ├── El usuario dice NO → VEREDICTO: ESCALADO (el usuario eligió no corregir)
+│       └── El usuario da feedback específico → ajustar la lista de corrección según corresponda
+│       ▼
+│       Esperar a que el Agente de Corrección complete
+│       ▼
+│       Volver a lanzar Juez A + Juez B en paralelo (Ronda 2)
+│       ▼
+│       Sintetizar veredicto
+│       │
+│       ├── Limpio → VEREDICTO: APROBADO ✅
+│       │
+│       └── Todavía hay problemas → Delegar Agente de Corrección otra vez (Ronda 3 / iteración 2)
+│           ▼
+│           Volver a lanzar Juez A + Juez B en paralelo (Ronda 3)
+│           ▼
+│           Sintetizar veredicto
+│           │
+│           ├── Limpio → VEREDICTO: APROBADO ✅
+│           └── Todavía hay problemas → PREGUNTAR AL USUARIO: "Persisten problemas después de 2 iteraciones. ¿Continuar iterando?"
+│             │
+│             ├── El usuario dice SÍ → repetir ciclo de corrección + juicio (sin límite)
+│             └── El usuario dice NO → VEREDICTO: ESCALADO ⚠️ (informar al usuario)
+```text
+
+---
+
+## Plantillas de Prompt para Sub-Agentes
+
+### Prompt del Juez (usar para AMBOS Jueces A y B — idéntico)
+
+```text
+Sos un revisor de código adversarial. Tu ÚNICO trabajo es encontrar problemas.
+
+## Objetivo
+{describir objetivo: archivos, feature, arquitectura, componente}
+
+{si las reglas compactas se resolvieron en el Patrón 0, inyectar el siguiente bloque — de lo contrario OMITIR toda esta sección}
+## Estándares del Proyecto (auto-resolved)
+{pegar bloques de reglas compactas coincidentes del registro de skills}
+
+## Criterios de Revisión
+- Corrección: ¿El código hace lo que dice? ¿Hay errores lógicos?
+- Casos de borde: ¿Qué entradas o estados no se están manejando?
+- Manejo de errores: ¿Se capturan, propagan e informan los errores correctamente?
+- Rendimiento: ¿Alguna consulta N+1, bucles ineficientes, asignaciones innecesarias?
+- Seguridad: ¿Algún riesgo de inyección, secretos expuestos, validaciones de auth incorrectas?
+- Naming y convenciones: ¿Sigue los patrones establecidos del proyecto Y los Estándares del Proyecto de arriba?
+{si el usuario proporcionó criterios personalizados, agregarlos acá}
+
+## Formato de Retorno
+Retorná una lista estructurada de hallazgos ÚNICAMENTE. Sin elogios, sin aprobación.
+
+Cada hallazgo:
+- Severidad: CRITICAL | WARNING (real) | WARNING (teórico) | SUGGESTION
+- Archivo: ruta/al/archivo.ext (línea N si aplica)
+- Descripción: Qué está mal y por qué importa
+- Corrección sugerida: descripción en una línea de la corrección (no código, solo intención)
+
+**Regla de clasificación de WARNING**: Preguntá "¿Puede un usuario normal, usando la herramienta como se espera, disparar esto?"
+- SÍ → `WARNING (real)` — ej. error silencioso cuando el disco está lleno, corrupción de datos con entrada normal.
+- NO → `WARNING (teórico)` — ej. requiere un manifiesto malicioso, renombrar el directorio home, condición de carrera en <1ms, caso de borde específico del SO que no aplica a las plataformas objetivo del proyecto.
+
+Incluí siempre al final: **Resolución de Skills**: {injected|fallback-registry|fallback-path|none} — {detalles}
+
+Si no encontrás problemas, retorná:
+VEREDICTO: LIMPIO — No se encontraron problemas.
+
+## Instrucciones
+Sé minucioso y adversarial. Asumí que el código tiene bugs hasta que se demuestre lo contrario.
+Tu trabajo es encontrar problemas, NO aprobar. No resumas. No elogies.
+```text
+
+### Prompt del Agente de Corrección
+
+```text
+Sos un agente de corrección quirúrgica. Aplicás ÚNICAMENTE los problemas confirmados enumerados abajo.
+
+## Problemas Confirmados a Corregir
+{pegar la tabla de hallagzos confirmados de la síntesis del veredicto}
+
+{si las reglas compactas se resolvieron en el Patrón 0, inyectar el siguiente bloque — de lo contrario OMITIR toda esta sección}
+## Estándares del Proyecto (auto-resolved)
+{pegar bloques de reglas compactas coincidentes del registro de skills}
+
+## Contexto
+- Criterios de revisión originales: {pegar los mismos criterios usados para los jueces}
+- Objetivo: {misma descripción del objetivo}
+
+## Instrucciones
+- Corregí ÚNICAMENTE los problemas confirmados enumerados arriba.
+- NO refactorices más allá de lo estrictamente necesario para corregir cada problema.
+- NO cambies código que no fue marcado.
+- **Regla de alcance**: Si corregís un patrón en un archivo (ej. agregar log de errores para un descarte silencioso), buscá el MISMO patrón en TODOS los demás archivos tocados por este cambio y arreglalos TODOS. Las correcciones inconsistentes entre archivos son la causa #1 de rondas de re-juicio innecesarias.
+- Después de cada corrección, anotá: archivo modificado, línea modificada, qué se hizo.
+
+Retorná un resumen:
+## Correcciones Aplicadas
+- [archivo:línea] — {qué se corrigió}
+
+**Resolución de Skills**: {injected|fallback-registry|fallback-path|none} — {detalles}
+```text
+
+---
+
+## Formato de Salida
+
+```markdown
+## Judgment Day — {objetivo}
+
+### Ronda {N} — Veredicto
+
+| Hallazgo                          | Juez A | Juez B | Severidad         | Estado           |
+| --------------------------------- | ------ | ------ | ----------------- | ---------------- |
+| Falta check nulo en auth.go:42    | ✅     | ✅     | CRITICAL          | Confirmado       |
+| Condición de carrera worker.go:88 | ✅     | ❌     | WARNING (real)    | Sospechoso (A)   |
+| Caso borde raíz volumen Windows   | ❌     | ✅     | WARNING (teórico) | INFO — informado |
+| Mismatch naming en handler.go:15  | ❌     | ✅     | SUGGESTION        | Sospechoso (B)   |
+| Error tragado en db.go:201        | ✅     | ✅     | WARNING (real)    | Confirmado       |
+
+**Problemas confirmados**: 2 CRITICAL
+**Problemas sospechosos**: 1 WARNING, 1 SUGGESTION
+**Contradicciones**: ninguna
+
+### Correcciones Aplicadas (Ronda {N})
+
+- `auth.go:42` — Se agregó check de nulo antes de desreferenciar el puntero de usuario.
+- `db.go:201` — Se propagó el error en lugar de retornar nil silenciosamente.
+
+### Ronda {N+1} — Re-juicio
+
+- Juez A: PASA ✅ — No se encontraron problemas
+- Juez B: PASA ✅ — No se encontraron problemas
+
+---
+
+### VEREDICTO: APROBADO ✅
+
+Ambos jueces pasan limpio. El objetivo está despejado para el merge.
+```markdown
+
+### Formato de Escalación (el usuario eligió parar)
+
+```markdown
+## Judgment Day — {objetivo}
+
+### VEREDICTO: ESCALADO ⚠️
+
+El usuario eligió parar después de {N} iteraciones de corrección. Persisten problemas.
+Se requiere revisión manual antes de proceder.
+
+### Problemas Restantes
+
+| Hallazgo      | Juez A | Juez B | Severidad |
+| ------------- | ------ | ------ | --------- |
+| {descripción} | ✅     | ✅     | CRITICAL  |
+
+### Historia
+
+- Ronda 1: se encontraron {N} problemas confirmados
+- Corrección 1: se aplicó {lista}
+- Ronda 2: persisten {N} problemas
+- Corrección 2: se aplicó {lista}
+- Ronda 3: persisten {N} problemas → escalado
+
+Recomendación: revisión humana de los problemas restantes de arriba antes de volver a ejecutar judgment day.
+```markdown
+
+---
+
+## Feedback de Resolución de Skills
+
+Después de cada delegación que retorna un resultado, comprobá el campo `**Resolución de Skills**` en cada respuesta de juez/agente de corrección:
+
+- `injected` → las skills se pasaron correctamente ✅
+- `fallback-registry`, `fallback-path` o `none` → la caché de skills se perdió (probablemente compactación). Re-leé el registro inmediatamente e inyectá reglas compactas en todas las delegaciones subsiguientes.
+
+Este es un mecanismo de auto-corrección. NO ignores los informes de fallback.
+
+---
+
+## Lenguaje
+
+- **Spanish input → Rioplatense**: "Juicio iniciado", "Los jueces están trabajando en paralelo...", "Los jueces coinciden", "Juicio terminado — Aprobado", "Escalado — necesita revisión humana"
+- **English input**: "Judgment initiated", "Both judges are working in parallel...", "Both judges agree", "Judgment complete — Approved", "Escalated — requires human review"
+
+---
+
+---
+
+## Commands
+
+```bash
+# No CLI commands — this is a pure orchestration protocol.
+# Execution happens via delegate() and delegation_read() tool calls.
+```bash
+
+```
+
+<a name="skill-vetter"></a>
+### 5. skill-vetter
+
+```markdown
+---
+name: skill-vetter
+author: manuel-michael-retamozo
+version: 1.0.0
+description: Auditoría de seguridad para nuevas habilidades de IA. Usar antes de instalar cualquier skill desde fuentes externas. Detecta patrones sospechosos y exceso de permisos.
+---
+
+# Skill Vetter 🔒
+
+Protocolo de auditoría de seguridad para skills de agentes de IA. **Nunca instales una skill sin auditarla primero.**
+
+## Cuándo usarla
+
+- Antes de instalar cualquier skill desde ClawdHub o GitHub.
+- Al evaluar skills compartidas por otros agentes.
+- Siempre que se te pida instalar código desconocido.
+
+## Protocolo de Auditoría
+
+### Paso 1: Verificación de la Fuente
+
+```text
+Preguntas a responder:
+- [ ] ¿De dónde viene esta skill?
+- [ ] ¿El autor es conocido o tiene buena reputación?
+- [ ] ¿Cuántas descargas/estrellas tiene?
+- [ ] ¿Cuándo fue la última actualización?
+- [ ] ¿Hay reseñas de otros agentes?
+```text
+
+### Paso 2: Revisión de Código (MANDATORIO)
+
+Lee TODOS los archivos de la skill. Busca estas **BANDERAS ROJAS**:
+
+```text
+🚨 RECHAZAR INMEDIATAMENTE SI VES:
+─────────────────────────────────────────
+• curl/wget a URLs desconocidas
+• Envío de datos a servidores externos
+• Solicitud de credenciales/tokens/claves API
+• Lectura de ~/.ssh, ~/.aws, ~/.config sin motivo claro
+• Acceso a MEMORY.md, USER.md, SOUL.md, IDENTITY.md
+• Uso de base64 decode en cualquier parte
+• Uso de eval() o exec() con entrada externa
+• Modificación de archivos del sistema fuera del workspace
+• Instalación de paquetes sin listarlos
+• Llamadas de red a IPs en lugar de dominios
+• Código ofuscado (comprimido, codificado, minificado)
+• Solicitud de permisos elevados o sudo
+• Acceso a cookies o sesiones del navegador
+• Manipulación de archivos de credenciales
+─────────────────────────────────────────
+```text
+
+### Paso 3: Alcance de Permisos
+
+```text
+Evaluar:
+- [ ] ¿Qué archivos necesita leer?
+- [ ] ¿Qué archivos necesita escribir?
+- [ ] ¿Qué comandos ejecuta?
+- [ ] ¿Necesita acceso a la red? ¿Hacia dónde?
+- [ ] ¿Es el alcance mínimo necesario para su propósito?
+```text
+
+### Paso 4: Clasificación de Riesgo
+
+| Nivel de Riesgo | Ejemplos                       | Acción                        |
+| --------------- | ------------------------------ | ----------------------------- |
+| 🟢 BAJO         | Notas, clima, formato          | Revisión básica, instalar     |
+| 🟡 MEDIO        | Archivos, navegador, APIs      | Revisión completa obligatoria |
+| 🔴 ALTO         | Credenciales, trading, sistema | Requiere aprobación humana    |
+| ⛔ EXTREMO      | Config de seguridad, root      | NO instalar                   |
+
+## Formato de Salida
+
+Después de la auditoría, genera este informe:
+
+```text
+INFORME DE AUDITORÍA DE SKILL
+═══════════════════════════════════════
+Skill: [nombre]
+Fuente: [ClawdHub / GitHub / otro]
+Autor: [username]
+Versión: [versión]
+───────────────────────────────────────
+MÉTRICAS:
+• Estrellas/Forks: [conteo]
+• Última actualización: [fecha]
+• Archivos revisados: [conteo]
+───────────────────────────────────────
+BANDERAS ROJAS: [Ninguna / Listarlas]
+
+PERMISOS REQUERIDOS:
+• Archivos: [lista o "Ninguno"]
+• Red: [lista o "Ninguno"]
+• Comandos: [lista o "Ninguno"]
+───────────────────────────────────────
+NIVEL DE RIESGO: [🟢 BAJO / 🟡 MEDIO / 🔴 ALTO / ⛔ EXTREMO]
+
+VEREDICTO: [✅ SEGURO / ⚠️ INSTALAR CON PRECAUCIÓN / ❌ NO INSTALAR]
+
+NOTAS: [Observaciones adicionales]
+═══════════════════════════════════════
+```text
+
+## Comandos de Verificación Rápida
+
+Para skills alojadas en GitHub:
+
+```bash
+# Revisar estadísticas del repo
+curl -s "https://api.github.com/repos/OWNER/REPO" | jq '{stars: .stargazers_count, forks: .forks_count, updated: .updated_at}'
+
+# Listar archivos de la skill
+curl -s "https://api.github.com/repos/OWNER/REPO/contents/skills/SKILL_NAME" | jq '.[].name'
+
+# Descargar y revisar SKILL.md
+curl -s "https://raw.githubusercontent.com/OWNER/REPO/main/skills/SKILL_NAME/SKILL.md"
+```bash
+
+## Jerarquía de Confianza
+
+1. **Skills oficiales de OpenClaw** → Menor escrutinio (pero revisar igual).
+2. **Repositorios con muchas estrellas (1000+)** → Escrutinio moderado.
+3. **Autores conocidos** → Escrutinio moderado.
+4. **Fuentes nuevas/desconocidas** → Escrutinio máximo.
+5. **Skills que piden credenciales** → Siempre requieren aprobación humana.
+
+## Recordá
+
+- Ninguna skill vale comprometer la seguridad.
+- Ante la duda, no instales.
+- Preguntale a tu humano para decisiones de alto riesgo.
+- Documentá lo que auditás para referencia futura.
+
+---
+
+_La paranoia es una funcionalidad._ 🔒🦀
+
+```
