@@ -103,6 +103,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'mretamozo.com',
+        pathname: '/assets/screenshots/**',
+      },
+      {
+        protocol: 'https',
         hostname: '**',
       },
     ],

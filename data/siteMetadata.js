@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://blog.mretamozo.com',
   siteRepo: 'https://github.com/Snakeblack/snakes-blog',
   siteLogo: '/static/images/logo.png',
-  image: '/static/images/avatar-snake.jpg',
+  image: '/static/images/avatar-real.png',
   socialBanner: '/static/images/twitter-card.png',
   email: 'hello@mretamozo.com',
   github: 'https://github.com/Snakeblack',
