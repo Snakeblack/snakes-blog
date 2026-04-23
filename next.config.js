@@ -104,13 +104,21 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'mretamozo.com',
-        pathname: '/assets/screenshots/**',
       },
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: '**.mretamozo.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
       },
     ],
+    unoptimized: false,
   },
   i18n: {
     locales: ['es'],
