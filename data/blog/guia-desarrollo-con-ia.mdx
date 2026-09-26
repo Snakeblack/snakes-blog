@@ -1,0 +1,454 @@
+---
+title: 'Desarrollo con IA: Guía Definitiva para Principiantes — Agentes, Skills, MCP y Workflows'
+date: '2026-09-26'
+tags: ['ia', 'agentic-engineering', 'claude-code', 'codex', 'antigravity', 'opencode', 'mcp', 'skills', 'workflow']
+draft: false
+summary: 'Del chat al agente: la guía que explica desde cero qué es un agente, un subagente, un orquestador, AGENTS.md, las Skills y cómo hacerlas deterministas. Con el mapa de providers actualizado a septiembre de 2026 (Claude, GPT-6, Gemini, opencode), sus runtimes, hooks y límites. Y el siguiente nivel: harness, workflows, SDD, ODD y MCP.'
+layout: PostSimple
+---
+
+Empezar a desarrollar con IA en 2026 puede sentirse como llegar a una fiesta donde todos hablan un idioma que tú todavía no: agentes, subagentes, orquestadores, AGENTS.md, skills, hooks, MCP, harness... Este post existe para ponerte al día, en orden y sin dar nada por sabido.
+
+La guía tiene tres partes:
+
+1. **Fundamentos**: los conceptos que son iguales seas cual sea tu herramienta.
+2. **El mapa de providers**: qué modelos y runtimes existen hoy (septiembre de 2026), en qué se diferencian y cuáles son sus límites.
+3. **El siguiente nivel**: lo que puedes construir encima: harness, workflows, SDD, ODD y MCP.
+
+> [!NOTE]
+> **Aviso de frescura**: la Parte 2 refleja el estado del ecosistema el **26 de septiembre de 2026**. Los modelos cambian cada pocas semanas; los fundamentos de las Partes 1 y 3, en cambio, te servirán años.
+
+## Tabla de Contenido
+
+- [Parte 1: Fundamentos — lo común a todos](#parte-1-fundamentos--lo-común-a-todos)
+  - [¿Qué es un agente (y qué no es)?](#qué-es-un-agente-y-qué-no-es)
+  - [¿Qué es un subagente?](#qué-es-un-subagente)
+  - [¿Qué es un agente orquestador?](#qué-es-un-agente-orquestador)
+  - [AGENTS.md, CLAUDE.md, GEMINI.md: la memoria del proyecto](#agentsmd-claudemd-geminimd-la-memoria-del-proyecto)
+  - [Skills: conocimiento bajo demanda](#skills-conocimiento-bajo-demanda)
+  - [Skills eficientes: references, índices y "first LLM"](#skills-eficientes-references-índices-y-first-llm)
+- [Parte 2: El mapa de providers (septiembre 2026)](#parte-2-el-mapa-de-providers-septiembre-2026)
+  - [Anthropic: Claude Code y la familia Claude 5.x](#anthropic-claude-code-y-la-familia-claude-5x)
+  - [OpenAI: Codex y la familia GPT-6](#openai-codex-y-la-familia-gpt-6)
+  - [Google: Gemini CLI y Antigravity](#google-gemini-cli-y-antigravity)
+  - [opencode: el agente agnóstico de modelo](#opencode-el-agente-agnóstico-de-modelo)
+  - [Comparativa de runtimes: memoria, hooks, subagentes y sandbox](#comparativa-de-runtimes-memoria-hooks-subagentes-y-sandbox)
+  - [Límites prácticos que debes conocer](#límites-prácticos-que-debes-conocer)
+- [Parte 3: El siguiente nivel — lo que puedes construir](#parte-3-el-siguiente-nivel--lo-que-puedes-construir)
+  - [Tu harness: el marco que rodea al modelo](#tu-harness-el-marco-que-rodea-al-modelo)
+  - [Workflows con orquestador y subagentes](#workflows-con-orquestador-y-subagentes)
+  - [SDD: Spec-Driven Development](#sdd-spec-driven-development)
+  - [ODD y Gentleman-programming](#odd-y-gentleman-programming)
+  - [Workflows a medida para trabajos específicos](#workflows-a-medida-para-trabajos-específicos)
+  - [MCP: el enchufe universal (conectar y construir)](#mcp-el-enchufe-universal-conectar-y-construir)
+  - [Persistencia entre sesiones: Engram](#persistencia-entre-sesiones-engram)
+- [Checklist para empezar hoy](#checklist-para-empezar-hoy)
+- [Conclusión](#conclusión)
+
+---
+
+## Parte 1: Fundamentos — lo común a todos
+
+Da igual que uses Claude Code, Codex, Antigravity u opencode: los conceptos de esta parte son los mismos en todos. Aprende esto una vez y te sirve para siempre.
+
+### ¿Qué es un agente (y qué no es)?
+
+Un **agente** no es un chat ni un autocompletado glorificado. Es un programa que ejecuta un bucle:
+
+1. **Percibe**: lee tu petición, el estado del repositorio, la salida del último comando.
+2. **Razona**: decide cuál es el siguiente paso (o pregunta si falta información).
+3. **Actúa**: ejecuta una herramienta — leer un archivo, editar código, correr un test, buscar en la web.
+4. **Repite** hasta que la tarea está hecha o necesita tu decisión.
+
+La diferencia con un chat es la **autonomía con herramientas**: el agente no te dice "añade esta línea al test", sino que añade la línea, corre el test, ve que falla, y lo corrige. La diferencia clave con el autocompletado es el **objetivo**: no completas tú el trabajo píxel a píxel; el agente persigue un resultado completo.
+
+> [!TIP]
+> **Regla mental**: un chat te _describe_, un copilot te _sugiere_, un agente _ejecuta y verifica_. Si tu herramienta puede romper cosas (porque puede editar archivos y correr comandos), es un agente — y por eso todos los runtimes serios traen sistema de permisos.
+
+### ¿Qué es un subagente?
+
+Un **subagente** es un agente lanzado por otro agente, con tres propiedades que lo hacen útil:
+
+- **Contexto propio**: empieza con la ventana de contexto limpia. Tu conversación principal no se contamina con los 50 archivos que leyó para mapear la base de código.
+- **Prompt y herramientas propias**: puedes definir subagentes especializados (uno que solo lee, otro que solo escribe tests, otro que revisa seguridad) con su system prompt, sus herramientas permitidas e incluso su propio modelo.
+- **Resultado resumido**: cuando termina, devuelve a la sesión padre un informe, no todo su proceso.
+
+El caso de uso clásico: tu agente principal necesita entender un código base de 40 archivos. En lugar de leerlos todos en tu contexto (caro y lento), lanza un subagente explorador que los lee y devuelve un mapa: "los servicios viven aquí, la auth está ahí, los tests se corren con este comando".
+
+### ¿Qué es un agente orquestador?
+
+El **orquestador** es el patrón que aparece cuando los subagentes dejan de ser un truco puntual y se vuelven arquitectura:
+
+- El orquestador **planifica**: divide el trabajo en tareas con criterios de aceptación.
+- **Delega**: cada tarea va a un subagente con el contexto mínimo y las herramientas justas.
+- **Sintetiza**: recoge resultados, detecta conflictos, integra.
+- **Verifica**: no da por buena una tarea porque el subagente "dijo que sí", sino porque corrió los checks.
+
+Piénsalo como la diferencia entre un desarrollador senior que hace todo él, y un tech lead que reparte, revisa e integra. Mismo modelo, rol distinto — porque el valor del orquestador está en el _prompt_, las reglas y las herramientas que le configuras, no en un modelo "mágicamente orquestador".
+
+Los runtimes actuales hacen esto nativo: Claude Code tiene subagentes nativos y modos experimentales de equipos de agentes; Codex trae subagentes con tipos `worker` y `explorer`; Antigravity ejecuta subagentes asíncronos que vigilas en un panel.
+
+### AGENTS.md, CLAUDE.md, GEMINI.md: la memoria del proyecto
+
+Un agente sin memoria de proyecto es un desarrollador brillante con amnesia: cada sesión empieza de cero y tienes que repetirle "usamos pnpm, los tests corren con vitest, no toques la carpeta generated".
+
+La solución del ecosistema: **un archivo Markdown en la raíz del repo** con las reglas del proyecto. Cada runtime busca el suyo:
+
+| Runtime | Archivo que lee por defecto |
+| --- | --- |
+| Codex, opencode, y la mayoría | `AGENTS.md` |
+| Claude Code | `CLAUDE.md` (y `CLAUDE.local.md` para lo personal) |
+| Gemini CLI / Antigravity | `GEMINI.md`, migrando hacia `AGENTS.md` |
+| Copilot CLI | Lee varios a la vez (`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`) |
+
+`AGENTS.md` se ha convertido en el estándar de facto multi-vendor, mientras `CLAUDE.md` es la convención original de Claude Code. ¿Convivencia? La práctica recomendada hoy: mantén **un solo `AGENTS.md`** como fuente de verdad y, si usas Claude Code, haz que tu `CLAUDE.md` lo importe con una primera línea `@AGENTS.md`. Una sola fuente, cero deriva.
+
+¿Qué va dentro? Poco y accionable:
+
+```markdown
+# AGENTS.md — Proyecto snakes-blog
+
+## Stack
+- Next.js 16 (App Router) + TypeScript + Tailwind. Package manager: pnpm.
+
+## Comandos
+- Dev: `pnpm dev` · Build: `pnpm build` · Lint: `pnpm lint`
+
+## Convenciones
+- Los posts viven en data/blog/*.mdx con frontmatter en español.
+- Commits Conventional Commits (feat:, fix:, docs:...).
+- Nunca editar /generated: es output de scripts.
+
+## Reglas duras
+- Pedir confirmación antes de tocar data/blog de otros autores.
+```
+
+> [!WARNING]
+> **Tamaño importa**: Codex concatena los `AGENTS.md` que encuentra desde la raíz git hasta tu directorio actual y **corta a los 32 KiB** por defecto. Claude Code prefiere archivos por debajo de las 200 líneas. Un archivo de memoria inflado no solo consume tokens en cada sesión: en algunos runtimes, sus últimas líneas directamente no llegan a cargarse. Si crece, divides por área o lo conviertes en una Skill (siguiente apartado).
+
+### Skills: conocimiento bajo demanda
+
+Si `AGENTS.md` es la memoria _siempre presente_, una **Skill** es conocimiento _bajo demanda_: un paquete de instrucciones que el agente carga solo cuando la tarea la necesita.
+
+Una skill es simplemente una carpeta con un `SKILL.md`:
+
+```markdown
+---
+name: release-checklist
+description: Checklist de release para este repo. Usar cuando se prepara
+  un despliegue a producción o se corta una tag.
+---
+
+# Release checklist
+
+1. Verificar que main está verde en CI...
+2. Correr `pnpm build` localmente...
+3. Actualizar CHANGELOG...
+```
+
+Lo importante:
+
+- **Es un estándar abierto** (Agent Skills, publicado por Anthropic en octubre de 2025). El mismo formato funciona en Claude Code (`.claude/skills/`), Codex (`~/.codex/skills/`), Antigravity (`.agents/skills/` en el workspace) y opencode (directorio `skills/`).
+- **Carga progresiva**: el agente solo ve `name` y `description` de todas tus skills; el cuerpo se lee cuando la tarea coincide. Diez skills no cuestan más contexto que un párrafo... hasta que se usan.
+- **Se activan solas o a mano**: el agente elige la skill cuando la descripción encaja con la tarea, o tú la invocas como comando.
+
+La diferencia conceptual es clave: `AGENTS.md` = reglas que aplican a **todo**; skills = procedimientos que aplican a **algunas tareas**. Bugs recurrentes de deploy, cómo escribir un post en este blog, cómo audar accesibilidad: skills.
+
+### Skills eficientes: references, índices y "first LLM"
+
+Aquí está el salto de calidad que separa una skill útil de una skill que quema tokens. El problema: quieres darle al agente mucho conocimiento (guías WCAG completas, tablas de migración, APis internas), pero cargar 5.000 líneas "por si acaso" envenena el contexto y el bolsillo.
+
+La solución es una arquitectura de tres niveles dentro de la carpeta de la skill:
+
+```text
+.claude/skills/accesibilidad/
+├── SKILL.md                  ← Nivel 1: siempre visible (corto)
+├── INDEX.md                  ← Nivel 2: índice del conocimiento
+└── references/               ← Nivel 3: el conocimiento completo
+    ├── WCAG.md
+    ├── A11Y-PATTERNS.md
+    └── FORMULARIOS.md
+```
+
+1. **`SKILL.md` (nivel 1)**: quien eres, cuándo activarte, y la orden crítica: *"Antes de responder, lee INDEX.md y decide qué references necesitas"*. Nada más. Menos de 50 líneas.
+2. **`INDEX.md` (nivel 2)**: una línea por documento de `references/` con qué contiene y cuándo leerlo. Es el catálogo.
+3. **`references/` (nivel 3)**: documentos completos, granulares por tema.
+
+A esto último se le llama a veces patrón **"first LLM"**: usar el propio modelo como buscador. En vez de un índice alfabético (útil para humanos, inútil para decidir), el índice describe _para qué sirve cada referencia_, y la primera acción de la skill es una decisión del modelo: "para auditar este formulario necesito FORMULARIOS.md y A11Y-PATTERNS.md; WCAG.md no hace falta". El agente paga solo por lo que lee.
+
+El resultado es **determinismo donde importa y flexibilidad donde ayuda**: la estructura (índice → decisión → lectura) es siempre igual y predecible; la selección de material se adapta a cada tarea sin inflar el contexto.
+
+> [!TIP]
+> **Señal de que una skill está mal diseñada**: el agente lee todo `references/` siempre, o la skill repite en su cuerpo lo que ya dice el índice. **Señal de que está bien**: puedes predecir cuánto contexto consumirá en el peor caso, y el peor caso es raro.
+
+---
+
+## Parte 2: El mapa de providers (septiembre 2026)
+
+Ahora sí: qué hay ahí fuera. Cuatro opciones dominan el desarrollo agéntico en terminal/IDE, y conviene entenderlas en dos capas: el **modelo** (el cerebro) y el **runtime** (todo lo demás: permisos, hooks, subagentes, integraciones).
+
+### Anthropic: Claude Code y la familia Claude 5.x
+
+**Claude Code** es el runtime de agente de Anthropic: terminal, IDE y escritorio comparten configuración (skills, hooks, MCP y `CLAUDE.md`). Es conocido por su equilibrio entre autonomía y control: permisos granulares por herramienta, sandbox a nivel de sistema operativo (en Windows, vía WSL2), soporte nativo de git worktrees y los subagentes más maduros del lote.
+
+El catálogo actual de modelos (a 26/09/2026):
+
+| Modelo | Para qué | Contexto | Precio API aprox. (in/out por M tokens) |
+| --- | --- | --- | --- |
+| Claude Fable 5.1 | La frontera: razonamiento largo y ambiguo | 1M | $10 / $50 |
+| Claude Opus 5.5 | Coding agéntico complejo. Recién lanzado (22/09/2026): rinde al nivel de Fable 5.1 en la mayoría del trabajo con un coste de ejecución muy inferior | 1M | Anuncio: ~40% más barato de ejecutar que Opus 5 |
+| Claude Sonnet 5 | El caballo de batalla: producción, volumen | 1M | $2 / $10 |
+| Claude Haiku 4.5 | Velocidad y tareas simples | 200K | $1 / $5 |
+
+Notas de arquitecto: Opus 5.5 aterrizó hace cuatro días y es el inicio de la familia 5.5 (Sonnet 5.5 y Haiku 5.5 "en las próximas semanas"). En planes de suscripción, todos los tiers acceden a las cuatro familias; la diferencia entre Pro y Max es cuota, no catálogo. La estrategia sensata en producción: **Sonnet 5 para el volumen, Opus 5.5 para las decisiones difíciles, Fable 5.1 cuando Opus se quede corto.**
+
+### OpenAI: Codex y la familia GPT-6
+
+**Codex** es el agente de OpenAI: existe como CLI, dentro del app de ChatGPT y en la nube. Sus señas de identidad: un modelo de **sandbox explícito de tres niveles** (Read Only / Workspace Write / Danger Full Access), compacción automática del contexto, y una dualidad de autenticación que conviene conocer: entrar con cuenta ChatGPT (gasta cuota de suscripción) o con API key (gasta crédito de API). No es un detalle: la retirada de GPT-5.5 del 14 de octubre de 2026 afecta a las superficies de suscripción, pero **no** a las sesiones autenticadas con API key.
+
+La familia actual es **GPT-6**, estrenada a principios de septiembre de 2026 y completada el 22/09:
+
+| Modelo | Rol | Nota |
+| --- | --- | --- |
+| GPT-6 Astra | El buque insignia (extra-large) | Máxima profundidad para lo más exigente |
+| GPT-6 Sol | Large: coding complejo y workflows agénticos | El default recomendado en Codex |
+| GPT-6 Luna | Small: tareas enfocadas de alto volumen | 50% más barata que su equivalente 5.6 |
+
+La familia GPT-6 bajó el precio de API de Sol y Luna un 50% respecto a los GPT-5.6 equivalentes. Si vienes de GPT-5.5: migra antes del 14/10 si usas suscripción; con API key tienes margen.
+
+### Google: Gemini CLI y Antigravity
+
+Google juega con dos piezas. **Gemini CLI** es el agente de terminal; **Antigravity** es su IDE agéntico (lanzados junto a la generación Gemini 3), pensado para delegar tareas completas — incluyendo navegar con un navegador controlado por el agente — no solo autocompletar. Su `Antigravity Agent` es un agente gestionado que planifica, ejecuta código y navega la web dentro de un sandbox Linux aislado.
+
+El catálogo Gemini relevante para desarrollo (septiembre 2026):
+
+| Modelo | Para qué |
+| --- | --- |
+| Gemini 3.1 Pro | Razonamiento de frontera de la casa; el flagship para tareas difíciles |
+| Gemini 3.8 Flash | La iteración Flash más reciente: velocidad con calidad alta |
+| Gemini 3.5 Flash-Lite | Máxima economía para volumen |
+| Nano Banana 2 | Generación/edición de imágenes (familía flash-image) |
+
+Detalles de runtime que importan: los subagentes de Antigravity vienen heredados de Gemini CLI y corren **asíncronos** (los vigilas en un panel sin bloquear el terminal); la configuración de agentes no es compatible entre ambos y no hay migración automática. La memoria de proyecto migra de `GEMINI.md` hacia `AGENTS.md`. Y las cuotas del ecosistema Google funcionan por niveles con límites por minuto/día según plan.
+
+### opencode: el agente agnóstico de modelo
+
+**opencode** es la apuesta open source (licencia MIT): un agente de terminal que **separa el runtime del modelo**. Conectas el proveedor que quieras con tu propia API key (Anthropic, OpenAI, Google, Bedrock, o cualquier endpoint compatible — soporta más de 75 proveedores), o usas su gateway curado OpenCode Zen, o su plan de suscripción. En 2026 superó los ~120.000 estrellas en GitHub.
+
+Lo que lo hace interesante como concepto:
+
+- **Dos agentes base**: `plan` (solo lectura, razona arquitectura) y `build` (lee y escribe). La separación evita el modo de fallo clásico del agente que empieza a editar antes de terminar de pensar.
+- **Sesiones persistentes** en SQLite local: cierras el terminal y retomas la sesión con todo el historial.
+- **LSP integrado**: lee diagnósticos y tipos del language server del proyecto, como lo haría tu IDE, en vez de adivinar.
+- **Plugins en JavaScript/Bun** con eventos (`tool.execute.before`, `session.idle`, `permission.asked`...) — su equivalente de los hooks, pero con callbacks en vez de procesos.
+- Config en `opencode.json` + carpeta `.opencode/` con `agents/`, `commands/`, `plugins/`, `skills/`.
+
+Para equipos con MCP servers propios, LSP montado y necesidades de cambiar de modelo por coste o compliance, es el encaje natural. Para un solo developer feliz con un único proveedor, un runtime empaquetado por el vendor es menos fricción.
+
+### Comparativa de runtimes: memoria, hooks, sandbox
+
+La tabla que wish que hubiera tenido cuando empecé (valores medidos a septiembre de 2026; los detalles de eventos cambian entre versiones):
+
+| | Claude Code | Codex CLI | Antigravity | opencode |
+| --- | --- | --- | --- | --- |
+| Memoria de proyecto | `CLAUDE.md` (+ `CLAUDE.local.md`, `.claude/rules/` con paths) | `AGENTS.md` (+ override) | `GEMINI.md` → `AGENTS.md` | `AGENTS.md` |
+| Config | `~/.claude.json` (JSON) | `~/.codex/config.toml` (TOML) | JSON | `opencode.json` (JSON) |
+| Hooks | 10 eventos (SessionStart, PreToolUse, Stop, SubagentStart...) vía comando + JSON en stdin | 9 eventos, mismo mecanismo | Eventos en JSON | Plugins Bun con callbacks (~7 eventos) |
+| Subagentes | Nativos, con estado y herramienta actual; equipos experimentales; orquestación masiva (hasta ~1.000 subagentes planificados) | Nativos: default / worker / explorer; custom en TOML | Asíncronos en panel | Vía agentes custom y modos plan/build |
+| Sandbox | Permisos por herramienta + sandbox de SO (WSL2 en Windows) | 3 tiers explícitos: Read Only / Workspace Write / Danger Full Access | Suave, sin tiers con nombre | Modelo de permisos propio |
+| Skills | `.claude/skills/` (fusionadas con los slash commands) | `~/.codex/skills/` | `.agents/skills/` | Directorio `skills/` |
+| MCP | Sí | Sí | Sí | Sí (stdio/SSE) |
+| Headless / CI | Modo `-p` | `codex exec` | — | Sí |
+| Fork de sesión | `/fork` | `/fork` | No | — |
+
+**¿Qué significa "hooks" en la práctica?** Son puntos del ciclo de vida donde **tú** ejecutas código: bloquear un comando peligroso en `PreToolUse`, formatear archivos en `PostToolUse`, notificar en `Stop`. Ejemplo real en Claude Code (`.claude/settings.json`):
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/guard-rm-rf.js"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+El hook recibe el evento como JSON por stdin y puede responder `allow` o `deny` (con mensaje). Codex usa el mismo mecanismo de stdin/stdout pero con un vocabulario de respuesta más reducido (`allow`/`deny`, sin campos extra); opencode lo hace con funciones JavaScript. Concepto idéntico, sintaxis distinta.
+
+### Límites prácticos que debes conocer
+
+Más allá de tablas, los límites que de verdad te afectan al día a día:
+
+- **Ventana de contexto**: el presupuesto de "atención" del modelo (200K–1M tokens según modelo). Todo cuenta: archivos leídos, salida de comandos, tu conversación. Los runtimes compactionan automáticamente cuando se llena (Codex lo hace por ti; en Claude Code pides `/compact`), pero la compactación pierde detalle: la disciplina de "contexto mínimo" (subagentes, skills) es mejor que confiar en el compactador.
+- **Límites de plano**: los modelos frontera en planes de suscripción tienen cuotas de uso (semanales o por ventana); los planes top (Max, Pro) compran cuota, no catálogo. Con API key pagas por token sin techo, pero con factura variable.
+- **Caps de archivos de memoria**: Codex corta la cadena de `AGENTS.md` a 32 KiB; Claude Code ignora archivos de memoria gigantes y prefiere menos de 200 líneas. Las reglas que se cargan "a veces" (por ruta de archivo) viven mejor en `.claude/rules/` con frontmatter de paths que en un megadocumento.
+- **Latencia y coste por paso**: cada vuelta del bucle del agente cuesta tokens. Un agente desbocado leyendo toda la codebase puede consumir en una tarea lo que consume un equipo en una semana. Los permisos y los subagentes también son control de gasto.
+
+---
+
+## Parte 3: El siguiente nivel — lo que puedes construir
+
+Fundamentos dominados, mapa conocido. Lo interesante de 2026 no son los agentes: es lo que construyes **alrededor** de ellos.
+
+### Tu harness: el marco que rodea al modelo
+
+Un **harness** es el andamiaje completo que convierte un modelo en un ingeniero fiable: system prompt, definición de herramientas, reglas de permisos, hooks de ciclo de vida, archivos de memoria, skills, MCP servers y comandos custom. El modelo es intercambiable; el harness es tuyo y es donde vive el valor.
+
+La mentalidad correcta: **el modelo es el motor, el harness es el coche**. Frenos (permisos), navegador (memoria de proyecto), caja de herramientas (skills + MCP) y el cuadro de mandos (hooks). Dos equipos con el mismo modelo y harnesses distintos obtienen resultados radicalmente distintos.
+
+Tu harness mínimo viable para cualquier proyecto:
+
+1. `AGENTS.md` con stack, comandos y reglas duras.
+2. Un par de skills para tus tareas repetitivas con errores recurrentes.
+3. Un hook que bloquee lo irreversible (ese `rm -rf` que no se perdona).
+4. Un MCP server para la herramienta externa que más usas.
+
+### Workflows con orquestador y subagentes
+
+Cuando las tareas crecen, el patrón orquestador de la Parte 1 se convierte en **workflows** explícitos: pipelines donde un agente padre planifica, reparte entre subagentes especializados y verifica resultados. Ejemplos que funcionan hoy:
+
+- **Exploración → plan → ejecución**: un explorador mapea el código (read-only), el orquestador escribe el plan, un worker lo ejecuta, un verificador corre los tests.
+- **Revisión dual**: dos agentes revisan el mismo diff con prompts distintos (uno busca bugs, otro busca diseño) y un tercero arbitra los hallazgos confirmados.
+- **Fan-out masivo**: para trabajo a escala de repositorio (migraciones, auditorías), un lead agent planifica cientos de subtareas y las ejecuta en paralelo con un tope de concurrencia — Claude Code, por ejemplo, orquesta hasta ~1.000 subagentes planificados con ~16 corriendo a la vez vía Dynamic Workflows.
+
+La regla de oro del paralelismo agéntico: **cada subagente debe poder fallar sin contaminar a los demás**. Contexto aislado, superficie de escritura acotada, resultado resumido. Si dos subagentes escriben el mismo archivo, no tienes un workflow: tienes una carrera perdida.
+
+### SDD: Spec-Driven Development
+
+El **Spec-Driven Development** invierte el orden clásico: antes de dejar que el agente escriba código, escribes (con el agente como copiloto) las **especificaciones**: qué debe hacer el sistema, qué no, y qué requisitos debe cumplir. El flujo:
+
+1. **Propuesta**: describes el cambio en lenguaje natural.
+2. **Specs**: el agente genera/actualiza especificaciones formales por capability; tú revisas.
+3. **Diseño técnico**: decisiones de arquitectura documentadas.
+4. **Tareas**: lista ejecutable con criterios de aceptación.
+5. **Implementación guiada**: el agente ejecuta tarea por tarea contra la spec, con verificación en cada paso.
+
+Herramientas como **OpenSpec** materializan esto como artefactos versionados en tu repo (`openspec/`), de modo que las specs evolucionan con el código en lugar de pudrirse en un wiki. La gran ventaja: el agente deja de adivinar tu intención y pasa a cumplir un contrato — y el humano revisa documentos cortos en vez de diffs gigantes.
+
+### ODD y Gentleman-programming
+
+El **Organic Driven Development (ODD)**, popularizado por la comunidad **Gentleman-programming**, es la respuesta al problema de "¿cuánta ceremonia necesita este cambio?". ODD no te obliga a specs formales para todo: clasifica el trabajo orgánicamente (¿es trivial o sustancial?), y solo el sustancial genera artefactos (documento de feature, lista de tareas, commits por unidad de trabajo). El workflow corre **siempre** — autorizar, explorar, resolver incertidumbre, clasificar, trackear, implementar, cerrar — pero se escala solo.
+
+Ideas clave de esta escuela:
+
+- **Clarify first**: nada de código sin contexto suficiente; el agente debe pedirte la decisión de producto que falta, no inventársela.
+- **El humano es arquitecto**: el agente propone, tú validas los puntos de no retorno.
+- **Commits como unidades de trabajo**: cada tarea termina en un commit revisable, con tests y docs al lado del comportamiento.
+- **Proteger al revisor humano**: cambios pequeños y enfocados; si un PR necesita 20 minutos de lectura, ya falló el proceso.
+
+SDD y ODD no compiten: SDD es el "cómo" formal para cambios grandes; ODD es el "cuánto" para decidir cuándo formalizar. Los harnesses que implementan esta disciplina (como el propio ecosistema Gentleman) convierten la metodología en reglas ejecutables por el agente.
+
+### Workflows a medida para trabajos específicos
+
+El punto de madurez: dejas de usar workflows genéricos y **diseñas el tuyo para tu dominio**. Un workflow no es más que: estados, transiciones, quién (qué agente) hace qué, y qué evidencia deja cada paso. Ejemplos reales que valen la pena automatizar:
+
+- **Publicación de contenido** (muy meta en un blog): skill de estilo → agente que valida frontmatter y links → verificador de build → commit → PR. Este mismo post podría pasar por uno.
+- **Migraciones dirigidas**: spec de la migración + agente que aplica por archivo + verificador que corre tests de contrato en cada lote.
+- **Triage de issues**: un agente lee issues nuevos, los clasifica por clase raíz, y propone el fix sistémico en vez del parche uno a uno.
+- **Onboarding de repo**: agente que genera la documentación de arquitectura (con OpenSpec/similar) a partir del código, para que el próximo humano (o agente) arranque con mapa.
+
+### MCP: el enchufe universal (conectar y construir)
+
+El **Model Context Protocol (MCP)** es el estándar abierto (creado por Anthropic, noviembre de 2024) que conecta agentes con herramientas y datos externos: bases de datos, APIs, navegadores, tu CRM. Un **MCP server** expone herramientas (`tools`), prompts y recursos; cualquier cliente MCP (Claude Code, Codex, Antigravity, opencode, Cursor, VS Code...) las consume. Es, en serio, el "USB-C de la IA": un solo protocolo, todos los enchufes.
+
+El estado del ecosistema en septiembre de 2026 es de crecimiento explosivo: el registro oficial pasó de ~9.600 servidores en mayo a **más de 30.000** (con +6.200 solo en agosto), las descargas mensuales de SDKs superan los **97 millones**, y alrededor del **41%** de las organizaciones encuestadas ya usa MCP en producción. Transporte dominante: `streamable-http` para servidores remotos.
+
+**Conectar** un server es configuración declarativa. En Claude Code:
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}
+```
+
+En Codex (`~/.codex/config.toml`):
+
+```toml
+[mcp_servers.github]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+```
+
+En opencode (`opencode.json`): bloque `mcp` con el mismo shape. Registrado el server, sus herramientas aparecen en el agente bajo el mismo modelo de permisos que las nativas.
+
+**Construir** el tuyo también es accesible — y ahí está el verdadero superpoder, porque nadie más tiene tus herramientas internas:
+
+```typescript
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+const server = new McpServer({ name: "mi-blog", version: "1.0.0" });
+
+server.tool(
+  "validar_post",
+  "Valida frontmatter y links de un post del blog",
+  { ruta: z.string().describe("Ruta del .mdx") },
+  async ({ ruta }) => {
+    const ok = await validarPost(ruta); // tu lógica
+    return { content: [{ type: "text", text: ok ? "Válido" : "Con errores" }] };
+  }
+);
+
+await server.connect(new StdioServerTransport());
+```
+
+SDKs oficiales en TypeScript y Python; puedes servir por stdio (local) o HTTP streamable (remoto). ¿Cuándo merece la pena un MCP propio? Cuando la acción requiere **estado o lógica** que no cabe en un comando de shell: hablar con tu API interna con auth, consultar tu base de datos con queries seguras, disparar tu pipeline de deploy.
+
+> [!WARNING]
+> **Seguridad primero**: revisa qué permisos le das a cada server (un MCP con acceso a shell o a tu base de datos es código ejecutándose con tus credenciales), y desconfía del registro a ciegas: la mayoría de servidores públicos tienen una sola versión publicada y actualización escasa. Prefiere servers con fuente visible y mantenedores identificables.
+
+### Persistencia entre sesiones: Engram
+
+El Talón de Aquiles de todo lo anterior: **los agentes olvidan**. Cada sesión arranca de cero, y tu agente estrella de ayer hoy no recuerda ni por qué nombró esa variable. Los archivos de memoria (`AGENTS.md`) guardan reglas, no historia: decisiones, descubrimientos, bugs ya resueltos.
+
+Aquí es donde entran las herramientas de memoria persistente, y la recomendación clara es [**Engram**](https://github.com/Gentleman-Programming/engram) (del ecosistema Gentleman-Programming): un binario único en Go, sin dependencias, con SQLite + búsqueda full-text, expuesto como CLI, API HTTP, MCP y TUI. Al ser **agnóstico del agente** (cualquier cliente MCP lo usa: Claude Code, Codex, opencode, Gemini CLI, Cursor, VS Code...), tu memoria sobrevive a los cambios de herramienta:
+
+```bash
+# Instalar (macOS/Linux)
+brew install gentleman-programming/tap/engram
+
+# Conectarlo a tu agente
+engram setup claude-code   # o codex, opencode, gemini-cli, cursor...
+```
+
+El patrón de uso que cambia tu día a día:
+
+- Al **resolver** algo digno de recordar (un bug peliagudo, una decisión de arquitectura), el agente guarda una observación (`mem_save`) con what/why/where.
+- Al **retomar** trabajo días después, `mem_context` + `mem_search` reconstruyen el estado mental sin que tú repitas la historia.
+- Al **cerrar sesión**, un resumen estructurado (`mem_session_summary`) deja el handoff listo para la próxima.
+
+Combinado con skills y specs, cierras el círculo: **reglas** (AGENTS.md) + **procedimientos** (skills) + **historia** (Engram) + **contratos** (specs) = un compañero de equipo que acumula seniority en tu proyecto en vez de reincidir en errores de novato.
+
+---
+
+## Checklist para empezar hoy
+
+1. **Elige un runtime** y vive en él un mes: Claude Code si quieres el ecosistema más maduro; Codex si tu stack ya es OpenAI y quieres sandbox explícito; Antigravity si prefieres IDE visual con navegador; opencode si la libertad de modelo es innegociable.
+2. **Escribe tu `AGENTS.md`** el primer día: stack, comandos, convenciones, reglas duras. Menos de 200 líneas.
+3. **Activa los permisos**: empieza restrictivo (nada de escribir sin aprobación) y afloja solo lo que verificas con tests.
+4. **Crea tu primera skill** para la tarea que más repites, con la arquitectura `SKILL.md` + índice + `references/`.
+5. **Conecta un MCP server** que uses a diario (GitHub, tu base de datos, tu gestor de tareas).
+6. **Instala memoria persistente** (Engram) antes de que pagues el precio de re-explicar tu proyecto cada semana.
+7. **Escribe tu primer workflow** cuando detectes tu tercer error recurrente del mismo tipo — ese es el umbral donde automatizar deja de ser lujuria y se vuelve ingeniería.
+
+## Conclusión
+
+El desarrollo con IA dejó de ser "pedir código a un chat" hace mucho. Hoy es una disciplina de **ingeniería alrededor de un motor probabilístico**: contexto bien dosificado (AGENTS.md corto, skills con índices), autonomía con frenos (permisos, hooks, sandboxes), método que escala con el problema (ODD para lo orgánico, SDD para lo formal) e integración con tus herramientas de verdad (MCP, memoria persistente).
+
+Los modelos de septiembre de 2026 —Claude 5.x, GPT-6, Gemini 3.x— son extraordinariamente capaces. Pero el diferencial competitivo no está en elegir el modelo ganador de esta semana: está en el harness que construyas encima. Los fundamentos de esta guía no caducan con el próximo lanzamiento. El mapa sí — así que vuelve a la Parte 2 con ojos escépticos dentro de unos meses.
+
+Ahora, a construir.
